@@ -26,6 +26,13 @@ Post.init(
         key: 'id',
       },
     },
+    tag_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'tag',
+        key: 'id',
+      },
+    },
     upvotes: {
       type: DataTypes.INTEGER,
       allowNull: false,
