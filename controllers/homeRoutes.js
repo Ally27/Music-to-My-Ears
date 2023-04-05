@@ -1,22 +1,16 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
 // withAuth middleware is called to check if logged_in returns true for the current session before performing the get request 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
+    const postData = await Post.findAll();
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('homepage', {
-      users,
-      // checks to make sure the withAuth returns true before rendering homepage view 
-      logged_in: req.session.logged_in,
-    });
+    res.render('homepage', { posts });
+    console.log(posts)
   } catch (err) {
     res.status(500).json(err);
   }
