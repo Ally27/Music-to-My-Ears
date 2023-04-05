@@ -3,5 +3,16 @@
     "title": "New Blogpost",
     "content": "String of text",
     "user_id": 1
+  },
+  {
+    "title": "New Blogpost",
+    "content": "String of text",
+    "user_id": 2
+  },
+  {
+    "title": "New Blogpost",
+    "content": "String of text",
+    "user_id": 3
   }
+
 ]
