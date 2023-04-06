@@ -1,5 +1,46 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
+
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      include: [{ model: Post }],
+    });
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id, {
+      include: [{ model: Post}],
+    });
+    // checks that there is a user with the requested id 
+    if (!userData) {
+      res.status(404).json({ message: 'No User found with that id!' });
+      return;
+    }
+    // makes a json of user if the id exist 
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
+
+/// Deals with login/logout and setting user session ///
 
 router.post('/login', async (req, res) => {
   try {
@@ -39,7 +80,7 @@ router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     // destroys the db entry that we had initialized in our server.js file such that the session is ended and there is no stored data for it within our database after it has ended. 
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(204).json({ message: "You are now logged out" });
     });
   } else {
     res.status(404).end();
