@@ -28,10 +28,25 @@
     "name": "Nick",
     "email": "Nick@gmail.com",
     "password": "1234"
+  },
+  {
+    "name": "Pam",
+    "email": "Pam@gmail.com",
+    "password": "1234"
+  },
+  {
+    "name": "Dwight",
+    "email": "Dwight@gmail.com",
+    "password": "1234"
+  },
+  {
+    "name": "Jim",
+    "email": "Jim@gmail.com",
+    "password": "1234"
+  },
+  {
+    "name": "MichaelScott",
+    "email": "MichaelS@gmail.com",
+    "password": "1234"
   }
-
-
-
 ]
-
- 
