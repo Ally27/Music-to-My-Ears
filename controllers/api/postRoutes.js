@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { User, Post, Tag } = require('../../models');
+const { User, Post, Tag, Comment } = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
       const postData = await Post.findAll({
-        include: [{ model: User }, {model: Tag}],
+        include: [{ model: User, attributes: ['name'] }, {model: Tag}, {model: Comment, attributes: ['content'], order: [['id', 'ASC']] }],
       });
       res.status(200).json(postData);
     } catch (err) {
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
   router.get('/:id', async (req, res) => {
     try {
       const postData = await Post.findByPk(req.params.id, {
-        include: [{ model: User }, {model: Tag}],
+        include: [{ model: User, attributes: ['name'] }, {model: Tag}, {model: Comment, attributes: ['content'], order: [['id', 'ASC']] }],
       });
       // checks that there is a user with the requested id 
       if (!postData) {
