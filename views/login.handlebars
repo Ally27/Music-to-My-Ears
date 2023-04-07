@@ -1,17 +1,30 @@
-<h2>Login</h2>
-
-<form class="form login-form">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
+<div class="grid grid-cols-12">
+  <div class="col-span-12 w-3/5 mx-auto mt-16">
+    <h2 class="text-center font-bold text-3xl mb-8">Login</h2>
+    <form>
+      <div class="form-group mt-3">
+        <div>
+          <input type='text' placeholder='Enter email address' class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m'>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <div>
+          <input type='password' placeholder='Enter password' class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' />
+        </div>
+      </div>
+      <div class="form-group mt-3 flex flex-row">
+        <div class="ml-40">
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <div>
+          <button class="bg-pink-600 p-2 text-white text-xl rounded w-full h-14">Sign in</button>
+        </div>
+      </div>
+      <div class="form-group mt-8 flex justify-between">
+        <button class="text-xl font-light text-grey-text">Don't have an account? <span class="text-black font-bold">Sign up</span></button>
+        <button class="text-xl pt-2 font-bold text-black">Forgot Password?</button>
+      </div>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-  </div>
-</form>
-
-<script src="/js/login.js"></script>
+</div>
