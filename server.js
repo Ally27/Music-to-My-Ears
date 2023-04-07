@@ -12,7 +12,11 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers,
+  defaultLayout: 'layout',
+  extname: '.handlebars'
+});
 
 // create a unique session stored in the db that isn't permanently saved to act as user session 
 const sess = {
