@@ -21,7 +21,6 @@ router.get('/', async (req, res) => {
       // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
     });
-    console.log("this is my access_token: " + req.session.access_token)
   } catch (err) {
     res.status(500).json(err);
   }
@@ -55,7 +54,7 @@ router.get("/create", withAuth, async (req, res) => {
     const tagData = await Tag.findAll();
     const tags = tagData.map((tag) => tag.get({ plain: true }));
 
-    res.render("create", { tags, logged_in: req.session.logged_in, });
+    res.render("create", { tags, logged_in: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
   }

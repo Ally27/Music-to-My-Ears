@@ -1,6 +1,8 @@
 const createForm = document.querySelector('.create-form');
+const userId = sessionStorage.getItem('user_id')
 
 const createPostHandler = async (event) => {
+
   event.preventDefault();
 
   try {
@@ -26,7 +28,7 @@ const createPostHandler = async (event) => {
         content: content,
         spotify_id: spotifyId,
         post_type: postType,
-        user_id: 1,
+        user_id: userId,
         tag_id: tagId,
       }),
       headers: {
