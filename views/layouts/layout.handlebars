@@ -14,6 +14,7 @@
     <header class="display-flex justify-space-between align-center p-2">
       <span class="logo"><a href="/"> &#x1F3B5; Music to My Ears &#x1F3B5; </a></span>
       <div class="right">
+
         
         {{#unless logged_in}}
         <button>
@@ -22,6 +23,7 @@
          {{/unless}}
          {{#if logged_in}}
           <button class="btn" id="logout">Logout</button>
+
          {{/if}}
         <input placeholder="Search" />
       </div>
@@ -69,6 +71,7 @@
 
     {{!-- If the user is logged in, load the JS script for when they logout --}}
     {{#if logged_in}}
+
       <script src="/js/logout.js"></script>
     {{/if}}
   </div>
