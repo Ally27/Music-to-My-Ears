@@ -89,10 +89,46 @@ router.get("/tags/:tag", async (req, res) => {
   }
 });
 
+// route to connect create/post page to navbar
+router.get('/create', (req, res) => {
+  // if user is logged in, redirect to their profile
+  if (req.session.logged_in) {
+    res.render('create');
+    // otherwise prompt them to login 
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// route to connect community page to navbar
+router.get('/community', (req, res) => {
+  // if user is logged in, redirect to their profile
+  if (req.session.logged_in) {
+    res.render('community');
+    // otherwise prompt them to login 
+  } else {
+    res.redirect('/login');
+  }
+});
+
+
+// route to connect account page to navbar
 router.get('/account', (req, res) => {
   // if user is logged in, redirect to their profile
   if (req.session.logged_in) {
     res.render('account');
+    // otherwise prompt them to login 
+  } else {
+    res.redirect('/login');
+  }
+});
+
+
+// route to connect contact page to navbar
+router.get('/contact', (req, res) => {
+  // if user is logged in, redirect to their profile
+  if (req.session.logged_in) {
+    res.render('contact');
     // otherwise prompt them to login 
   } else {
     res.redirect('/login');
