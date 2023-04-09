@@ -1,3 +1,4 @@
+// In Post.js model
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -14,6 +15,14 @@ Post.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    spotify_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    post_type: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     content: {
       type: DataTypes.STRING,
