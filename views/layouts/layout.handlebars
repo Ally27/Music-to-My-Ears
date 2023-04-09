@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Music to My Ears</title>
   <link rel="stylesheet" href="/css/jass.css">
+  <link href="/css/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body>
@@ -14,14 +17,16 @@
     <header class="display-flex justify-space-between align-center p-2">
       <span class="logo"><a href="/"> &#x1F3B5; Music to My Ears &#x1F3B5; </a></span>
       <div class="right">
+
         
         {{#unless logged_in}}
-        <button>
+        <button> 
           <a href="/login">Login</a>         
         </button>
          {{/unless}}
          {{#if logged_in}}
           <button class="btn" id="logout">Logout</button>
+
          {{/if}}
         <input placeholder="Search" />
       </div>
@@ -69,6 +74,7 @@
 
     {{!-- If the user is logged in, load the JS script for when they logout --}}
     {{#if logged_in}}
+
       <script src="/js/logout.js"></script>
     {{/if}}
   </div>
