@@ -65,6 +65,9 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+    // saves user_id to session storage to be accessed in backend
+    req.session.user_id = userData.id;
+
     // saves the user session to the boolean "true" so that it will return logged_in as true when our code checks
     req.session.save(() => {
       req.session.logged_in = true;

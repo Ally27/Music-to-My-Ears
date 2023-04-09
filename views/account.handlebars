@@ -2,8 +2,20 @@
 
 <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto">
   <div class="col-span-7">
-    <h4>{{userData.name}}</h4>
+    <h4>Your Posts</h4>
     <div class="border border-black mt-2">
+      {{#each posts as |post| }}
+        <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+          <div class="h-20 w-20 border border-black mt-2 ml-2 mb-2"></div>
+          <div class="mt-2">
+            <h3>{{post.title}}</h3>
+            <span>{{post.content}}</span>
+            <br />
+            <small>Post created on {{formatDate post.createdAt}}</small>
+            <small><i>{{post.post_type}}</i></small>
+          </div>
+        </div>   
+      {{/each}}
     </div>
   </div>
   <div class="col-span-3">

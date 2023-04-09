@@ -1,5 +1,6 @@
 const createForm = document.querySelector('.create-form');
 const userId = sessionStorage.getItem('user_id')
+console.log(userId)
 
 const createPostHandler = async (event) => {
 
