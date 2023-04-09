@@ -50,6 +50,17 @@ router.get("/users", withAuth, async (req, res) => {
   }
 });
 
+router.get("/create", withAuth, async (req, res) => {
+  try {
+    const tagData = await Tag.findAll();
+    const tags = tagData.map((tag) => tag.get({ plain: true }));
+
+    res.render("create", { tags, logged_in: req.session.logged_in, });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/users/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);

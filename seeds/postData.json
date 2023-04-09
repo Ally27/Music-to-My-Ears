@@ -1,63 +1,34 @@
 [
   {
-    "title": "New Blogpost",
-    "content": "String of text",
+    "title": "My new playlist!",
+    "content": "This playlist is a collection of all of my favorite Beyonce songs!",
+    "spotify_id": "03HusFeEsbdRBAVU88VF26",
+    "post_type": "playlist",
     "user_id": 1,
     "tag_id": 1
   },
   {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 2,
+    "title": "Queen of Comebacks!",
+    "content": "Demi Lovato has really come a long way since her Camp Rock days. I love her new sound in her album HOLY FVCK and I really love her rerecording of Heartattack",
+    "spotify_id": "6S2OmqARrzebs0tKUEyXyp",
+    "post_type": "artist",
+    "user_id": 1,
     "tag_id": 2
   },
   {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 3,
-    "tag_id": 3
+    "title": "Sick Beat",
+    "content": "This is one of my favorite KKB songs! When they say 'whether you're a boy or a girl or a super computer' I was just like yas non-binary rights!",
+    "spotify_id": "0BgPrNelWyvk0C5recZeKE",
+    "post_type": "track",
+    "user_id": 1,
+    "tag_id": 1
   },
   {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 4,
-    "tag_id": 4
-  },
-  {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 5,
+    "title": "But is it Disco?",
+    "content": "I can't believe Kylie Minogue invented Disco with this album in 2020",
+    "spotify_id": "7EBIA9cqbuqkyWfp3UCitD",
+    "post_type": "album",
+    "user_id": 1,
     "tag_id": 5
-  },
-  {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 6,
-    "tag_id": 6
-  },
-  {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 7,
-    "tag_id": 7
-  },
-  {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 8,
-    "tag_id": 8
-  },
-  {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 9,
-    "tag_id": 9
-  },
-  {
-    "title": "New Blogpost",
-    "content": "String of text",
-    "user_id": 10,
-    "tag_id": 10
-
   }
 ]
