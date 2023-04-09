@@ -34,7 +34,7 @@ router.get("/login", (req, res) => {
     return;
   }
   // otherwise the login handlebar is rendered
-  res.render("login");
+  res.render("login", {logged_in: req.session.logged_in,});
 });
 
 
@@ -42,11 +42,9 @@ router.get("/login", (req, res) => {
 router.get("/users", withAuth, async (req, res) => {
   try {
     const userData = await User.findAll();
-
     const users = userData.map((user) => user.get({ plain: true }));
 
-    res.render("users", { users });
-
+    res.render("users", { users, logged_in: req.session.logged_in, });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -55,11 +53,9 @@ router.get("/users", withAuth, async (req, res) => {
 router.get("/users/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
-
     const user = userData.get({ plain: true });
 
-    res.render("user", { user });
-
+    res.render("user", { user, logged_in: req.session.logged_in, });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -70,11 +66,13 @@ router.get("/posts/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
     const post = postData.get({ plain: true });
-    res.render("post", { post });
+
+    res.render("post", { post, logged_in: req.session.logged_in, });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 //tags
 router.get("/tags/:tag", async (req, res) => {
   try {
@@ -82,8 +80,9 @@ router.get("/tags/:tag", async (req, res) => {
       where: { tag_name: req.params.tag },
       include: [{ model: Post, through: PostTag, as: "tagged_posts" }],
     });
+
     const tag = tagData.get({ plain: true });
-    res.render("tag", { tag });
+    res.render("tag", { tag, logged_in: req.session.logged_in, });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -92,7 +91,7 @@ router.get("/tags/:tag", async (req, res) => {
 router.get('/account', (req, res) => {
   // if user is logged in, redirect to their profile
   if (req.session.logged_in) {
-    res.render('account');
+    res.render('account', {logged_in: req.session.logged_in,});
     // otherwise prompt them to login 
   } else {
     res.redirect('/login');
