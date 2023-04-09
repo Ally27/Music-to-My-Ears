@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/jass.css">
+    <link rel="stylesheet" href="/public/css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <img class="heartIcon animated infinite pulse" src="/public/images/heart-icon.png">
+    <h1 class="animated infinite bounce">An animated element</h1>
+    <button class="clickBtn">CLICK ME</button>
+
+</body>
+</html>
+
+<!-- type this into terminal to have tailwind track changes in output. makes tailwind desinging easier in html files with extension downloaded -->
+<!-- npx tailwindcss -i public/css/jass.css -o ./output.css -w -->
+
+<!-- tailwing.config.js -->
+<!-- /** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./views/**/*.html",
+            "./public/css/*.css"],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require('tailwindcss'),
+  ],
+}
+
+ -->
