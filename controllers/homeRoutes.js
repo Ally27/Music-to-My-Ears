@@ -7,7 +7,6 @@ const queryString = require("node:querystring");
 const axios = require("axios");
 
 
-
 // withAuth middleware is called to check if logged_in returns true for the current session before performing the get request 
 router.get('/', async (req, res) => {
 
@@ -21,7 +20,6 @@ router.get('/', async (req, res) => {
       // Pass the logged in flag to the template
       logged_in: req.session.logged_in,
     });
-    console.log("this is my access_token: " + req.session.access_token)
   } catch (err) {
     res.status(500).json(err);
   }
@@ -55,7 +53,7 @@ router.get("/create", withAuth, async (req, res) => {
     const tagData = await Tag.findAll();
     const tags = tagData.map((tag) => tag.get({ plain: true }));
 
-    res.render("create", { tags, logged_in: req.session.logged_in, });
+    res.render("create", { tags, logged_in: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -99,11 +97,28 @@ router.get("/tags/:tag", async (req, res) => {
   }
 });
 
-router.get('/account', (req, res) => {
+router.get('/account', async (req, res) => {
   // if user is logged in, redirect to their profile
   if (req.session.logged_in) {
-    res.render('account', {logged_in: req.session.logged_in,});
-    // otherwise prompt them to login 
+
+    try {
+      const postData = await Post.findAll({
+        where: {
+          user_id: req.session.user_id,
+        },
+      });
+      // checks that there is a user with the requested id 
+      if (!postData) {
+        res.status(404).json({ message: "You haven't posted anything yet!" });
+        return;
+      }
+      const posts = postData.map((post) => post.get({ plain: true }));
+      res.render("account", { posts, logged_in: req.session.logged_in});
+  
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  
   } else {
     res.redirect('/login');
   }
