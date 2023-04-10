@@ -1,0 +1,130 @@
+{{!< layout}}
+
+<style> 
+    #contact_info,
+    #contact_us
+    {
+        height: 350px;
+        width: 350px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        #contact_info {
+            display: none;
+        }
+    }
+</style>
+
+    <div class="h-screen w-full grid place-items-center bg-slate-100 flex flex-row">
+        <div class="bg-white rounded-md shadow-md flex flex-row">
+            
+            {{!-- Contact Info Form for Individual Person--}}
+            <div class="bg-pink-800 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_info">
+                <div class="flex justify-between">
+
+                    {{!-- Title --}}
+                    <h2 class="text-white text-xl">Contact Information</h2>
+                   <h2 class="text-white text-xs flex flex-row md:hidden block cursor-pointer" id="switch_to_contact_us">Contact Us
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 m1-1">
+                        <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                        </svg>
+                   </h2>
+                </div>
+                <div>
+
+
+                <!-- Name of Person Contacting Us -->
+                <div class="mt-6 flex flex-row">
+
+                <!-- SVG of Contact Person Icon  -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+                </svg>
+    
+                <div>
+                    <h2 class="text-slate-200 text-xs">Name:</h2>
+                    <p class="text-white text-xs">Marley Schneider</p>
+                </div>
+                </div>
+
+                <!-- Email of Person Contacting Us -->
+                <div class="mt-6 flex flex-row">
+                <!-- SVG of Email Icon  -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                </svg>
+
+                <div>
+                    <h2 class="text-slate-200 text-xs">Email:</h2>
+                    <p class="text-white text-xs">example@example.com</p>
+                </div>
+                </div>
+
+
+
+
+                {{!-- Phone # of Person Contacting Us --}}
+                <div class="mt-6 flex flex-row">
+
+                {{!-- SVG of Phone Icon  --}}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" />
+                </svg>
+
+                <div>
+                    <h2 class="text-slate-200 text-xs">Phone:</h2>
+                    <p class="text-white text-xs">1-123-456-789</p>
+                </div>
+                </div>
+
+
+
+                {{!-- Address of Person Contacting Us --}}
+                <div class="mt-6 flex flex-row">
+
+                {{!-- SVG of Address Icon  --}}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                </svg>
+
+                <div>
+                    <h2 class="text-slate-200 text-xs">Address:</h2>
+                    <p class="text-white text-xs">12345 154th SE Way Renton, WA 98637</p>
+                </div>
+                </div>
+
+
+
+        {{!-- Form for Contact Us  --}}
+        <div id="contact_us" class="px-6 py-8">
+            <div class="flex justify-between">
+                {{!-- Title  --}}
+                <h2 class="text-pink-800">Reach Out</h2>
+                <h2 class="text-red-800 text-xs flex flex-row md:hidden block cursor-pointer" id="switch_to_contact_info">Contact Us
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 m1-1">
+                        <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clip-rule="evenodd" />
+                        </svg>
+                   </h2>
+            </div>
+
+            <input type="text" placeholder="Name Here" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
+            <input type="text" placeholder="Email Here" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
+            <input type="text" placeholder="Subject" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
+            <textarea placeholder="Type Your Message Here" class="w-full text-xs px-3 py-2 h-20 my-2 outline-none rounded-md border focus:shadow-sm resize:none"></textarea><br>
+            <input type="submit" value="Send" class="bg-pink-800 px-4 py-2 rounded-md text-white text-xs cursor-pointer hover:shadow-md">
+            </div>
+        </div>
+    </div>
+
+<script>
+    let contact_info = document.querySelector('#contact_info');
+    let contact_us = document.querySelector('#contact_us');
+    let switch_to_contact_us = document.querySelector('#switch_to_contact_us');
+    let switch_to_contact_info = document.querySelector('#switch_to_contact_info');
+
+    switch_to_contact_us.addEventListener("click", ()=> {
+        contact_info.style.display = 'block';
+        contact_us.style.display = 'none';
+    })
+</script>

@@ -1,14 +1,14 @@
 {{!< layout}}
 
-<div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto">
+<div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row">
   <div class="col-span-7">
-    <h4>Trending playlists</h4>
+    <h4 class="text-xl font-bold mb-2">Trending playlists</h4>
     <div class="border border-black mt-2">
       {{#each posts as |post| }}
         <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
           <div class="h-20 w-20 border border-black mt-2 ml-2 mb-2"></div>
           <div class="mt-2">
-            <h3>{{post.title}}</h3>
+            <h3 class="text-lg font-bold">{{post.title}}</h3>
             <span>{{post.content}}</span>
             <br />
             <small>Post created on {{formatDate post.createdAt}}</small>
@@ -19,9 +19,32 @@
     </div>
   </div>
   <div class="col-span-3">
-    <h2>Second column</h2>
+    <h2 class="text-xl font-bold mb-2">Community Spotlight</h2>
+    <div class="border border-black mt-2 h-80">
+      <h4 class="text-lg font-bold mb-2">Box title</h4>
+      <p></p>
+    </div>
   </div>
-  <div class="col-span-2">
-    <h2>Third column</h2>
+  <div class="col-span-2 ml-4">
+    <h2 class="text-xl font-bold mb-2">Post Tags</h2>
+    <div class="border border-black mt-2 h-64">
+      <h4 class="text-lg font-bold mb-2">Another box title</h4>
+      <p>Another box content goes here</p>
+    </div>
+    <h4 class="text-lg font-bold mb-2 mt-4">Recent Activity</h4>
+    <div class="border border-black mt-2 h-64">
+      <p>Third box content goes here</p>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
