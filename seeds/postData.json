@@ -1,34 +1,82 @@
 [
-  {
-    "title": "My new playlist!",
-    "content": "This playlist is a collection of all of my favorite Beyonce songs!",
-    "spotify_id": "03HusFeEsbdRBAVU88VF26",
-    "post_type": "playlist",
-    "user_id": 1,
-    "tag_id": 1
-  },
-  {
-    "title": "Queen of Comebacks!",
-    "content": "Demi Lovato has really come a long way since her Camp Rock days. I love her new sound in her album HOLY FVCK and I really love her rerecording of Heartattack",
-    "spotify_id": "6S2OmqARrzebs0tKUEyXyp",
-    "post_type": "artist",
-    "user_id": 1,
-    "tag_id": 2
-  },
-  {
-    "title": "Sick Beat",
-    "content": "This is one of my favorite KKB songs! When they say 'whether you're a boy or a girl or a super computer' I was just like yas non-binary rights!",
-    "spotify_id": "0BgPrNelWyvk0C5recZeKE",
-    "post_type": "track",
-    "user_id": 1,
-    "tag_id": 1
-  },
-  {
-    "title": "But is it Disco?",
-    "content": "I can't believe Kylie Minogue invented Disco with this album in 2020",
-    "spotify_id": "7EBIA9cqbuqkyWfp3UCitD",
-    "post_type": "album",
-    "user_id": 1,
-    "tag_id": 5
-  }
+	{
+		"title": "My new playlist!",
+		"spotify_id": "03HusFeEsbdRBAVU88VF26",
+		"post_type": "playlist",
+		"content": "This playlist is a collection of all of my favorite Beyonce songs!",
+		"user_id": 1,
+		"tag_id": 1
+	},
+	{
+		"title": "Sick Beat",
+		"spotify_id": "0BgPrNelWyvk0C5recZeKE",
+		"post_type": "track",
+		"content": "This is one of my favorite KKB songs! When they say 'whether you're a boy or a girl or a super computer' I was just like yas non-binary rights!",
+		"user_id": 4,
+		"tag_id": 1
+	},
+	{
+		"title": "But is it Disco?",
+		"spotify_id": "7EBIA9cqbuqkyWfp3UCitD",
+		"post_type": "album",
+		"content": "I can't believe Kylie Minogue invented Disco with this album in 2020",
+		"user_id": 1,
+		"tag_id": 5
+	},
+	{
+		"title": "Queen of Comebacks!",
+		"spotify_id": "6S2OmqARrzebs0tKUEyXyp",
+		"post_type": "artist",
+		"content": "Demi Lovato has really come a long way since her Camp Rock days. I love her new sound in her album HOLY FVCK and I really love her rerecording of Heartattack",
+		"user_id": 1,
+		"tag_id": 2
+	},
+	{
+		"title": "Chill Vibes",
+		"spotify_id": "7f6xPqyaolTiziKf5R5Z0c",
+		"post_type": "album",
+		"content": "The perfect album to sit back and relax to!",
+		"user_id": 2,
+		"tag_id": 2
+	},
+	{
+		"title": "Sinead O'Connor is mother",
+		"spotify_id": "5GHY1DFWKz3Prg2V0Iodqo",
+		"post_type": "track",
+		"content": "She literally invented music with this song",
+		"user_id": 2,
+		"tag_id": 8
+	},
+	{
+		"title": "Bestie Vibes",
+		"spotify_id": "37i9dQZF1EJAgyj46PDDUg",
+		"post_type": "playlist",
+		"content": "Mixed playlist for me and my bestie",
+		"user_id": 2,
+		"tag_id": 1
+	},
+	{
+		"title": "Ms Madonna",
+		"spotify_id": "6tbjWDEIzxoDsBA1FuhfPW",
+		"post_type": "artist",
+		"content": "Madonna is a legend, an icon, she is mother",
+		"user_id": 3,
+		"tag_id": 6
+	},
+	{
+		"title": "La Isla Bonita",
+		"spotify_id": "6r8k1vznHrzlEKYxL4dZEe",
+		"post_type": "track",
+		"content": "I never knew the lyrics for this song until now!",
+		"user_id": 5,
+		"tag_id": 1
+	},
+	{
+		"title": "Miley MOTHERFUCKING Cyrus",
+		"spotify_id": "1M7qLcfozANPcMKfgMEHOt",
+		"post_type": "track",
+		"content": "The queen Hannah Montana herself",
+		"user_id": 3,
+		"tag_id": 1
+	}
 ]

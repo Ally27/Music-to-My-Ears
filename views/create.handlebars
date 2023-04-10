@@ -1,0 +1,48 @@
+<div class="grid grid-cols-12">
+  <div class="col-span-12 w-3/5 mx-auto mt-16">
+    <h2 class="text-center font-bold text-3xl mb-8">Create a New Post!</h2>
+    <form class="create-form">
+      <div class="form-group mt-3">
+        <div>
+          <input type='text' placeholder="Enter your post's title" class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="title-create" />
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <div>
+          <input type='text' placeholder="Enter your post's content"
+          class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="content-create"/>
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <div>
+          <input type='text' placeholder="Enter your spotify link here"
+          class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="spotify-create"/>
+        </div>
+      </div>
+
+
+      <div class="form-group mt-3"></div>
+        <div id="dropdown">
+              <select id="selectTag">
+                {{#each tags as |tag index|}}
+                    <option value="{{index}}">{{tag.name}}</option>
+                {{/each}}
+              </select>
+        </div>
+      </div>
+
+      <div class="form-group mt-3 flex flex-row">
+        <div class="ml-40">
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <div>
+          <button class="bg-pink-600 p-2 text-white text-xl rounded w-full h-14" c=type="submit" id="createbtn">Create Post</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/createPost.js" type="module"></script>
