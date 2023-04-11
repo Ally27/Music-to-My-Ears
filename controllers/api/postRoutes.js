@@ -37,5 +37,21 @@ router.get('/', async (req, res) => {
       res.status(400).json(err);
     }
   });
+//upvoting on a post
+  router.post("/:id/upvote", async (req,res) =>{
+    try{
+      const post = await Post.findByPk(req.params.id);
+      if(!post){
+        res.status(404).json({ message: "Post not found"});
+      return;
+      }
+
+//increases by each "like"
+  const updatePost = await post.update({ upvotes: post.upvotes = 1});      
+    res.status(200).json(updatePost);
+    }catch(err){
+      res.status(500).json(err);
+    }
+  });
   
   module.exports = router;
