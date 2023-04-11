@@ -53,11 +53,7 @@ router.get("/create", withAuth, async (req, res) => {
     const tagData = await Tag.findAll();
     const tags = tagData.map((tag) => tag.get({ plain: true }));
 
-<<<<<<< HEAD
-    res.render("create", { tags, logged_in: req.session.logged_in, });
-=======
     res.render("create", { tags, logged_in: req.session.logged_in});
->>>>>>> f38b4cc815ad7fc67d894489ebcffd703da3541f
   } catch (err) {
     res.status(500).json(err);
   }
@@ -101,49 +97,6 @@ router.get("/tags/:tag", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-// route to connect create/post page to navbar
-router.get('/create', (req, res) => {
-  // if user is logged in, redirect to their profile
-  if (req.session.logged_in) {
-    res.render('create');
-    // otherwise prompt them to login 
-  } else {
-    res.redirect('/login');
-  }
-});
-
-// route to connect community page to navbar
-router.get('/community', (req, res) => {
-  // if user is logged in, redirect to their profile
-  if (req.session.logged_in) {
-    res.render('community');
-    // otherwise prompt them to login 
-  } else {
-    res.redirect('/login');
-  }
-});
-
-
-// route to connect account page to navbar
-router.get('/account', (req, res) => {
-  // if user is logged in, redirect to their profile
-  if (req.session.logged_in) {
-    res.render('account', {logged_in: req.session.logged_in,});
-    // otherwise prompt them to login 
-  } else {
-    res.redirect('/login');
-  }
-});
-
-
-// route to connect contact page to navbar
-router.get('/contact', (req, res) => {
-  // if user is logged in, redirect to their profile
-  if (req.session.logged_in) {
-    res.render('contact');
-    // otherwise prompt them to login 
-=======
 router.get('/account', async (req, res) => {
   // if user is logged in, redirect to their profile
   if (req.session.logged_in) {
@@ -166,10 +119,28 @@ router.get('/account', async (req, res) => {
       res.status(500).json(err);
     }
   
->>>>>>> f38b4cc815ad7fc67d894489ebcffd703da3541f
   } else {
     res.redirect('/login');
   }
+});
+
+// Route to display edit bio page
+router.get('/edit-bio', async (req, res) => {
+  if (req.session.logged_in) {
+    res.render('editBio');
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// Route to display contact bio page
+router.get('/contact', async (req, res) => {
+  res.render('contact');
+});
+
+// Route to display community bio page
+router.get('/community', async (req, res) => {
+  res.render('community');
 });
 
 
