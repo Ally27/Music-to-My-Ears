@@ -35,53 +35,6 @@ router.get("/login", (req, res) => {
   res.render("login", {logged_in: req.session.logged_in,});
 });
 
-
-//users
-router.get("/users", withAuth, async (req, res) => {
-  try {
-    const userData = await User.findAll();
-    const users = userData.map((user) => user.get({ plain: true }));
-
-    res.render("users", { users, logged_in: req.session.logged_in, });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/create", withAuth, async (req, res) => {
-  try {
-    const tagData = await Tag.findAll();
-    const tags = tagData.map((tag) => tag.get({ plain: true }));
-
-    res.render("create", { tags, logged_in: req.session.logged_in});
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/users/:id", withAuth, async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.params.id);
-    const user = userData.get({ plain: true });
-
-    res.render("user", { user, logged_in: req.session.logged_in, });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//posts
-router.get("/posts/:id", async (req, res) => {
-  try {
-    const postData = await Post.findByPk(req.params.id);
-    const post = postData.get({ plain: true });
-
-    res.render("post", { post, logged_in: req.session.logged_in, });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 //tags
 router.get("/tags/:tag", async (req, res) => {
   try {
