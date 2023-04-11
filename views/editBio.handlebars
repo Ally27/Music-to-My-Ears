@@ -1,29 +1,61 @@
-<div>
-    <div class="text-center">
-        <h3>Edit Your BIO...</h3>
-        <div>
-            <form action="">
-                <div class="form-group mt-3">
-                    <div>
-                    <input type='text' placeholder='Enter Name' class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="email-login" />
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <div>
-                    <input type='text' placeholder='Enter Location' class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="email-login" />
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <div>
-                    <input type='text' placeholder='Enter Bio details' class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="email-login" />
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <div>
-                    <button class="bg-pink-600 p-2 text-white text-xl rounded w-full h-14" c=type="submit">Update</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+<div class="flex flex-col items-center justify-center min-h-screen">
+  <div class="max-w-md w-full py-6 px-4">
+    <h1 class="text-center text-3xl font-extrabold text-pink-500 mb-6">Customize Your Bio</h1>
+
+    <div class="border border-gray-200 rounded-lg shadow-lg px-6 py-8">
+      <div class="flex justify-center mb-6">
+        <label for="profile_picture" class="relative cursor-pointer">
+          <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center w-full h-full rounded-full bg-gray-300 opacity-50">
+            <span class="text-white font-medium">Upload Photo</span>
+          </div>
+          <img src="https://via.placeholder.com/150x150" alt="Profile Picture" class="rounded-full w-36 h-36">
+        </label>
+        <input type="file" name="profile_picture" id="profile_picture" class="hidden">
+      </div>
+
+      <div class="form-group mt-6">
+        <input type="text" placeholder="Enter First and Last Name" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+      </div>
+
+      <div class="form-group mt-6">
+        <input type="text" placeholder="Enter City, State" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+      </div>
+
+      <div class="form-group mt-6">
+        <textarea placeholder="Enter Bio Details" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent resize-none" maxlength="500" oninput="countChars(this);if(this.value.length > 500) this.value = this.value.slice(0, 500);" ></textarea>
+        <div class="flex justify-end text-gray-400 text-sm mt-2">
+        <span id="count">0/500</span>
     </div>
+    </div>
+
+    <div class="form-group mt-6">
+  <h2 class="text-center text-lg font-medium mb-2">Link Existing Personal Accounts</h2>
+  <form>
+    <label for="facebook" class="sr-only">Facebook</label>
+    <input type="text" name="facebook" id="facebook" placeholder="Facebook URL" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+    <label for="twitter" class="sr-only">Twitter</label>
+    <input type="text" name="twitter" id="twitter" placeholder="Twitter URL" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+    <label for="instagram" class="sr-only">Instagram</label>
+    <input type="text" name="instagram" id="instagram" placeholder="Instagram URL" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+  </form>
 </div>
+
+
+      <div class="form-group mt-6">
+        <button class="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function countChars(textarea) {
+    var countElement = document.getElementById("count");
+    countElement.innerText = textarea.value.length + "/500";
+  }
+</script>
+
+
+
+
+
