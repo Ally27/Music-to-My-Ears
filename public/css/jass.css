@@ -1,13 +1,12 @@
 @import 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap';
 @import 'animate.css';
-    
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
-    
-
+ 
 html {
     font-family: 'Josefin Sans', sans-serif;
 }
@@ -16,6 +15,7 @@ header {
     background-color: #F26B8a;
     color: black;
 }
+
 header .logo {
     font-size: 30px;
 }
@@ -23,12 +23,13 @@ header .logo {
 header a {
     text-decoration: none;
 }
+
 header .right {
     float: right;
     margin-top: 12px;
 }
 
-.navbar {   
+.navbar {
     background-color: #FFB6C1;
 }
 
@@ -36,13 +37,13 @@ header .right {
     list-style-type: none;
     display: flex;
     flex-direction: row;
-    justify-content: center;       
+    justify-content: center;
     margin: 0px;
     padding: 12px 16px;
 }
 
 .navbar ul li a {
-    padding: 12px 16px;  
+    padding: 12px 16px;
 }
 
 .navbar ul li a:hover {
@@ -65,7 +66,7 @@ footer .contact-us {
     margin-right: 40px;
 }
 
-.heart-button::after {
-   width: 30px;
-   
+.webpageLogo {
+    padding: 0;
+    height: 150px;
 }
