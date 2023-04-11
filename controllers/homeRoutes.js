@@ -7,6 +7,7 @@ const queryString = require("node:querystring");
 const axios = require("axios");
 
 
+
 // withAuth middleware is called to check if logged_in returns true for the current session before performing the get request 
 router.get('/', async (req, res) => {
 
@@ -33,6 +34,41 @@ router.get("/login", (req, res) => {
   }
   // otherwise the login handlebar is rendered
   res.render("login", {logged_in: req.session.logged_in,});
+});
+
+
+//users
+router.get("/users", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll();
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    res.render("users", { users, logged_in: req.session.logged_in, });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/create", withAuth, async (req, res) => {
+  try {
+    const tagData = await Tag.findAll();
+    const tags = tagData.map((tag) => tag.get({ plain: true }));
+
+    res.render("create", { tags, logged_in: req.session.logged_in});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/users/:id", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id);
+    const user = userData.get({ plain: true });
+
+    res.render("user", { user, logged_in: req.session.logged_in, });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 //tags
