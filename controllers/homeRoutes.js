@@ -124,6 +124,25 @@ router.get('/account', async (req, res) => {
   }
 });
 
+// Route to display edit bio page
+router.get('/edit-bio', async (req, res) => {
+  if (req.session.logged_in) {
+    res.render('editBio');
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// Route to display contact bio page
+router.get('/contact', async (req, res) => {
+  res.render('contact');
+});
+
+// Route to display community bio page
+router.get('/community', async (req, res) => {
+  res.render('community');
+});
+
 
 router.get('/auth', async (req, res) => {
   const spotifyResponse = await axios.post(

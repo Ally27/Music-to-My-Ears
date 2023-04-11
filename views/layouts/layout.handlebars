@@ -46,36 +46,11 @@
       </ul>
     </div>
 
-    <main class="container container-fluid mt-5">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="large-box">
-            {{!-- handlebars will submit data into this large box --}}
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="sidebar">
+   
             {{{ body }}}
-            {{!-- handlebars will submit data for the content of the sidebar --}}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="small-box">
-            {{!-- handlebars will submit data into this small box --}}
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="small-box">
-            {{!-- handlebars will submit data into this small box --}}
-          </div>
-        </div>
-      </div>
-    </main>
-
+          
     <footer>
-      <button class="contact-us animate_animated animate__bounceInLeft"><a href="contact-us">Contact Us</a></button>
+      <button class="contact-us animate_animated animate__bounceInLeft"><a href="/contact">Contact Us</a></button>
     </footer>
 
     {{!-- If the user is logged in, load the JS script for when they logout --}}
