@@ -27,7 +27,7 @@ test read me stuffs
 
 ## Questions
 
-Feel free to contact us at Allyson: [email](mailto:allysonmg21@gmail.com), Tyler: [email](mailto:), Marley: [email](mailto:), Terri: [email](mailto:) me with any questions.
+Feel free to contact us at Allyson: [email](mailto:allysonmg21@gmail.com), Tyler: [email](mailto:), Marley: [email](mailto:), Terri: [email](mailto:) with any questions.
 
 ## License
 
