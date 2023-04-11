@@ -38,16 +38,18 @@ router.get('/', async (req, res) => {
     }
   });
 //upvoting on a post
-  router.post("/:id/upvote", async (req,res) =>{
+  router.post("/upvotes/:id", async (req,res) =>{
     try{
       const post = await Post.findByPk(req.params.id);
+      console.log("this is a test", post)
       if(!post){
         res.status(404).json({ message: "Post not found"});
       return;
       }
 
 //increases by each "like"
-  const updatePost = await post.update({ upvotes: post.upvotes = 1});      
+  const updatePost = await post.update({upvotes: post.upvotes + 1});
+  console.log("Updatevotes", updatePost);    
     res.status(200).json(updatePost);
     }catch(err){
       res.status(500).json(err);
