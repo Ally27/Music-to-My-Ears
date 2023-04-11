@@ -2,7 +2,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Post extends Model {
+ update(){
+  this.upvotes = this.upvotes + 1
+  }
+}
 
 Post.init(
   {
