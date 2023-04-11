@@ -13,6 +13,16 @@
             <br />
             <small>Post created on {{formatDate post.createdAt}}</small>
             <small><i>{{post.post_type}}</i></small>
+
+            {{!-- heart button. Like and unlike --}}
+
+          <button id="like" onclick="liked()">
+            <i class="fa fa-heart"></i>
+            <span class="icon">Like</span>
+          </button>
+
+          {{!-- heart button end --}}
+
           </div>
         </div>   
       {{/each}}
