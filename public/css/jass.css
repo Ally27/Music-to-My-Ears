@@ -54,10 +54,37 @@ header .right {
     padding: 12px 16px;
 }
 
-.navbar ul li a:hover {
-    background-color: cornflowerblue;
+.navbar a {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 30px;
+    color: grey;
+    transition: .5s;
 }
 
+.navbar a::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--statement-color);
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+}
+
+.navbar a:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--statement-color);
+}
+
+.navbar a:hover {
+    color: var(--statement-color);
+    box-shadow: 0 0 5px var(--statement-color);
+}
 
 footer {
     background-color: var(--sub-color);
@@ -75,17 +102,20 @@ footer .contact-us {
 
 /* header */
 .webpageLogo {
+    margin-left: 100px;
     padding: 0;
     height: 150px;
 }
 
 /* border styling */
 .main-border {
-    border-radius: 10px;
+    border: 20px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
 }
 
 /* cd case decor */
-
 .cd-case {
     height: 206px;
     width: 230px;
@@ -106,7 +136,6 @@ footer .contact-us {
     left: 25px;
     z-index: -2;
 }
-
 
 .sup {
     height: 10px;
