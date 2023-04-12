@@ -1,15 +1,5 @@
 [
   {
-    "name": "Tyler",
-    "email": "tyler@gmail.com",
-    "password": "bootcamp"
-  },
-  {
-    "name": "Terri",
-    "email": "terri@gmail.com",
-    "password": "bootcamp"
-  },
-  {
     "name": "Allyson",
     "email": "allyson@gmail.com",
     "password": "bootcamp"
@@ -18,5 +8,17 @@
     "name": "Marley",
     "email": "marley@gmail.com",
     "password": "bootcamp"
+  },
+  {
+    "name": "Terri",
+    "email": "terri@gmail.com",
+    "password": "bootcamp"
+  },
+  {
+    "name": "Tyler",
+    "email": "tyler@gmail.com",
+    "password": "bootcamp"
   }
+
+
 ]
