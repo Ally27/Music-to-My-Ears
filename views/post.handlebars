@@ -1,1 +1,34 @@
-<img src="https://i.scdn.co/image/ab67616d0000b2730e58a0f8308c1ad403d105e7"/>
+{{!< layout}} <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row">
+  <div class="col-span-12">
+    <h4 class="text-xl font-bold mb-2">{{post.name}}</h4>
+    <div class="main-border border-black mt-2">
+    {{#each tracks as |track| }}
+      <a href="{{track.exLink}}" target="_blank">
+      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+
+        {{!-- cd  --}}
+        <div class="cd-case pr-6">
+          <div class="album-art">
+            <img src="{{track.img}}"/>
+            <div class="sup pos-tl"></div>
+            <div class="sup pos-tr"></div>
+            <div class="sup pos-bl"></div>
+            <div class="sup pos-br"></div>
+          </div>
+          <div class="spine"></div>
+        </div>
+        {{!-- cd end --}}
+
+        <div class="mt-2">
+          <h3 class="text-lg font-bold">{{track.title}}</h3>
+          <small>{{track.artist}}</small>
+
+        </div>
+      </div>
+      </a>
+    {{/each}}
+    </div>
+  </div>
+  
+
+  <script src="/js/animation.js"></script>

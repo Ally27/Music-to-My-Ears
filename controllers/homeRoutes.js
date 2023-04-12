@@ -96,13 +96,15 @@ router.get('/account', async (req, res) => {
           user_id: req.session.user_id,
         },
       });
+      const userData = await User.findByPk(req.session.user_id);
+      const user = userData.get({ plain: true });
       // checks that there is a user with the requested id 
       if (!postData) {
         res.status(404).json({ message: "You haven't posted anything yet!" });
         return;
       }
       const posts = postData.map((post) => post.get({ plain: true }));
-      res.render("account", { posts, logged_in: req.session.logged_in});
+      res.render("account", { user, posts, logged_in: req.session.logged_in});
   
     } catch (err) {
       res.status(500).json(err);
@@ -156,6 +158,8 @@ router.get('/auth', async (req, res) => {
   const new_access_token = spotifyResponse.data.access_token;
   req.session.access_token = new_access_token;
   // req.localStorage.access_token = new_access_token
+
+  // res.status(200).json({ access_token: new_access_token });
   
   res.redirect('/')
 });

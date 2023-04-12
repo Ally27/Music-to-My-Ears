@@ -19,7 +19,13 @@ const createPostHandler = async (event) => {
       const path = spotifyData.split('.com/')[1]
       const pathSplit = path.split('/')
       spotifyId = pathSplit[1];
-      const access_token = "BQCjOz2O8S12yX32rXLrPGZv0oltamavz5S2yUJq1v3n5Et0YMcvVAsYTFlMJ-OCNfW-Y4wvs8ZGr9AMbIx8MpajQ-01JA_5dCPMPCcBa6VAmPJekY_UTBgWXUdEeKQ-FKhlSI2EthAhjK7cxjELaydIRkNAP2BTHDtG2cC6VUlbClDy4SBiva_J-qg"
+
+      const accessTokenResponse = await fetch('/auth', {
+        method: 'GET'
+      });
+      const accessTokenData = await accessTokenResponse.json();
+      const access_token = accessTokenData.access_token;
+
       const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${spotifyId}/tracks?limit=25`, {
         method: 'GET',
         headers: {
