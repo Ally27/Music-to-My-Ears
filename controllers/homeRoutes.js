@@ -156,6 +156,8 @@ router.get('/auth', async (req, res) => {
   const new_access_token = spotifyResponse.data.access_token;
   req.session.access_token = new_access_token;
   // req.localStorage.access_token = new_access_token
+
+  // res.status(200).json({ access_token: new_access_token });
   
   res.redirect('/')
 });
