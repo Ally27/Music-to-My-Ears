@@ -16,10 +16,10 @@
 </style>
 
     <div class="h-screen w-full grid place-items-center bg-slate-100 flex flex-row">
-        <div class="bg-white rounded-md shadow-md flex flex-row">
+        <section class="bg-white rounded-md shadow-md flex flex-row grid grid-cols-2 gap-4">
             
             {{!-- Contact Info Form for Individual Person--}}
-            <div class="bg-pink-800 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_info">
+            <aside class="bg-pink-800 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_info">
                 <div class="flex justify-between">
 
                     {{!-- Title --}}
@@ -29,11 +29,16 @@
                         <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
                         </svg>
                    </h2>
-                </div>
-                <div>
 
 
                 <!-- Name of Person Contacting Us -->
+                </div> <!-- Close bg-pink-800 -->
+
+
+
+
+
+                {{!-- Phone # of Person Contacting Us --}}
                 <div class="mt-6 flex flex-row">
 
                 <!-- SVG of Contact Person Icon  -->
@@ -60,11 +65,6 @@
                     <p class="text-white text-xs">example@example.com</p>
                 </div>
                 </div>
-
-
-
-
-                {{!-- Phone # of Person Contacting Us --}}
                 <div class="mt-6 flex flex-row">
 
                 {{!-- SVG of Phone Icon  --}}
@@ -94,37 +94,72 @@
                 </div>
                 </div>
 
+            </aside>
 
-
-        {{!-- Form for Contact Us  --}}
-        <div id="contact_us" class="px-6 py-8">
-            <div class="flex justify-between">
-                {{!-- Title  --}}
+            <!-- Form for Contact Us -->
+            <aside class="bg-pink-400 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_us">
+                <!-- Title -->
                 <h2 class="text-pink-800">Reach Out</h2>
-                <h2 class="text-red-800 text-xs flex flex-row md:hidden block cursor-pointer" id="switch_to_contact_info">Contact Us
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 m1-1">
+                <h2 class="text-red-800 text-xs flex flex-row md:hidden block cursor-pointer" id="switch_to_contact_info">
+                    Contact Us
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 m1-1">
                         <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clip-rule="evenodd" />
-                        </svg>
-                   </h2>
-            </div>
+                    </svg>
+                </h2>
 
-            <input type="text" placeholder="Name Here" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
-            <input type="text" placeholder="Email Here" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
-            <input type="text" placeholder="Subject" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
-            <textarea placeholder="Type Your Message Here" class="w-full text-xs px-3 py-2 h-20 my-2 outline-none rounded-md border focus:shadow-sm resize:none"></textarea><br>
-            <input type="submit" value="Send" class="bg-pink-800 px-4 py-2 rounded-md text-white text-xs cursor-pointer hover:shadow-md">
-            </div>
-        </div>
-    </div>
+                <form id="contact-form">
+                    <input type="text" placeholder="Name Here" name="name" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
+                    <input type="text" placeholder="Email Here" name="email" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
+                    <input type="text" placeholder="Subject" name="subject" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
+                    <textarea placeholder="Type Your Message Here" name="message" class="w-full text-xs px-3 py-2 h-20 my-2 outline-none rounded-md border focus:shadow-sm resize:none"></textarea><br>
+                    <input type="submit" value="Create Email to Send" class="bg-pink-800 px-4 py-2 rounded-md text-white text-xs cursor-pointer hover:shadow-md">
+                </form>
+            </aside>
 
-<script>
-    let contact_info = document.querySelector('#contact_info');
-    let contact_us = document.querySelector('#contact_us');
-    let switch_to_contact_us = document.querySelector('#switch_to_contact_us');
-    let switch_to_contact_info = document.querySelector('#switch_to_contact_info');
+            <script>
+                let contact_info = document.querySelector('#contact_info');
+                let contact_us = document.querySelector('#contact_us');
+                let switch_to_contact_us = document.querySelector('#switch_to_contact_us');
+                let switch_to_contact_info = document.querySelector('#switch_to_contact_info');
 
-    switch_to_contact_us.addEventListener("click", ()=> {
-        contact_info.style.display = 'block';
-        contact_us.style.display = 'none';
-    })
-</script>
+                switch_to_contact_us.addEventListener("click", ()=> {
+                    contact_info.style.display = 'block';
+                    contact_us.style.display = 'none';
+                });
+
+                // Get the form element, adding event listener to the form element 
+                const contactForm = document.getElementById('contact-form');
+                contactForm.addEventListener('submit', handleFormSubmit);
+
+                function handleFormSubmit(event) {
+                    // Prevent the default form submission behavior
+                    event.preventDefault();
+
+                    // Get all of the form values for the email that the user inputted
+                    const name = document.querySelector('input[name="name"]').value;
+                    const email = document.querySelector('input[name="email"]').value;
+                    const subject = document.querySelector('input[name="subject"]').value;
+                    const message = document.querySelector('textarea[name="message"]').value;
+
+                    // This is how the email should be formatted when the user clicks the send button
+                    const emailMessage = `Hi there,
+
+                    My name is ${name} and my email is ${email}.
+
+                    ${message}
+
+                    Best regards,
+                    ${name}`;
+
+                // Open a new email message window with the email addresses and message body that the user typed into the form on the screen
+                const mailtoLink = `mailto:marleysue@gmail.com,tylerkervella@gmail.com,allysonmg21@gmail.com,terrimack15@gmail.com?subject=${subject}&body=${emailMessage}`;
+                window.open(mailtoLink, '_blank');
+
+                // Clear the form inputs
+                document.querySelector('input[name="name"]').value = '';
+                document.querySelector('input[name="email"]').value = '';
+                document.querySelector('input[name="subject"]').value = '';
+                document.querySelector('textarea[name="message"]').value = '';
+                }
+
+            </script>
