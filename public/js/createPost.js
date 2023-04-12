@@ -1,6 +1,7 @@
-const createForm = document.querySelector('.create-form');
+const createbtn = document.querySelector('#createbtn')
 const userId = sessionStorage.getItem('user_id')
-console.log(userId)
+const access_token = sessionStorage.getItem('access_token')
+console.log(userId, access_token)
 
 const createPostHandler = async (event) => {
 
@@ -12,14 +13,21 @@ const createPostHandler = async (event) => {
     const spotifyData = document.querySelector('#spotify-create').value.trim();
     const tagId = document.querySelector('#selectTag').value;
 
-    let postType;
     let spotifyId;
 
-    if (spotifyData.includes('spotify.com/')) {
+    if (spotifyData.includes('spotify.com/playlist')) {
       const path = spotifyData.split('.com/')[1]
       const pathSplit = path.split('/')
-      postType = pathSplit[0];
       spotifyId = pathSplit[1];
+      const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${spotifyId}`, {
+        headers: {
+          'Authorization': `Bearer ${access_token}`
+        }
+      });
+      
+      console.log(playlistResponse);
+    } else {
+      alert("You must include a link to a spotify playlist!")
     }
 
     const response = await fetch('/api/posts', {
@@ -28,7 +36,6 @@ const createPostHandler = async (event) => {
         title: title,
         content: content,
         spotify_id: spotifyId,
-        post_type: postType,
         user_id: userId,
         tag_id: tagId,
       }),
@@ -50,4 +57,4 @@ const createPostHandler = async (event) => {
   }
 };
 
-createForm.addEventListener('submit', createPostHandler);
+createbtn.addEventListener('click', createPostHandler);
