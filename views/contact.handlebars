@@ -16,7 +16,7 @@
 </style>
 
     <div class="h-screen w-full grid place-items-center bg-slate-100 flex flex-row">
-        <div class="bg-white rounded-md shadow-md flex flex-row">
+        <div class="bg-white rounded-md shadow-md flex flex-row grid grid-cols-2 gap-4">
             
             {{!-- Contact Info Form for Individual Person--}}
             <div class="bg-pink-800 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_info">
@@ -94,11 +94,10 @@
                 </div>
                 </div>
 
-
+                </div>
 
         {{!-- Form for Contact Us  --}}
-        <div id="contact_us" class="px-6 py-8">
-            <div class="flex justify-between">
+        <div class="bg-pink-400 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_us">
                 {{!-- Title  --}}
                 <h2 class="text-pink-800">Reach Out</h2>
                 <h2 class="text-red-800 text-xs flex flex-row md:hidden block cursor-pointer" id="switch_to_contact_info">Contact Us
@@ -106,7 +105,6 @@
                         <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clip-rule="evenodd" />
                         </svg>
                    </h2>
-            </div>
 
             <input type="text" placeholder="Name Here" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
             <input type="text" placeholder="Email Here" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
@@ -116,6 +114,7 @@
             </div>
         </div>
     </div>
+    
 
 <script>
     let contact_info = document.querySelector('#contact_info');

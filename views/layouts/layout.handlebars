@@ -15,10 +15,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
+  <style>
+    /* Set a minimum height for the content container */
+    body {
+      min-height: 100vh;
+    }
+
+    /* Give the main content container a padding bottom of the same height as the fixed footer */
+    .main-content {
+      padding-bottom: 4rem; /* Change this value to match the height of your fixed footer */
+    }
+  </style>
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
+  <div class="flex-column justify-space-around min-h-screen">
     <header class="display-flex justify-space-between align-center p-2">
       <span class="logo"><a href="/"><img src="/images/webpageLogo.png"
             class="webpageLogo animate__animated animate__backInRight"></a></span>
@@ -47,9 +58,11 @@
     </div>
 
 
-    {{{ body }}}
+    <div class="main-content">
+      {{{ body }}}
+    </div>
 
-    <footer>
+    <footer class="fixed bottom-0 w-full text-black text-center py-4">
       <button class="contact-us"><a href="/contact">Contact Us</a></button>
     </footer>
 
