@@ -1,52 +1,22 @@
 [
   {
-    "name": "TPJK",
+    "name": "Tyler",
     "email": "tyler@gmail.com",
-    "password": "1234"
+    "password": "bootcamp"
   },
   {
-    "name": "Al",
-    "email": "Al@gmail.com",
-    "password": "1234"
+    "name": "Terri",
+    "email": "terri@gmail.com",
+    "password": "bootcamp"
   },
   {
-    "name": "Tim",
-    "email": "Tim@gmail.com",
-    "password": "1234"
+    "name": "Allyson",
+    "email": "allyson@gmail.com",
+    "password": "bootcamp"
   },
   {
-    "name": "Porter",
-    "email": "Porter@gmail.com",
-    "password": "1234"
-  },
-  {
-    "name": "Henry",
-    "email": "Henry@gmail.com",
-    "password": "1234"
-  },
-  {
-    "name": "Nick",
-    "email": "Nick@gmail.com",
-    "password": "1234"
-  },
-  {
-    "name": "Pam",
-    "email": "Pam@gmail.com",
-    "password": "1234"
-  },
-  {
-    "name": "Dwight",
-    "email": "Dwight@gmail.com",
-    "password": "1234"
-  },
-  {
-    "name": "Jim",
-    "email": "Jim@gmail.com",
-    "password": "1234"
-  },
-  {
-    "name": "MichaelScott",
-    "email": "MichaelS@gmail.com",
-    "password": "1234"
+    "name": "Marley",
+    "email": "marley@gmail.com",
+    "password": "bootcamp"
   }
 ]
