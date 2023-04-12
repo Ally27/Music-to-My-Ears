@@ -118,11 +118,13 @@ router.get('/account', async (req, res) => {
 // Route to display edit bio page
 router.get('/edit-bio', async (req, res) => {
   if (req.session.logged_in) {
-    res.render('editBio');
+    res.render('editBio', { logged_in: req.session.logged_in});
   } else {
     res.redirect('/login');
+    
   }
 });
+
 
 // Route to display contact bio page
 router.get('/contact', async (req, res) => {
@@ -156,6 +158,8 @@ router.get('/auth', async (req, res) => {
   const new_access_token = spotifyResponse.data.access_token;
   req.session.access_token = new_access_token;
   // req.localStorage.access_token = new_access_token
+
+  // res.status(200).json({ access_token: new_access_token });
   
   res.redirect('/')
 });

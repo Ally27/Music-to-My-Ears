@@ -4,6 +4,7 @@ test read me stuffs
 
 ## Description
 
+Music to my Ears is a full stack web application that allows users to upload their Spotify playlists to an interactive site where you can post your own playlists, like and save other people's playlists, create your own account and profile, and see what the community is posting and interacting with relating to Spotify content.
 
 ## Table of Contents
 
