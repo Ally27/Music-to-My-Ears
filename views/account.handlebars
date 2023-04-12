@@ -26,15 +26,15 @@
     <div class="bg-white w-full mt-10 rounded-xl border">
       <div class="flex items-center justify-center pt-10 flex-col">
         <img src="https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255710-stock-illustration-avatar-vector-male-profile-gray.jpg" class="rounded-full w-32">
-        <h1 class="text-gray-800 font-semibold text-xl mt-5">Jane Doe</h1>
+        <h1 class="text-gray-800 font-semibold text-xl mt-5">{{user.name}}</h1>
         <h1 class="text-gray-500 text-sm">Seattle, Washington</h1>
-        <h1 class="text-gray-500 text-sm p-4 text-center">Jane is a college student at the University of Washington who loves to listen to rap music on a rainy day. Whether it be walking to the quad, or stopping at U-Village for coffee, Jane always has Drake blasting in her ears.</h1>
+        <h1 class="text-gray-500 text-sm p-4 text-center">{{user.bio}}</h1>
         <a href="/edit-bio" class="bg-pink-600 p-2 text-white text-xl rounded w-24 h-12" style="text-align:center;">Edit Bio</a>
       </div>
       <div class="flex justify-between p-4">
         <div>
-          <h1 class="text-sm font-semibold uppercase text-black-500">10 Playlists Uploaded</h1>
-          <h1 class="text-sm text-yellow-500">Tags: #Rap</h1> 
+          <h1 class="text-sm font-semibold uppercase text-black-500">{{posts.length}} Playlists Uploaded</h1>
+          <h1 class="text-sm text-yellow-500">Tags: include tags here somehow</h1> 
         </div>
         <div>
           <button class="text-xl text-pink-300 border-2 px-2 border-black"><a href="/create">Upload More</a></button>
