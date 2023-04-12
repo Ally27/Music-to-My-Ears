@@ -3,16 +3,12 @@
     <h4 class="text-xl font-bold mb-2">Trending playlists</h4>
     <div class="main-border border-black mt-2">
       {{#each posts as |post| }}
-      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+      <div class="primary-container flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
 
-        {{!-- cd  --}}
+        {{!-- cd --}}
         <div class="cd-case pr-6">
           <div class="album-art">
-            <img src="{{post.cover_img}}"/>
-            <div class="sup pos-tl"></div>
-            <div class="sup pos-tr"></div>
-            <div class="sup pos-bl"></div>
-            <div class="sup pos-br"></div>
+            <img src="{{post.cover_img}}" />
           </div>
           <div class="spine"></div>
         </div>
