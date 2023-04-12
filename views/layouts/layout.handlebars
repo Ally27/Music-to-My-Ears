@@ -21,7 +21,7 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <span class="logo"><a href="/"><img src="/images/webpageLogo.png"
-            class="webpageLogo"></a></span>
+            class="webpageLogo animate__animated animate__backInRight"></a></span>
       <div class="right">
 
 
@@ -37,22 +37,22 @@
         <input placeholder="Search" />
       </div>
     </header>
-   <div class="navbar text-center mx-auto">
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/create">Create</a></li>
-    <li><a href="/account">Account</a></li>
-    <li><a href="/community">Community</a></li>
-  </ul>
-</div>
+    <div class="navbar text-center mx-auto">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/create">Create</a></li>
+        <li><a href="/account">Account</a></li>
+        <li><a href="/community">Community</a></li>
+      </ul>
+    </div>
 
-   
-            {{{ body }}}
 
-            <footer>
-      <button class="contact-us animate_animated animate__bounceInLeft"><a href="/contact">Contact Us</a></button>
+    {{{ body }}}
+
+    <footer>
+      <button class="contact-us"><a href="/contact">Contact Us</a></button>
     </footer>
-          
+
 
     {{!-- If the user is logged in, load the JS script for when they logout --}}
     {{#if logged_in}}

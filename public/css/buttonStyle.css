@@ -1,3 +1,10 @@
+:root {
+  --statement-color: magenta;
+  --main-color: #B388EB;
+  --sub-color: #F7AEF8;
+  --accent-color: #E6E29C;
+}
+
 /* sign in button */
 .button-wrap {
     height: 100%;
@@ -15,7 +22,7 @@
     letter-spacing: 1.3px;
     font-weight: 700;
     color: #313133;
-    background: linear-gradient(90deg, magenta 0%, yellow 100%);
+    background: linear-gradient(90deg, magenta 0%, #E6E29C 100%);
     border: none;
     border-radius: 1000px;
     box-shadow: 12px 12px 24px magenta;
@@ -31,8 +38,8 @@
     border-radius: 1000px;
     min-width: calc(300px + 12px);
     min-height: calc(60px + 12px);
-    border: 6px solid magenta;
-    box-shadow: 0 0 60px magenta;
+    border: 6px solid var(--statement-color);
+    box-shadow: 0 0 60px var(--statement-color);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -43,7 +50,6 @@
 
 .sign-in-button:hover,
 .button:focus {
-    color: #313133;
     transform: translateY(-6px);
 }
 
@@ -57,7 +63,7 @@ button:focus::before {
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    border: 6px solid magenta;
+    border: 6px solid var(--statement-color);
     position: absolute;
     z-index: -1;
     top: 50%;
@@ -97,7 +103,7 @@ button {
   padding: 5px 10px;
 }
 button.liked {
-  color: red;
+  color: var(--statement-color);
 }
 button.liked i{
   animation: anim 0.5s ease-in-out;

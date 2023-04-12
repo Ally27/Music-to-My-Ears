@@ -6,13 +6,21 @@
 @tailwind components;
 
 @tailwind utilities;
- 
+
+:root {
+    --statement-color: magenta;
+    --main-color: #B388EB;
+    --sub-color: #F7AEF8;
+    --tertiary-color: #FF85D4;
+    --accent-color: #E6E29C;
+}
+
 html {
     font-family: 'Josefin Sans', sans-serif;
 }
 
 header {
-    background-color: #F26B8a;
+    background: linear-gradient(#B388EB, #FF85D4);
     color: black;
 }
 
@@ -30,7 +38,7 @@ header .right {
 }
 
 .navbar {
-    background-color: #FFB6C1;
+    background-color: var(--sub-color);
 }
 
 .navbar ul {
@@ -52,7 +60,7 @@ header .right {
 
 
 footer {
-    background-color: #F26B8a;
+    background-color: var(--sub-color);
     bottom: 0;
     width: 100%;
     display: flex;
@@ -65,7 +73,85 @@ footer .contact-us {
     margin-right: 40px;
 }
 
+/* header */
 .webpageLogo {
     padding: 0;
     height: 150px;
+}
+
+/* border styling */
+.main-border {
+    border-radius: 10px;
+}
+
+/* cd case decor */
+
+.cd-case {
+    height: 206px;
+    width: 230px;
+    margin: 20px 0px 15px 35px;
+    display: inline-block;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0);
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.6), inset 0px 0px 20px 2px rgba(0, 0, 0, 0.4), inset 0px 0px 5px 1px rgba(255, 255, 255, 0.6), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
+}
+
+.album-art {
+    background-image: url(/images/compact-disc.svg);
+    height: 200px;
+    width: 200px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5), inset 0px 0px 16px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.3);
+    position: relative;
+    top: 3px;
+    left: 25px;
+    z-index: -2;
+}
+
+
+.sup {
+    height: 10px;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0px 0px 6px 1px rgba(0, 0, 0, 0.22), inset 0px 0px 1px 1px rgba(255, 255, 255, 0.17);
+}
+
+.pos-tl {
+    position: relative;
+    top: 0;
+    left: 20px;
+    border-radius: 0 0 5px 5px;
+}
+
+.pos-tr {
+    position: relative;
+    top: -10px;
+    left: 160px;
+    border-radius: 0 0 5px 5px;
+}
+
+.pos-bl {
+    position: relative;
+    top: 169px;
+    left: 20px;
+    border-radius: 5px 5px 0 0;
+}
+
+.pos-br {
+    position: relative;
+    top: 159px;
+    left: 160px;
+    border-radius: 5px 5px 0 0;
+}
+
+.spine {
+    height: 120px;
+    width: 15px;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.07) 100%);
+    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.23), inset 0px 0px 7px 0px rgba(0, 0, 0, 0.22), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.22);
+    position: relative;
+    top: -160px;
+    left: 0;
+    border-radius: 0 50% 50% 0;
+    z-index: -1;
 }
