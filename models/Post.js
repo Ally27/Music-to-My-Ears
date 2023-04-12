@@ -1,12 +1,13 @@
-// In Post.js model
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const axios = require("axios");
 
 class Post extends Model {
- update(){
-  this.upvotes = this.upvotes + 1
+  update(){
+    this.upvotes = this.upvotes + 1
   }
 }
+
 
 Post.init(
   {
@@ -21,10 +22,6 @@ Post.init(
       allowNull: false,
     },
     spotify_id: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    post_type: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -50,6 +47,10 @@ Post.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
+    },
+    cover_img: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   },
   {

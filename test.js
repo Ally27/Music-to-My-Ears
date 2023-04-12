@@ -36,7 +36,5 @@ async function getTopTracks() {
 }
 
 // Call the function to execute the code
-getTopTracks();
-
 
 
