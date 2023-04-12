@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
 
     const data = rawData.data
     const cover_img_url = rawData.data.items[0].track.album.images[0].url;
-    res.status(200).json({message: access_token})
+    res.status(200).json({message: cover_img_url})
 
     
 

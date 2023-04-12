@@ -2,6 +2,7 @@
 	{
 		"title": "My new playlist!",
 		"spotify_id": "03HusFeEsbdRBAVU88VF26",
+		"cover_img": "https://i.scdn.co/image/ab67616d0000b2730e58a0f8308c1ad403d105e7",
 		"content": "This playlist is a collection of all of my favorite Beyonce songs!",
 		"user_id": 1,
 		"tag_id": 1
@@ -11,6 +12,7 @@
 		"spotify_id": "37i9dQZF1EJAgyj46PDDUg",
 		"content": "Mixed playlist for me and my bestie",
 		"user_id": 1,
-		"tag_id": 1
+		"tag_id": 1,
+		"cover_img": "https://i.scdn.co/image/ab67616d0000b273f79d8c04bf5b9efc576c975d"
 	}
 ]
