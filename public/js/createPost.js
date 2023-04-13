@@ -1,9 +1,21 @@
 const createbtn = document.querySelector('#createbtn')
 const userId = sessionStorage.getItem('user_id')
 
+const get_access_token = await fetch(`/api/users/${userId}`, {
+  method: 'GET'
+})
+
+const data = await get_access_token.json();
+const access_token = data.access_token;
+const access_token_stringified = JSON.stringify(access_token);
+
+console.log(access_token);
+
+
 const createPostHandler = async (event) => {
   event.preventDefault();
 
+  // get html form elements from page's values 
   try {
     const title = document.querySelector('#title-create').value.trim();
     const content = document.querySelector('#content-create').value.trim();
@@ -11,20 +23,14 @@ const createPostHandler = async (event) => {
     const user_tag = document.querySelector('#selectTag').value;
     const tagId = parseInt(user_tag)+1
 
-    console.log(tagId)
-
     let spotifyId;
 
+    // gets spotifyId from the url they provide + checks they are uploading a playlist from spotify
     if (spotifyData.includes('spotify.com/playlist')) {
       const path = spotifyData.split('.com/')[1]
       const pathSplit = path.split('/')
       spotifyId = pathSplit[1];
 
-      const accessTokenResponse = await fetch('/auth', {
-        method: 'GET'
-      });
-      const accessTokenData = await accessTokenResponse.json();
-      const access_token = accessTokenData.access_token;
 
       const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${spotifyId}/tracks?limit=25`, {
         method: 'GET',

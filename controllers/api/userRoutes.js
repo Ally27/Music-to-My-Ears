@@ -31,6 +31,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+
 router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -97,11 +98,11 @@ router.put("/:id", async (req, res) => {
 
     if (!userData) {
       res
-        .status(400)
-        .json({ message: " " });
+        .status(404)
+        .json({ message: "No user found with that id!" });
       return;
     } 
-    res.json({userData})
+    res.json({message: "User updated!"})
   } catch (err) {
     res.status(400).json(err);
   }
