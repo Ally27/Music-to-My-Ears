@@ -72,7 +72,7 @@ router.get("/users/:id", withAuth, async (req, res) => {
 });
 
 //tags
-router.get("/tags/:tag", async (req, res) => {
+router.get("/tags/:id", async (req, res) => {
   try {
     const tagData = await Tag.findOne({
       where: { tag_name: req.params.tag },
@@ -145,8 +145,6 @@ router.get('/auth', async (req, res) => {
       code: req.query.code,
       redirect_uri: process.env.REDIRECT_URI_DECODED,
     }),
-
-
     {
       headers: {
         Authorization: "Basic " + process.env.BASE64_AUTHORIZATION,
@@ -157,11 +155,35 @@ router.get('/auth', async (req, res) => {
   
   const new_access_token = spotifyResponse.data.access_token;
   req.session.access_token = new_access_token;
-  // req.localStorage.access_token = new_access_token
+  const user_id = req.session.user_id
+  // const body = JSON.stringify({
+  //   access_token: req.session.access_token
+  // }) 
 
-  // res.status(200).json({ access_token: new_access_token });
+  try {
+    //  
+    const userData = await User.update(
+      { access_token: new_access_token },
+      { where: { id: user_id } }
+    );
+
+    if (!userData) {
+      res
+        .status(404)
+        .json({ message: "No user found with that id!" });
+      return;
+    } 
+    console.log (new_access_token, user_id)
+    res.redirect('/')
   
-  res.redirect('/')
+  } catch (err) {
+    res.status(400).json(err);
+  }
+
+});
+
+router.get('/community', async (req, res) => {
+  res.render('community');
 });
 
 
