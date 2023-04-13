@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center justify-center min-h-screen">
   <div class="max-w-md w-full py-6 px-4">
-    <h1 class="text-center text-3xl font-extrabold text-pink-500 mb-6">Customize Your Bio</h1>
+    <h1 class="text-center text-3xl font-extrabold text-pink-500 mb-6">Create your account!</h1>
 
     <div class="border border-gray-200 rounded-lg shadow-lg px-6 py-8">
       <div class="flex justify-center mb-6">
@@ -14,15 +14,24 @@
       </div>
 
       <div class="form-group mt-6">
-        <input type="text" placeholder="Enter First and Last Name" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+        <input type="text" placeholder="example@email.com" id="email" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+      </div>
+      <div class="form-group mt-6">
+        <input type="password" placeholder="Enter Password" id="password" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+      </div>
+      <div class="form-group mt-6">
+        <input type="password" placeholder="Re-enter Password" id="password2" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+      </div>
+      <div class="form-group mt-6">
+        <input type="text" placeholder="Username" id="name" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
       </div>
 
       <div class="form-group mt-6">
-        <input type="text" placeholder="Enter City, State" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+        <input type="text" placeholder="Location" id="location" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
       </div>
 
       <div class="form-group mt-6">
-        <textarea placeholder="Enter Bio Details" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent resize-none" maxlength="500" oninput="countChars(this);if(this.value.length > 500) this.value = this.value.slice(0, 500);" ></textarea>
+        <textarea placeholder="Enter a bio?" id="bio" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent resize-none" maxlength="500" oninput="countChars(this);if(this.value.length > 500) this.value = this.value.slice(0, 500);" ></textarea>
         <div class="flex justify-end text-gray-400 text-sm mt-2">
         <span id="count">0/500</span>
     </div>
@@ -42,7 +51,7 @@
 
 
       <div class="form-group mt-6">
-        <button class="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">Update</button>
+        <button id="createbtn" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">Create</button>
       </div>
     </div>
   </div>
@@ -54,6 +63,9 @@
     countElement.innerText = textarea.value.length + "/500";
   }
 </script>
+
+<script src="/js/signup.js"></script>
+
 
 
 

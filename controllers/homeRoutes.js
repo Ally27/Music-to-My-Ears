@@ -116,12 +116,11 @@ router.get('/account', async (req, res) => {
 });
 
 // Route to display edit bio page
-router.get('/edit-bio', async (req, res) => {
+router.get('/signup', async (req, res) => {
   if (req.session.logged_in) {
-    res.render('editBio', { logged_in: req.session.logged_in});
+    res.redirect('/')
   } else {
-    res.redirect('/login');
-    
+    res.render('signup');    
   }
 });
 
