@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Tag, Comment } = require('../../models');
 
+// gets all posts data 
 router.get('/', async (req, res) => {
     try {
       const postData = await Post.findAll({
@@ -12,6 +13,8 @@ router.get('/', async (req, res) => {
     }
   });
   
+
+  // gets specific post data 
   router.get('/:id', async (req, res) => {
     try {
       const postData = await Post.findByPk(req.params.id, {
@@ -29,6 +32,7 @@ router.get('/', async (req, res) => {
     }
   });
   
+  // create new post 
   router.post('/', async (req, res) => {
     try {
       const postData = await Post.create(req.body);
@@ -38,6 +42,7 @@ router.get('/', async (req, res) => {
       res.status(400).json(err);
     }
   });
+
 //upvoting on a post
   router.post("/upvotes/:id", async (req,res) =>{
     try{
@@ -47,11 +52,11 @@ router.get('/', async (req, res) => {
         res.status(404).json({ message: "Post not found"});
       return;
       }
-
-//increases by each "like"
-  const updatePost = await post.update({upvotes: post.upvotes + 1});
-  console.log("Updatevotes", updatePost);    
-    res.status(200).json(updatePost);
+      
+      //increases by each "like"
+      const updatePost = await post.update({upvotes: post.upvotes + 1});
+      console.log("Updatevotes", updatePost);    
+      res.status(200).json(updatePost);
     }catch(err){
       res.status(500).json(err);
     }
