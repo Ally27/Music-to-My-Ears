@@ -4,44 +4,39 @@
     <form class="create-form">
       <div class="form-group mt-3">
         <div>
-          <input type='text' placeholder="Enter your post's title" class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="title-create" />
+          <input type='text' placeholder="Enter your post's title"
+            class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m'
+            id="title-create" />
         </div>
       </div>
       <div class="form-group mt-3">
         <div>
           <input type='text' placeholder="Enter your post's content"
-          class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="content-create"/>
+            class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m'
+            id="content-create" />
         </div>
       </div>
 
       <div class="form-group mt-3">
         <div>
           <input type='text' placeholder="Enter your spotify link here"
-          class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m' id="spotify-create"/>
+            class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m'
+            id="spotify-create" />
         </div>
       </div>
 
-
-      <div class="form-group mt-3"></div>
-        <div id="dropdown">
-              <select id="selectTag">
-                {{#each tags as |tag index|}}
-                    <option value="{{index}}">{{tag.name}}</option>
-                {{/each}}
-              </select>
-        </div>
+      <div id="dropdown">
+        <select id="selectTag">
+          {{#each tags as |tag index|}}
+          <option value="{{index}}">{{tag.name}}</option>
+          {{/each}}
+        </select>
       </div>
 
-      <div class="form-group mt-3 flex flex-row">
-        <div class="ml-40">
-        </div>
+      <div>
+        <button class="bg-pink-600 p-2 text-white text-xl rounded h-14 ml-28" id="createbtn">Create Post</button>
       </div>
-      <div class="form-group mt-3">
-        <div>
-          <button class="bg-pink-600 p-2 text-white text-xl rounded w-full h-14" id="createbtn">Create Post</button>
-        </div>
-      </div>
-    </form>
+
   </div>
 </div>
 

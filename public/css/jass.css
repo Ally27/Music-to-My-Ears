@@ -109,6 +109,7 @@ footer .contact-us {
 }
 
 /* border styling */
+/* outer border */
 .main-border {
     border: 20px solid;
     border-image-slice: 1;
@@ -116,6 +117,7 @@ footer .contact-us {
     border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
 }
 
+/* inner border */
 .primary-container {
     border: 20px solid;
     border-image-slice: 1;
@@ -125,6 +127,40 @@ footer .contact-us {
 
 /* cd case decor */
 .cd-case {
+    height: 124px;
+    width: 138px;
+    margin: 12px 0px 9px 21px;
+    display: inline-block;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0);
+    box-shadow: 0px 2px 10px 5px var(--accent-color), inset 0px 0px 12px 2px rgba(0, 0, 0, 0.4), inset 0px 0px 5px 1px rgba(255, 255, 255, 0.6), inset 10px 0px 0px 1px rgba(255, 255, 255, 0.2);
+}
+
+.album-art {
+    height: 115px;
+    width: 115px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5), inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.3);
+    position: relative;
+    top: 5px;
+    left: 20px;
+    z-index: -2;
+}
+
+.spine {
+    height: 72px;
+    width: 9px;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.07) 100%);
+    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.23), inset 0px 0px 7px 0px rgba(0, 0, 0, 0.22), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.22);
+    position: relative;
+    top: -96px;
+    left: 0;
+    border-radius: 0 50% 50% 0;
+    z-index: -1;
+}
+
+/* Home page cd case decor */
+.HomeCd-case {
     height: 206px;
     width: 230px;
     margin: 20px 0px 15px 35px;
@@ -134,7 +170,7 @@ footer .contact-us {
     box-shadow: 0px 2px 10px 5px var(--accent-color), inset 0px 0px 20px 2px rgba(0, 0, 0, 0.4), inset 0px 0px 5px 1px rgba(255, 255, 255, 0.6), inset 10px 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
-.album-art {
+.HomeAlbum-art {
     height: 200px;
     width: 200px;
     border-radius: 3px;
@@ -145,7 +181,7 @@ footer .contact-us {
     z-index: -2;
 }
 
-.spine {
+.HomeSpine {
     height: 120px;
     width: 15px;
     background: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.07) 100%);
