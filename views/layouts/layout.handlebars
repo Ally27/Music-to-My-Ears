@@ -29,6 +29,90 @@
 </head>
 
 <body>
+  <div class="flex-column justify-space-around min-h-screen">
+    <header class="display-flex justify-space-between align-center p-2">
+      <span class="logo"><a href="/"><img src="/images/webpageLogo.png"
+            class="webpageLogo animate__animated animate__backInRight"></a></span>
+      <div class="right">
+
+
+        {{#unless logged_in}}
+        <button>
+          <a href="/login">Login</a>
+        </button>
+
+        
+        {{/unless}}
+        {{#if logged_in}}
+        <button class="btn" id="logout">Logout</button>
+
+        {{/if}}
+        <input id="searchbar" />
+        <button class="btn" id="searchbtn">Search</button>
+
+      </div>
+    </header>
+    <div class="navbar text-center mx-auto">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/create">Create</a></li>
+        <li><a href="/account">Account</a></li>
+        <li><a href="/community">Community</a></li>
+      </ul>
+    </div>
+
+
+    <div class="main-content">
+      {{{ body }}}
+    </div>
+
+    <footer class="bottom-0 w-full text-black text-center py-4">
+      <button class="contact-us"><a href="/contact">Contact Us</a></button>
+    </footer>
+
+
+    {{!-- If the user is logged in, load the JS script for when they logout --}}
+    <script src="/js/search.js"></script>
+    {{#if logged_in}}
+
+    <script src="/js/logout.js"></script>
+    {{/if}}
+  </div>
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music to My Ears</title>
+
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/output.css">
+  <link rel="stylesheet" href="/css/buttonStyle.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Set a minimum height for the content container */
+    body {
+      min-height: 100vh;
+    }
+
+    /* Give the main content container a padding bottom of the same height as the fixed footer */
+    .main-content {
+      padding-bottom: 4rem; /* Change this value to match the height of your fixed footer */
+    }
+  </style>
+</head>
+
+<body>
   <div class="flex-column justify-space-around min-h-screen relative">
     <header class="display-flex align-center p-2">
       <span class="logo flex-grow ml-0"><a href="/"><img src="/images/webpageLogo.png" class="webpageLogo w-90 h-20 animate__animated animate__backInRight"></a></span>

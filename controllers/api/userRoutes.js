@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Post } = require("../../models");
 
+// get all user data 
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// gets specified user data 
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
@@ -31,7 +33,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-
+// create new user data 
 router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -40,6 +42,25 @@ router.post("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// update data for specified user 
+router.put("/:id", async (req, res) => {
+  try {
+    //  
+    const userData = await User.update( req.body, { where: { id: req.params.id } } );
+
+    if (!userData) {
+      res
+        .status(404)
+        .json({ message: "No user found with that id!" });
+      return;
+    } 
+    res.json({message: "User updated!"})
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 
 /// Deals with login/logout and setting user session ///
 
@@ -86,25 +107,6 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
-  }
-});
-
-
-// route to connect user input from edit bio page to account page
-router.put("/:id", async (req, res) => {
-  try {
-    //  
-    const userData = await User.update( req.body, { where: { id: req.params.id } } );
-
-    if (!userData) {
-      res
-        .status(404)
-        .json({ message: "No user found with that id!" });
-      return;
-    } 
-    res.json({message: "User updated!"})
-  } catch (err) {
-    res.status(400).json(err);
   }
 });
 
