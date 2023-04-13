@@ -47,7 +47,9 @@
         <button class="btn" id="logout">Logout</button>
 
         {{/if}}
-        <input placeholder="Search" />
+        <input id="searchbar" />
+        <button class="btn" id="searchbtn">Search</button>
+
       </div>
     </header>
     <div class="navbar text-center mx-auto">
@@ -70,6 +72,7 @@
 
 
     {{!-- If the user is logged in, load the JS script for when they logout --}}
+    <script src="/js/search.js"></script>
     {{#if logged_in}}
 
     <script src="/js/logout.js"></script>
