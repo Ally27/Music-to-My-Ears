@@ -51,6 +51,11 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    access_token: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "empty",
+    }
   },
   {
     hooks: {
