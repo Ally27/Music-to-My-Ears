@@ -1,41 +1,50 @@
 <div class="grid grid-cols-12">
   <div class="col-span-12 w-3/5 mx-auto mt-16">
-    <h2 class="text-center font-bold text-3xl mb-8">Create a New Post!</h2>
+    <h2 class="text-center text-3xl font-extrabold text-pink-500 mb-6">Create a New Post!</h2>
     <form class="create-form">
 
       <div class="form-group mt-3">
         <div>
           <input type='text' placeholder="Enter your post's title"
-            class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m'
+            class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
             id="title-create" />
         </div>
       </div>
 
       <div class="form-group mt-3">
-        <div>
-          <input type='text' placeholder="Enter your post's content"
-            class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m'
-            id="content-create" />
-        </div>
+        <label class="spotify-link">
+          <input type='text' placeholder="Enter your spotify link here" style="text-indent:20px"
+            class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+            id="spotify-create" />
+        </label>
+      </div>
+
+      <div id="dropdown" class="py-4">
+        <select id="selectTag"
+          class="border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+          {{#each tags as |tag index|}}
+          <option value="{{index}}"
+            class=" border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            {{tag.name}}</option>
+          {{/each}}
+        </select>
       </div>
 
       <div class="form-group mt-3">
         <div>
-          <input type='text' placeholder="Enter your spotify link here"
-            class='w-full px-8 pb-1.5 bg-grey-700 h-12 border text-grey-text text-base text-xl font-light rounded-m'
-            id="spotify-create" />
+          <textarea placeholder="Enter your post's content"
+            class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+            id="content-create"></textarea>
+          <div class="flex justify-end text-gray-400 text-sm mt-2">
+            <span id="count">0/500</span>
+          </div>
         </div>
       </div>
 
       <div class="bottom-bar mt-6">
-        <div id="dropdown" class="">
-          <select id="selectTag">
-            {{#each tags as |tag index|}}
-            <option value="{{index}}">{{tag.name}}</option>
-            {{/each}}
-          </select>
-        </div>
-        <button class="bg-pink-600 p-2 text-white text-xl rounded" id="createbtn">Create Post</button>
+        <button
+          class="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+          id="createbtn">Create Post</button>
       </div>
 
   </div>

@@ -1,8 +1,8 @@
 :root {
-  --statement-color: magenta;
-  --main-color: #B388EB;
-  --sub-color: #F7AEF8;
-  --accent-color: #E6E29C;
+    --statement-color: magenta;
+    --main-color: #B388EB;
+    --sub-color: #F7AEF8;
+    --accent-color: #E6E29C;
 }
 
 /* sign in button */
@@ -94,14 +94,20 @@ button:focus::after {
 
 /* heart */
 .heart-btn {
-  font-size: 2rem;
+    font-size: 20px;
 }
 
-/* create post button */
+.heart-btn:hover{
+    color: rgb(219, 86, 188)
+}
+
+/* create */
 #createbtn {
-    text-align: center;
+    font-size: 22px;
+    min-width: 300px;
+    min-height: 60px;
 }
 
 #dropdown {
-    
+
 }

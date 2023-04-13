@@ -161,8 +161,8 @@ footer .contact-us {
 
 /* Home page cd case decor */
 .HomeCd-case {
-    height: 206px;
-    width: 230px;
+    height: 165px;
+    width: 184px;
     margin: 20px 0px 15px 35px;
     display: inline-block;
     border-radius: 3px;
@@ -171,8 +171,8 @@ footer .contact-us {
 }
 
 .HomeAlbum-art {
-    height: 200px;
-    width: 200px;
+    height: 160px;
+    width: 160px;
     border-radius: 3px;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5), inset 0px 0px 16px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.3);
     position: relative;
@@ -182,12 +182,12 @@ footer .contact-us {
 }
 
 .HomeSpine {
-    height: 120px;
-    width: 15px;
+    height: 96px;
+    width: 10px;
     background: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.07) 100%);
     box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.23), inset 0px 0px 7px 0px rgba(0, 0, 0, 0.22), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.22);
     position: relative;
-    top: -160px;
+    top: -128px;
     left: 0;
     border-radius: 0 50% 50% 0;
     z-index: -1;
@@ -197,3 +197,17 @@ footer .contact-us {
     display: flex;
     justify-content: center;
 }
+
+.spotify-link {
+    position: relative;
+}
+
+.spotify-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/spotifyLogo.svg") center / contain no-repeat;
+  }
