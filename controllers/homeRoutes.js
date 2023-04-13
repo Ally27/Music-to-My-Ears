@@ -1,21 +1,16 @@
 const router = require("express").Router();
 const { User, Post, Tag } = require("../models");
-const withAuth = require("../utils/auth");
-
-
 const queryString = require("node:querystring");
 const axios = require("axios");
 
-
-
-// withAuth middleware is called to check if logged_in returns true for the current session before performing the get request 
+// base route. shows all posts.
+//////// WANT TO CHANGE it to top 10 playlists wiith most upvotes.
 router.get('/', async (req, res) => {
-
   try {
     const postData = await Post.findAll();
     const posts = postData.map((post) => post.get({ plain: true }));
 
-
+    // render homepage.handlebars
     res.render('homepage', {
       posts,
       // Pass the logged in flag to the template
@@ -26,19 +21,20 @@ router.get('/', async (req, res) => {
   }
 });
 
+// route for login page 
 router.get("/login", (req, res) => {
   // if user is already logged in for this session, redirect them to the homepage
   if (req.session.logged_in) {
     res.redirect("/");
     return;
   }
-  // otherwise the login handlebar is rendered
+  // otherwise the login.handlebar is rendered
   res.render("login", {logged_in: req.session.logged_in,});
 });
 
 
-//users
-router.get("/users", withAuth, async (req, res) => {
+//get all users
+router.get("/users", async (req, res) => {
   try {
     const userData = await User.findAll();
     const users = userData.map((user) => user.get({ plain: true }));
@@ -49,8 +45,11 @@ router.get("/users", withAuth, async (req, res) => {
   }
 });
 
-router.get("/create", withAuth, async (req, res) => {
+
+// route to create new post.
+router.get("/create", async (req, res) => {
   try {
+    // calls all tags from DB to dynamically render as options for their playlist
     const tagData = await Tag.findAll();
     const tags = tagData.map((tag) => tag.get({ plain: true }));
 
@@ -60,7 +59,8 @@ router.get("/create", withAuth, async (req, res) => {
   }
 });
 
-router.get("/users/:id", withAuth, async (req, res) => {
+// find a specific user 
+router.get("/users/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
     const user = userData.get({ plain: true });
@@ -71,21 +71,22 @@ router.get("/users/:id", withAuth, async (req, res) => {
   }
 });
 
-//tags
+//get all posts associated with a tag 
 router.get("/tags/:id", async (req, res) => {
   try {
-    const tagData = await Tag.findOne({
-      where: { tag_name: req.params.tag },
-      include: [{ model: Post, through: PostTag, as: "tagged_posts" }],
+    const postData = await Post.findAll({
+      where: { tag_id: req.params.id },
     });
 
-    const tag = tagData.get({ plain: true });
-    res.render("tag", { tag, logged_in: req.session.logged_in, });
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.json({message: posts})
+    // res.render("tag", { tag, logged_in: req.session.logged_in, });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// gets user_id from session storage and displays user's profile. has information about user and a list of all of their posts 
 router.get('/account', async (req, res) => {
   // if user is logged in, redirect to their profile
   if (req.session.logged_in) {
@@ -99,25 +100,47 @@ router.get('/account', async (req, res) => {
       const userData = await User.findByPk(req.session.user_id);
       const user = userData.get({ plain: true });
       // checks that there is a user with the requested id 
-      if (!postData) {
-        res.status(404).json({ message: "You haven't posted anything yet!" });
+      if (!userData) {
+        res.status(404).json({ message: "You don't have an account!" });
         return;
       }
       const posts = postData.map((post) => post.get({ plain: true }));
+      // renders their account
       res.render("account", { user, posts, logged_in: req.session.logged_in});
-  
     } catch (err) {
       res.status(500).json(err);
     }
-  
   } else {
     res.redirect('/login');
   }
 });
 
-// Route to display edit bio page
+// Route to render page for editing user data 
+router.get('/account/edit', async (req, res) => {
+  if (req.session.logged_in) {
+
+    try {
+      const userData = await User.findByPk(req.session.user_id);
+      const user = userData.get({ plain: true });
+      // checks that there is a user with the requested id 
+      if (!userData) {
+        res.status(404).json({ message: "You don't have an account!" });
+        return;
+      }
+      res.render('updateuser', {user, logged_in: req.session.logged_in}  );
+    } catch {
+      res.status(500).json(err);
+    }
+  } else {
+    res.redirect('/login');
+  }
+});
+
+
+// Route to sign up new user 
 router.get('/signup', async (req, res) => {
   if (req.session.logged_in) {
+    // redirects to homepage if already logged in 
     res.redirect('/')
   } else {
     res.render('signup');    
@@ -135,8 +158,9 @@ router.get('/community', async (req, res) => {
   res.render('community');
 });
 
-
+// spotify authentificiation route to get access_token 
 router.get('/auth', async (req, res) => {
+  // uses .env variables to make api post to spotify and get access_token back
   const spotifyResponse = await axios.post(
     "https://accounts.spotify.com/api/token",
     queryString.stringify({
@@ -152,13 +176,13 @@ router.get('/auth', async (req, res) => {
     }
   );
   
+  // stores new access token in session storage 
   const new_access_token = spotifyResponse.data.access_token;
   req.session.access_token = new_access_token;
+  //  gets user_id from session storage 
   const user_id = req.session.user_id
-  // const body = JSON.stringify({
-  //   access_token: req.session.access_token
-  // }) 
-
+ 
+  // updates user model for logged in user with their access token to get it in the front end 
   try {
     //  
     const userData = await User.update(
@@ -166,15 +190,17 @@ router.get('/auth', async (req, res) => {
       { where: { id: user_id } }
     );
 
+    // returns a error if  no user exists 
     if (!userData) {
       res
         .status(404)
         .json({ message: "No user found with that id!" });
       return;
     } 
-    console.log (new_access_token, user_id)
+    //takes user home 
     res.redirect('/')
   
+  // returns error if not able to put anything for access token
   } catch (err) {
     res.status(400).json(err);
   }

@@ -33,9 +33,9 @@
             src="https://st3.depositphotos.com/4111759/13425/v/600/depositphotos_134255710-stock-illustration-avatar-vector-male-profile-gray.jpg"
             class="rounded-full w-32">
           <h1 class="text-gray-800 font-semibold text-xl mt-5">{{user.name}}</h1>
-          <h1 class="text-gray-500 text-sm">Seattle, Washington</h1>
+          <h1 class="text-gray-500 text-sm">{{user.location}}</h1>
           <h1 class="text-gray-500 text-sm p-4 text-center">{{user.bio}}</h1>
-          <a href="/edit-bio" class="bg-pink-600 p-2 text-white text-xl rounded w-24 h-12"
+          <a href="/account/edit" class="bg-pink-600 p-2 text-white text-xl rounded w-24 h-12"
             style="text-align:center;">Edit Bio</a>
         </div>
         <div class="flex justify-between p-4">

@@ -1,12 +1,11 @@
-const createbtn = document.querySelector('#createbtn')
+const updatebtn = document.querySelector('#updatebtn')
+const userId = sessionStorage.getItem('user_id')
+
 
 const signUpHandler = async (event) => {
   event.preventDefault();
 
   // get html form elements from page's values 
-    const email = document.querySelector('#email').value.trim();
-    const password = document.querySelector('#password').value.trim();
-    const checkpassword = document.querySelector('#password2').value.trim();
     const username = document.querySelector('#name').value.trim();
     const location = document.querySelector('#location').value.trim();
     const bio = document.querySelector('#bio').value.trim();
@@ -14,22 +13,12 @@ const signUpHandler = async (event) => {
     const twitter = document.querySelector('#twitter').value.trim();
     const instagram = document.querySelector('#instagram').value.trim();
 
-    // checks password length and that the password and checkpassword are the same 
-    if (password.length<8){
-        alert('Your password must be longer than 8 characters!')
-        return;
-    } else if (password!==checkpassword) {
-        alert('Your passwords do not match!')
-    }
-
-    // makes a post fetch to api/users with info in the form 
+    // makes a post fetch to api/users with info in the form to update user 
     try {
-        const response = await fetch('/api/users', {
-            method: 'POST',
+        const response = await fetch(`/api/users/${userId}`, {
+            method: 'PUT',
             body: JSON.stringify({
-              email: email,
               name: username,
-              password: password,
               location: location,
               bio: bio,
               twitter: twitter,
@@ -43,14 +32,14 @@ const signUpHandler = async (event) => {
         
           // if response was ok, brings user to login page.
           if (response.ok) {
-            window.location.replace(`/login`);
+            window.location.replace(`/account`);
           } else {
-            alert('Could not create new user. Try again!');
+            alert('Could not ipdate user. Try again!');
           }
     } catch (error) {
-        alert('Could not create new user. Try again!');
+        alert('Could not update user. Try again!');
       }
       
 };
 
-createbtn.addEventListener('click', signUpHandler);
+updatebtn.addEventListener('click', signUpHandler);
