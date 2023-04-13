@@ -1,8 +1,8 @@
 :root {
-  --statement-color: magenta;
-  --main-color: #B388EB;
-  --sub-color: #F7AEF8;
-  --accent-color: #E6E29C;
+    --statement-color: magenta;
+    --main-color: #B388EB;
+    --sub-color: #F7AEF8;
+    --accent-color: #E6E29C;
 }
 
 /* sign in button */
@@ -94,11 +94,22 @@ button:focus::after {
 
 /* heart */
 .heart-btn {
-  font-size: 2rem;
+    font-size: 20px;
 }
 
-/* create post button */
+/* create */
 #createbtn {
-    text-align: center;
-    width: 50rem;
+    font-size: 22px;
+    min-width: 300px;
+    min-height: 60px;
 }
+
+.signup-btnText:hover {
+    color: var(--statement-color);
+}
+
+.forgot-btn:hover {
+    color: var(--statement-color);
+}
+
+#dropdown {}
