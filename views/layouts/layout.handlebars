@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,27 +30,21 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around min-h-screen">
-    <header class="display-flex justify-space-between align-center p-2">
-      <span class="logo"><a href="/"><img src="/images/webpageLogo.png"
-            class="webpageLogo animate__animated animate__backInRight"></a></span>
-      <div class="right">
+  <div class="flex-column justify-space-around min-h-screen relative">
+    <header class="display-flex align-center p-2">
+      <span class="logo flex-grow ml-0"><a href="/"><img src="/images/webpageLogo.png" class="webpageLogo w-90 h-20 animate__animated animate__backInRight"></a></span>
 
-
+      <div class="absolute top-0 right-0 flex items-center">
+        <input id="searchbar" />
+        <button class="btn" id="searchbtn">Search</button>
         {{#unless logged_in}}
         <button>
-          <a href="/login">Login</a>
+          <a href="/login" class="font-bold">Login</a>
         </button>
-
-        
         {{/unless}}
         {{#if logged_in}}
         <button class="btn" id="logout">Logout</button>
-
         {{/if}}
-        <input id="searchbar" />
-        <button class="btn" id="searchbtn">Search</button>
-
       </div>
     </header>
     <div class="navbar text-center mx-auto">
@@ -60,25 +55,20 @@
         <li><a href="/community">Community</a></li>
       </ul>
     </div>
-
-
     <div class="main-content">
       {{{ body }}}
     </div>
-
     <footer class="bottom-0 w-full text-black text-center py-4">
       <button class="contact-us"><a href="/contact">Contact Us</a></button>
     </footer>
-
-
     {{!-- If the user is logged in, load the JS script for when they logout --}}
-    <script src="/js/search.js"></script>
     {{#if logged_in}}
-
     <script src="/js/logout.js"></script>
     {{/if}}
-  </div>
 
+      <script src="/js/search.js"></script>
+  </div>
 </body>
+
 
 </html>
