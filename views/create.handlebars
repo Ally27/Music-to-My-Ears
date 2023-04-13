@@ -2,6 +2,7 @@
   <div class="col-span-12 w-3/5 mx-auto mt-16">
     <h2 class="text-center font-bold text-3xl mb-8">Create a New Post!</h2>
     <form class="create-form">
+
       <div class="form-group mt-3">
         <div>
           <input type='text' placeholder="Enter your post's title"
@@ -9,6 +10,7 @@
             id="title-create" />
         </div>
       </div>
+
       <div class="form-group mt-3">
         <div>
           <input type='text' placeholder="Enter your post's content"
@@ -25,16 +27,15 @@
         </div>
       </div>
 
-      <div id="dropdown">
-        <select id="selectTag">
-          {{#each tags as |tag index|}}
-          <option value="{{index}}">{{tag.name}}</option>
-          {{/each}}
-        </select>
-      </div>
-
-      <div>
-        <button class="bg-pink-600 p-2 text-white text-xl rounded h-14 ml-28" id="createbtn">Create Post</button>
+      <div class="bottom-bar mt-6">
+        <div id="dropdown" class="">
+          <select id="selectTag">
+            {{#each tags as |tag index|}}
+            <option value="{{index}}">{{tag.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <button class="bg-pink-600 p-2 text-white text-xl rounded" id="createbtn">Create Post</button>
       </div>
 
   </div>

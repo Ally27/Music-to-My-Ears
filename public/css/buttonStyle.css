@@ -100,5 +100,8 @@ button:focus::after {
 /* create post button */
 #createbtn {
     text-align: center;
-    width: 50rem;
+}
+
+#dropdown {
+    
 }
