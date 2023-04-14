@@ -1,10 +1,10 @@
 [
   {
-    "name": "TestUser",
+    "name": "planetjanet123",
     "email": "test@gmail.com",
     "password": "bootcamp", 
-    "bio": "I am a test user. beep boop boop",
-    "location": "In the computer",
+    "bio": "Hey, I'm Janet! I'm a junior at the University of Washington studying business. I love to listen to rap music on a rainy day. Whether it be walking to the quad, or stopping at U-Village for coffee, I always has Drake blasting in my ears.",
+    "location": "Seattle, WA",
     "facebook": "facebook.com",
     "twitter": "twitter.com",
     "instagram": "instagram.com"

@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
       });
       const posts = postData.map((post) => post.get({ plain: true }));
       const newpostData = await Post.findAll({
-        order: [['id', 'DESC']]
+        order: [['id', 'DESC']],
+        include: [{ model: User, attributes: ['name'] }]
       });
       const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
       const tagData = await Tag.findAll();
