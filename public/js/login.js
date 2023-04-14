@@ -20,7 +20,11 @@ const loginFormHandler = async (event) => {
       // Set user.id in session storage
       sessionStorage.setItem('user_id', user_id);
 
-      window.location.href = 'https://accounts.spotify.com/authorize?client_id=44dd607d18f74af59288c28ecbb77a63&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth&scope=user-top-read';
+      const uri_local = "http%3A%2F%2Flocalhost%3A3001%2Fauth"
+      const uri_heroku = "https%3A%2F%2Fmusic-to-my-ears1.herokuapp.com%2Fauth"
+     
+
+      window.location.href = `https://accounts.spotify.com/authorize?client_id=44dd607d18f74af59288c28ecbb77a63&response_type=code&redirect_uri=${uri_heroku}&scope=user-top-read`;
     } else {
       alert('Failed to log in');
     }
