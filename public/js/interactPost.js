@@ -1,6 +1,5 @@
-
-const trending_playlists = document.querySelector('#trending_playlists')
-const commentbtn = document.querySelector('.commentbtn')
+const interact_box = document.querySelector('#interact_box')
+// const commentbtn = document.querySelector('.commentbtn')
 var userId = sessionStorage.getItem('user_id')
 
 const createCommentHandler = async (event) => {
@@ -39,13 +38,39 @@ const createCommentHandler = async (event) => {
         } catch (error) {
             alert('Could not add comment. Try again!');
         }
-    }
-
-    if (element.matches(".linkbtn")) {
-      var postId = element.getAttribute("data");
-      var post = parseInt(postId);
+    } else if (element.matches(".linkbtn")) {
+      const postId = element.getAttribute("data");
+      const post = parseInt(postId);
       window.location.replace(`/posts/${post}`)
-    }
+    } else if (element.matches(".likebtn")) {
+      const postId = element.getAttribute("data");
+      const countEl = element.getAttribute("data-count")
+      const post = parseInt(postId);   
+      const count= parseInt(countEl);
+      const newcount = count+1;
+      try {
+        const response = await fetch(`/api/posts/upvote/${post}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+              upvotes: newcount
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+        
+          // if response was ok, brings user to login page.
+          if (response.ok) {
+            location.reload()
+          } else {
+            alert('Could not update user. Try again!');
+          }
+    } catch (error) {
+        alert('Could not upvote post. Try again!');
+      }
+  }
+
+    
 }
 
-trending_playlists.addEventListener("click",createCommentHandler)
+interact_box.addEventListener("click",createCommentHandler)

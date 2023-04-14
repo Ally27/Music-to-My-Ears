@@ -1,70 +1,122 @@
 [
-  {
-    "id": 1,
-    "name": "Pop"
-  },
-  {
-    "id": 2,
-    "name": "Dance Pop"
-  },
-  {
-    "id": 3,
-    "name": "Rap"
-  },
-  {
-    "id": 4,
-    "name": "Rock"
-  },
-  {
-    "id": 5,
-    "name": "Latin"
-  },
-  {
-    "id": 6,
-    "name": "Hip Hop"
-  },
-  {
-    "id": 7,
-    "name": "Trap"
-  },
-  {
-    "id": 8,
-    "name": "R&B"
-  },
-  {
-    "id": 9,
-    "name": "Blues"
-  },
-  {
-    "id": 10,
-    "name": "Indie"
-  },
-  {
-    "id": 11,
-    "name": "EDM"
-  },
-  {
-    "id": 12,
-    "name": "Chill"
-  },
-  {
-    "id": 13,
-    "name": "Electropop"
-  },
-  {
-    "id": 14,
-    "name": "HyperPop"
-  },
-  {
-    "id": 15,
-    "name": "Alternative"
-  },
-  {
-    "id": 16,
-    "name": "Metal"
-  },
-  {
-    "id": 17,
-    "name": "Country"
-  }
-]
+    {
+      "id": 1,
+      "name": "Pop"
+    },
+    {
+      "id": 2,
+      "name": "Dance Pop"
+    },
+    {
+      "id": 3,
+      "name": "Rap"
+    },
+    {
+      "id": 4,
+      "name": "Rock"
+    },
+    {
+      "id": 5,
+      "name": "Latin"
+    },
+    {
+      "id": 6,
+      "name": "Hip Hop"
+    },
+    {
+      "id": 7,
+      "name": "Trap"
+    },
+    {
+      "id": 8,
+      "name": "R&B"
+    },
+    {
+      "id": 9,
+      "name": "Blues"
+    },
+    {
+      "id": 10,
+      "name": "Indie"
+    },
+    {
+      "id": 11,
+      "name": "EDM"
+    },
+    {
+      "id": 12,
+      "name": "Chill"
+    },
+    {
+      "id": 13,
+      "name": "Electropop"
+    },
+    {
+      "id": 14,
+      "name": "HyperPop"
+    },
+    {
+      "id": 15,
+      "name": "Alternative"
+    },
+    {
+      "id": 16,
+      "name": "Metal"
+    },
+    {
+      "id": 17,
+      "name": "Country"
+    },
+    {
+      "id": 18,
+      "name": "Instrumental"
+    },
+    {
+      "id": 19,
+      "name": "KPOP"
+    },
+    {
+      "id": 20,
+      "name": "Lo-fi"
+    },
+    {
+      "id": 21,
+      "name": "Psychedelic"
+    },
+    {
+      "id": 22,
+      "name": "Gospel"
+    },
+    {
+      "id": 23,
+      "name": "Underground"
+    },
+    {
+      "id": 24,
+      "name": "Noise"
+    },
+    {
+      "id": 25,
+      "name": "PC Music"
+    },
+    {
+      "id": 26,
+      "name": "Classical"
+    },
+    {
+      "id": 27,
+      "name": "Jazz"
+    },
+    {
+      "id": 28,
+      "name": "Contemporary"
+    },
+    {
+      "id": 29,
+      "name": "Emo"
+    },
+    {
+      "id": 30,
+      "name": "Punk"
+    }
+  ]

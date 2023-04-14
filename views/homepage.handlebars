@@ -3,7 +3,7 @@
   {{!-- left side --}}
   <div class="col-span-7">
     <h4 class="trending-title text-xl font-bold mb-6">Trending playlists</h4>
-  <div class="main-border mt-2 " id="trending_playlists">
+  <div class="main-border mt-2 " id="interact_box">
         {{#each posts as |post| }}
 
       <div class="primary-container mt-2 ml-2 mr-2 mb-2 p-2">
@@ -26,14 +26,14 @@
             <small><i>{{post.post_type}}</i></small>
             <br>
 
-            {{!-- heart button. Like and unlike --}}
-            <button class="heart-btn bg-pink-500 hover:bg-pink-600 text-white py-1 px-2 rounded-lg text-xs">
-              <i class="fa fa-heart"></i>
-              <span class="icon">Love</span>
-            </button> 
-            <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs" type="submit" data="{{post.id}}">Go to Post</button>
-
-          {{!-- heart button end --}}
+{{!-- heart button. Like and unlike --}}
+          <span><button class="likebtn heart-btn bg-pink-500 text-white py-1 px-2 rounded-lg text-xs" type="submit" data="{{post.id}}" data-count="{{post.upvotes}}" >
+            <i class="fa fa-heart"></i>
+            {{post.upvotes}} upvotes 
+          </button></span>
+        
+        {{!-- heart button end --}}            
+        <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs" type="submit" data="{{post.id}}">Go to Post</button>
           </div>
         </div>
 
@@ -58,11 +58,19 @@
     <h2 class="text-xl font-bold mb-6">Post Tags</h2>
     <div class="border border-pink-600 mt-2 h-64 bg-pink-100 rounded-lg p-4">
       <h4 class="text-lg font-bold mb-2 text-pink-800">Click on these Tags to View Posts Related to Topics:</h4>
-      <p class="text-pink-600">#Rap, #Rock, #Indie, #Alternative</p>
+      <p class="text-pink-600">
+        {{#each tags as |tag|}}
+        <a href="/tags/{{tag.id}}"><class="">#</class>{{tag.name}}</a>
+        {{/each}}
+      </p>
     </div>
     <h4 class="text-lg font-bold mb-6 mt-4">Recent Activity</h4>
     <div class="border border-pink-600 mt-2 h-64 bg-pink-100 rounded-lg p-4">
-      <p class="text-pink-600">Content</p>
+      {{#each newposts as |newpost|}}
+      <a href="/posts/{{newpost.id}}"><p class="text-pink-600">{{newpost.title}}</p>
+      <small>{{newpost.user}}</small>
+      {{/each}}
+      </a>
     </div>
   </div>
 
@@ -71,4 +79,4 @@
 
 
   <script src="/js/animation.js"></script>
-    <script src="/js/addcomment.js"></script>
+  <script src="/js/interactPost.js"></script>

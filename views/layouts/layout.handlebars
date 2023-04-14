@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +23,8 @@
 
     /* Give the main content container a padding bottom of the same height as the fixed footer */
     .main-content {
-      padding-bottom: 4rem; /* Change this value to match the height of your fixed footer */
+      padding-bottom: 4rem;
+      /* Change this value to match the height of your fixed footer */
     }
   </style>
 </head>
@@ -32,20 +32,9 @@
 <body>
   <div class="flex-column justify-space-around min-h-screen relative">
     <header class="display-flex align-center p-2">
-      <span class="logo flex-grow ml-0"><a href="/"><img src="/images/webpageLogo.png" class="webpageLogo w-90 h-20 animate__animated animate__backInRight"></a></span>
+      <span class="logo flex-grow ml-0"><a href="/"><img src="/images/webpageLogo.png"
+            class="webpageLogo w-90 h-20 animate__animated animate__backInRight"></a></span>
 
-      <div class="absolute top-0 right-0 flex items-center">
-        <input id="searchbar" />
-        <button class="btn" id="searchbtn">Search</button>
-        {{#unless logged_in}}
-        <button>
-          <a href="/login" class="font-bold">Login</a>
-        </button>
-        {{/unless}}
-        {{#if logged_in}}
-        <button class="btn" id="logout">Logout</button>
-        {{/if}}
-      </div>
     </header>
     <div class="navbar text-center mx-auto">
       <ul>
@@ -53,12 +42,26 @@
         <li><a href="/create">Create</a></li>
         <li><a href="/account">Account</a></li>
         {{!-- <li><a href="/community">Community</a></li> --}}
+        <div class="search-container mr-20 pl-10">
+          <input id="searchbar" class="rounded" />
+          <button class="btn" id="searchbtn"><i class="fa fa-search float-left"></i></button>
+        </div>
+        {{#unless logged_in}}
+        <button>
+          <a href="/login" class="loginbtn mr-28 text-xl">Login</a>
+        </button>
+
+        {{/unless}}
+        {{#if logged_in}}
+        <button class="btn" id="logout">Logout</button>
+        {{/if}}
       </ul>
+
     </div>
     <div class="main-content">
       {{{ body }}}
     </div>
-    <footer class="bottom-0 w-full text-black text-center py-4">
+    <footer class="bottom-0 w-full text-black text-xl text-center py-4">
       <button class="contact-us"><a href="/contact">Contact Us</a></button>
     </footer>
     {{!-- If the user is logged in, load the JS script for when they logout --}}
@@ -66,9 +69,8 @@
     <script src="/js/logout.js"></script>
     {{/if}}
 
-      <script src="/js/search.js"></script>
+    <script src="/js/search.js"></script>
   </div>
 </body>
-
 
 </html>

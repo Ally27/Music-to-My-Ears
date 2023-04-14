@@ -8,7 +8,7 @@
       <small>{{post.user.name}}</small>
     </div>
 
-    <!-- form to put in your comment -->
+    <!-- move the comment form box here -->
     <div id="comment-form" class="mt-2 p-4 main-border border-black">
       <h4 class="text-xl font-bold mb-2">Leave a Comment:</h4>
       <form class="commentbox">
@@ -17,7 +17,7 @@
       </form>
     </div>
 
-    <!-- where your comments should display display box -->
+    <!-- move the comments section here -->
     <div id="comments-section" class="mt-2 p-4 main-border border-black">
       <h4 class="text-xl font-bold mb-2">Comments:</h4>
       {{#each comments as | comment | }}
@@ -53,6 +53,7 @@
     </div>
   </div>
 </div>
+
 
   <script src="/js/addcomment.js"></script>
   <script src="/js/animation.js"></script>
