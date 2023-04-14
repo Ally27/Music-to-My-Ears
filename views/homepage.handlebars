@@ -7,7 +7,7 @@
         {{#each posts as |post| }}
 
       <div class="primary-container mt-2 ml-2 mr-2 mb-2 p-2">
-        <div class="top-half inline-flex gap-2">
+        <div class="top-half inline-flex gap-2 h-auto">
 
           {{!-- cd --}}
           <div class="cd-case pr-6">
@@ -56,16 +56,16 @@
   {{!-- right side --}}
   <div class="col-span-5 ml-4">
     <h2 class="text-xl font-bold mb-6">Post Tags</h2>
-    <div class="border border-pink-600 mt-2 h-64 bg-pink-100 rounded-lg p-4">
+    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
       <h4 class="text-lg font-bold mb-2 text-pink-800">Click on these Tags to View Posts Related to Topics:</h4>
-      <p class="text-pink-600">
+      <p class="text-pink-600 text-xl">
         {{#each tags as |tag|}}
         <a href="/tags/{{tag.id}}"><class="">#</class>{{tag.name}}</a>
         {{/each}}
       </p>
     </div>
     <h4 class="text-lg font-bold mb-6 mt-4">Recent Activity</h4>
-    <div class="border border-pink-600 mt-2 h-64 bg-pink-100 rounded-lg p-4">
+    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
       {{#each newposts as |newpost|}}
       <a href="/posts/{{newpost.id}}"><p class="text-pink-600">{{newpost.title}}</p>
       <small>{{newpost.user}}</small>
