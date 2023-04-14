@@ -1,7 +1,13 @@
 [
   {
-    "name": "TPJK",
-    "email": "tyler@gmail.com",
-    "password": "1234"
+    "name": "TestUser",
+    "email": "test@gmail.com",
+    "password": "bootcamp", 
+    "bio": "I am a test user. beep boop boop",
+    "location": "In the computer",
+    "facebook": "facebook.com",
+    "twitter": "twitter.com",
+    "instagram": "instagram.com"
   }
+
 ]

@@ -1,0 +1,68 @@
+<div class="flex flex-col items-center justify-center min-h-screen">
+  <div class="max-w-md w-full py-6 px-4">
+    <h1 class="text-center text-3xl font-extrabold text-pink-500 mb-6">Update your information?</h1>
+
+    {{!-- <div class="border border-gray-200 rounded-lg shadow-lg px-6 py-8">
+      <div class="flex justify-center mb-6">
+        <label for="profile_picture" class="relative cursor-pointer">
+          <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center w-full h-full rounded-full bg-gray-300 opacity-50">
+            <span class="text-white font-medium">Upload Photo</span>
+          </div>
+          <img src="https://via.placeholder.com/150x150" alt="Profile Picture" class="rounded-full w-36 h-36">
+        </label>
+        <input type="file" name="profile_picture" id="profile_picture" class="hidden">
+      </div> --}}
+
+      <div class="form-group mt-6">
+        <input type="text" value="{{user.name}}" id="name" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+      </div>
+
+      <div class="form-group mt-6">
+        <input type="text" value="{{user.location}}" placeholder="location" id="location" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+      </div>
+
+      <div class="form-group mt-6">
+        <textarea placeholder="Enter a bio?" id="bio" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent resize-none" maxlength="500" oninput="countChars(this);if(this.value.length > 500) this.value = this.value.slice(0, 500);" >{{user.bio}}</textarea>
+        <div class="flex justify-end text-gray-400 text-sm mt-2">
+        <span id="count">0/500</span>
+    </div>
+    </div>
+
+    <div class="form-group mt-6">
+  <h2 class="text-center text-lg font-medium mb-2">Link Existing Personal Accounts</h2>
+  <form>
+    
+    <label for="facebook" class="facebook-link"></label>
+    <input type="text" name="facebook" id="facebook" value="{{user.facebook}}" placeholder="Facebook URL" style="text-indent:20px"class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+
+    <label for="twitter" class="twitter-link"></label>
+    <input type="text" name="twitter" id="twitter" value="{{user.twitter}}" placeholder="Twitter URL" style="text-indent:20px"class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+
+    <label for="instagram" class="instagram-link"></label>
+    <input type="text" name="instagram" id="instagram" value="{{user.instagram}}" placeholder="Instagram URL" style="text-indent:20px" class="w-full px-4 py-2 border border-gray-400 rounded-lg text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+
+  </form>
+</div>
+
+
+      <div class="form-group mt-6">
+        <button id="updatebtn" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function countChars(textarea) {
+    var countElement = document.getElementById("count");
+    countElement.innerText = textarea.value.length + "/500";
+  }
+</script>
+
+<script src="/js/updateuser.js"></script>
+
+
+
+
+
+

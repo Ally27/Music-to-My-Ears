@@ -19,6 +19,11 @@ User.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -35,6 +40,27 @@ User.init(
         len: [8],
       },
     },
+    bio: {
+      type: DataTypes.STRING(500),
+      allowNull: true,
+    },
+    instagram: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    twitter: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    facebook: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    access_token: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "empty",
+    }
   },
   {
     hooks: {

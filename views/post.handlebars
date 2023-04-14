@@ -1,0 +1,65 @@
+{{!< layout}} <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row">
+  <div class="col-span-12">
+    <div class="mt-2">
+      <h4 class="text-xl font-bold mb-2">{{post.title}}</h4>
+      <h3 class="font-bold">{{post.content}}</h3>
+          <small>{{post.user.name}}</small>
+
+      </div>
+    
+    <div class="main-border border-black mt-2">
+    {{#each tracks as |track| }}
+      <a href="{{track.exLink}}" target="_blank">
+      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+
+        {{!-- cd  --}}
+        <div class="cd-case pr-6">
+          <div class="album-art">
+            <img src="{{track.img}}"/>
+            <div class="sup pos-tl"></div>
+            <div class="sup pos-tr"></div>
+            <div class="sup pos-bl"></div>
+            <div class="sup pos-br"></div>
+          </div>
+          <div class="spine"></div>
+        </div>
+        {{!-- cd end --}}
+
+        <div class="mt-2">
+          <h3 class="text-lg font-bold">{{track.title}}</h3>
+          <small>{{track.artist}}</small>
+
+        </div>
+      </div>
+      </a>
+    {{/each}}
+
+    <div id="trending_playlists">
+      <div class="box-container mt-2 border border-black">
+        <div class="box p-4">
+          <form class="commentbox">
+            <textarea class="commentbox w-full h-24 border-2 rounded-lg resize-none" placeholder="Type your comment here"></textarea>
+            <button class="commentbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" type="submit" data="{{post.id}}">Post Comment</button>
+            </form>
+            </div>
+      </div>
+    </div>
+
+    <div class="main-border border-black mt-2">
+      <h4 class="text-xl font-bold mb-2">Comments:</h4>
+    {{#each comments as | comment | }}
+    
+      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+
+        <div class="mt-2">
+          <p>{{comment.content}}</p>
+          <small>{{comment.user.name}}</small>
+        </div>
+      </div>
+    {{/each}}
+
+    </div> 
+  </div>
+  
+  <script src="/js/addcomment.js"></script>
+  <script src="/js/animation.js"></script>

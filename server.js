@@ -12,18 +12,26 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers,
+  defaultLayout: 'layout',
+  extname: '.handlebars'
+});
 
 // create a unique session stored in the db that isn't permanently saved to act as user session 
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {
+    /// sets the session to only last one hour before ending (how long spotify access_token lasts)
+    maxAge: 3600000
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize
   })
 };
+
 
 // pass sess through sequelize middleware to verify the session 
 app.use(session(sess));

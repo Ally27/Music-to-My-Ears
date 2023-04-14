@@ -1,0 +1,47 @@
+{{!< layout}} 
+
+<div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row">
+  <div class="col-span-12">
+    <h4 class="text-xl font-bold mb-2">Search Results for "{{searchId}}"</h4>
+    <div class="main-border border-black mt-2">
+    {{#each posts as |post| }}
+      <a href="/posts/{{post.id}}">
+      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+
+        <div class="mt-2">
+          <h3 class="text-lg font-bold">{{post.title}}</h3>
+          <small>{{post.content}}</small>
+
+        </div>
+      </div>
+      </a>
+    {{/each}}
+    {{#each users as |user| }}
+      <a href="/users/{{user.id}}">
+      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+
+        <div class="mt-2">
+          <h3 class="text-lg font-bold">{{user.name}}</h3>
+          <small>{{user.bio}}</small>
+
+        </div>
+      </div>
+      </a>
+    {{/each}}
+     {{#each comments as |comment| }}
+      <a href="/posts/{{comment.post.id}}">
+      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+
+        <div class="mt-2">
+          <h3 class="text-lg font-bold">{{comment.content}}</h3>
+          <small>{{comment.post.title}}</small>
+
+        </div>
+      </div>
+      </a>
+    {{/each}}
+    </div>
+  </div>
+  
+
+  <script src="/js/animation.js"></script>

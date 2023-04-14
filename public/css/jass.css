@@ -1,0 +1,234 @@
+@import 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap';
+@import 'animate.css';
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+:root {
+    --statement-color: magenta;
+    --main-color: #B388EB;
+    --sub-color: #F7AEF8;
+    --tertiary-color: #FF85D4;
+    --dark-color: #4A2040;
+    --accent-color: #E6E29C;
+}
+
+html {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+header {
+    background: linear-gradient(#B388EB, #FF85D4);
+    color: black;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+}
+
+header .logo {
+    font-size: 30px;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header .right {
+    float: right;
+    margin-top: 12px;
+}
+
+.navbar {
+    background-color: var(--sub-color);
+    border: 2px solid var(--tertiary-color);
+    border-radius: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0px;
+    padding: 12px 16px;
+}
+
+.navbar ul li a {
+    padding: 12px 16px;
+}
+
+.navbar a {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 20px;
+    color: grey;
+    transition: .5s;
+}
+
+.navbar a::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--statement-color);
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+}
+
+.navbar a:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--statement-color);
+}
+
+.navbar a:hover {
+    color: var(--statement-color);
+    box-shadow: 0 0 5px var(--statement-color);
+}
+
+footer {
+    background-color: var(--sub-color);
+    border: 2px solid var(--tertiary-color);
+    border-radius: 10px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+}
+
+footer .contact-us {
+    align-self: flex-end;
+    margin-right: 40px;
+}
+
+/* header */
+.webpageLogo {
+    margin-left: 100px;
+    padding: 0;
+    height: 150px;
+}
+
+/* border styling */
+/* outer border */
+.main-border {
+    border: 5px solid rgb(219 39 119);
+    border-radius: 20px;
+}
+
+/* inner border */
+.primary-container {
+    border: 2px solid var(--dark-color);
+    border-radius: 10px;
+}
+
+h4 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* cd case decor */
+.cd-case {
+    height: 103px;
+    width: 115px;
+    margin: 12px 0px 9px 21px;
+    display: inline-block;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0);
+    box-shadow: 0px 2px 10px 5px var(--dark-color), inset 0px 0px 12px 2px rgba(0, 0, 0, 0.4), inset 0px 0px 5px 1px rgba(255, 255, 255, 0.6), inset 10px 0px 0px 1px rgba(255, 255, 255, 0.2);
+}
+
+.album-art {
+    height: 98px;
+    width: 98px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5), inset 0px 0px 10px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.3);
+    position: relative;
+    top: 2px;
+    left: 16px;
+    z-index: -2;
+}
+
+.spine {
+    height: 60px;
+    width: 8px;
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.07) 100%);
+    box-shadow: 3px 0px 109px 0px rgba(0, 0, 0, 0.23), inset 0px 0px 7px 0px rgba(0, 0, 0, 0.22), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.22);
+    position: relative;
+    top: -80px;
+    left: 0;
+    border-radius: 0 50% 50% 0;
+    z-index: -1;
+}
+
+/* create post button position */
+.bottom-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.spotify-link {
+    position: relative;
+}
+
+.spotify-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/spotifyLogo.svg") center / contain no-repeat;
+}
+
+.facebook-link {
+    position: relative;
+}
+
+.facebook-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/facebookLogo.svg") center / contain no-repeat;
+}
+
+
+.twitter-link {
+    position: relative;
+}
+
+.twitter-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/twitterLogo.svg") center / contain no-repeat;
+}
+
+
+.instagram-link {
+    position: relative;
+}
+
+.instagram-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/instagramLogo.svg") center / contain no-repeat;
+}
