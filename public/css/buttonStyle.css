@@ -120,3 +120,12 @@ button:focus::after {
 }
 
 #dropdown {}
+
+/* search button */
+.search-container {
+    background: transparent;
+    border: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    outline: 0;
+}
