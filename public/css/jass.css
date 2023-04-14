@@ -23,6 +23,8 @@ html {
 header {
     background: linear-gradient(#B388EB, #FF85D4);
     color: black;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
 }
 
 header .logo {
@@ -40,6 +42,8 @@ header .right {
 
 .navbar {
     background-color: var(--sub-color);
+    border: 2px solid var(--tertiary-color);
+    border-radius: 10px;
 }
 
 .navbar ul {
@@ -89,6 +93,8 @@ header .right {
 
 footer {
     background-color: var(--sub-color);
+    border: 2px solid var(--tertiary-color);
+    border-radius: 10px;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -111,18 +117,22 @@ footer .contact-us {
 /* border styling */
 /* outer border */
 .main-border {
-    border: 20px solid;
-    border-image-slice: 1;
-    border-width: 5px;
-    border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+    border: 5px solid rgb(219 39 119);
+    border-radius: 20px;
 }
 
 /* inner border */
 .primary-container {
-    border: 20px solid;
-    border-image-slice: 1;
-    border-width: 5px;
-    border-image-source: linear-gradient(to left, #d53a9d, #743ad5);
+    border: 2px solid var(--dark-color);
+    border-radius: 10px;
+}
+
+h4 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
 }
 
 /* cd case decor */
@@ -133,7 +143,7 @@ footer .contact-us {
     display: inline-block;
     border-radius: 3px;
     background: rgba(0, 0, 0, 0);
-    box-shadow: 0px 2px 10px 5px var(--accent-color), inset 0px 0px 12px 2px rgba(0, 0, 0, 0.4), inset 0px 0px 5px 1px rgba(255, 255, 255, 0.6), inset 10px 0px 0px 1px rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 2px 10px 5px var(--dark-color), inset 0px 0px 12px 2px rgba(0, 0, 0, 0.4), inset 0px 0px 5px 1px rgba(255, 255, 255, 0.6), inset 10px 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 .album-art {
@@ -159,40 +169,7 @@ footer .contact-us {
     z-index: -1;
 }
 
-/* Home page cd case decor */
-.HomeCd-case {
-    height: 165px;
-    width: 184px;
-    margin: 20px 0px 15px 35px;
-    display: block;
-    border-radius: 3px;
-    background: rgba(0, 0, 0, 0);
-    box-shadow: 0px 2px 10px 5px var(--accent-color), inset 0px 0px 20px 2px rgba(0, 0, 0, 0.4), inset 0px 0px 5px 1px rgba(255, 255, 255, 0.6), inset 10px 0px 0px 1px rgba(255, 255, 255, 0.2);
-}
-
-.HomeAlbum-art {
-    height: 160px;
-    width: 160px;
-    border-radius: 3px;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5), inset 0px 0px 16px 2px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.3);
-    position: relative;
-    top: 3px;
-    left: 25px;
-    z-index: -2;
-}
-
-.HomeSpine {
-    height: 96px;
-    width: 10px;
-    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.07) 100%);
-    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.23), inset 0px 0px 7px 0px rgba(0, 0, 0, 0.22), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.22);
-    position: relative;
-    top: -128px;
-    left: 0;
-    border-radius: 0 50% 50% 0;
-    z-index: -1;
-}
-
+/* create post button position */
 .bottom-bar {
     display: flex;
     justify-content: center;
@@ -210,4 +187,48 @@ footer .contact-us {
     bottom: 0;
     width: 20px;
     background: url("/images/spotifyLogo.svg") center / contain no-repeat;
-  }
+}
+
+.facebook-link {
+    position: relative;
+}
+
+.facebook-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/facebookLogo.svg") center / contain no-repeat;
+}
+
+
+.twitter-link {
+    position: relative;
+}
+
+.twitter-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/twitterLogo.svg") center / contain no-repeat;
+}
+
+
+.instagram-link {
+    position: relative;
+}
+
+.instagram-link:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: url("/images/instagramLogo.svg") center / contain no-repeat;
+}
