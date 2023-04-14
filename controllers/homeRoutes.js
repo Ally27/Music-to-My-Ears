@@ -9,12 +9,20 @@ router.get('/', async (req, res) => {
   if (req.session.logged_in) {
 
     try {
-      const postData = await Post.findAll();
+      const postData = await Post.findAll({
+        order: [['upvotes', 'DESC']]
+      });
       const posts = postData.map((post) => post.get({ plain: true }));
+      const newpostData = await Post.findAll({
+        order: [['id', 'DESC']]
+      });
+      const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
+      const tagData = await Tag.findAll();
+      const tags = tagData.map((tag) => tag.get({ plain: true }));
 
 
       // Render homepage.handlebars with the logged_in flag
-      res.render('homepage', { posts, logged_in: req.session.logged_in });
+      res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
     } catch (err) {
       res.status(500).json(err);
     }
