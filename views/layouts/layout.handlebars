@@ -43,7 +43,7 @@
         <li><a href="/account">Account</a></li>
         {{!-- <li><a href="/community">Community</a></li> --}}
         <div class="search-container mr-20 pl-10">
-          <input id="searchbar" class="rounded" />
+          <input id="searchbar" class="rounded ml-2" placeholder="Search for a post..."/>
           <button class="btn" id="searchbtn"><i class="fa fa-search float-left"></i></button>
         </div>
         {{#unless logged_in}}
@@ -62,7 +62,7 @@
       {{{ body }}}
     </div>
     <footer class="bottom-0 w-full text-black text-xl text-center py-4">
-      <button class="contact-us"><a href="/contact">Contact Us</a></button>
+      <button class="contact-us"><i class="fa fa-solid fa-envelope animate-bounce mr-4"></i><a href="/contact">Contact Us</a></button>
     </footer>
     {{!-- If the user is logged in, load the JS script for when they logout --}}
     {{#if logged_in}}
