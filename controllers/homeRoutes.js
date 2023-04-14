@@ -6,17 +6,22 @@ const axios = require("axios");
 // base route. shows all posts.
 //////// WANT TO CHANGE it to top 10 playlists wiith most upvotes.
 router.get('/', async (req, res) => {
-  
-  try {
-    const postData = await Post.findAll();
-    const posts = postData.map((post) => post.get({ plain: true }));
+  if (req.session.logged_in) {
+
+    try {
+      const postData = await Post.findAll();
+      const posts = postData.map((post) => post.get({ plain: true }));
 
 
-    // Render homepage.handlebars with the logged_in flag
-    res.render('homepage', { posts, logged_in: req.session.logged_in });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+      // Render homepage.handlebars with the logged_in flag
+      res.render('homepage', { posts, logged_in: req.session.logged_in });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+
+    } else {
+      res.redirect('/login');
+    }
 });
 
 
@@ -34,54 +39,73 @@ router.get("/login", (req, res) => {
 
 //get all users
 router.get("/users", async (req, res) => {
-  try {
-    const userData = await User.findAll();
-    const users = userData.map((user) => user.get({ plain: true }));
 
-    res.render("users", { users, logged_in: req.session.logged_in, });
-  } catch (err) {
-    res.status(500).json(err);
+  if (req.session.logged_in) {
+    try {
+      const userData = await User.findAll();
+      const users = userData.map((user) => user.get({ plain: true }));
+
+      res.render("users", { users, logged_in: req.session.logged_in, });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.redirect('/login');
   }
 });
 
 
 // route to create new post.
 router.get("/create", async (req, res) => {
-  try {
-    // calls all tags from DB to dynamically render as options for their playlist
-    const tagData = await Tag.findAll();
-    const tags = tagData.map((tag) => tag.get({ plain: true }));
+  if (req.session.logged_in) {
 
-    res.render("create", { tags, logged_in: req.session.logged_in});
-  } catch (err) {
-    res.status(500).json(err);
+    try {
+      // calls all tags from DB to dynamically render as options for their playlist
+      const tagData = await Tag.findAll();
+      const tags = tagData.map((tag) => tag.get({ plain: true }));
+
+      res.render("create", { tags, logged_in: req.session.logged_in});
+    } catch (err) {
+      res.status(500).json(err);
+    }
+
+  } else {
+    res.redirect('/login');
   }
 });
 
 // find a specific user 
 router.get("/users/:id", async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.params.id);
-    const user = userData.get({ plain: true });
+  if (req.session.logged_in) {
+    try {
+      const userData = await User.findByPk(req.params.id);
+      const user = userData.get({ plain: true });
 
-    res.render("user", { user, logged_in: req.session.logged_in, });
-  } catch (err) {
-    res.status(500).json(err);
+      res.render("user", { user, logged_in: req.session.logged_in, });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.redirect('/login');
   }
 });
 
 //get all posts associated with a tag 
 router.get("/tags/:id", async (req, res) => {
-  try {
-    const postData = await Post.findAll({
-      where: { tag_id: req.params.id },
-    });
+  if (req.session.logged_in) {
+    try {
+      const postData = await Post.findAll({
+        where: { tag_id: req.params.id },
+      });
 
     const posts = postData.map((post) => post.get({ plain: true }));
     res.json({message: posts})
     // res.render("tag", { tag, logged_in: req.session.logged_in, });
-  } catch (err) {
-    res.status(500).json(err);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.redirect('/login');
   }
 });
 
