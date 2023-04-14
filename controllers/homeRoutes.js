@@ -85,11 +85,23 @@ router.get("/create", async (req, res) => {
 // find a specific user 
 router.get("/users/:id", async (req, res) => {
   if (req.session.logged_in) {
+
     try {
+      const postData = await Post.findAll({
+        where: {
+          user_id: req.params.id,
+        },
+      });
       const userData = await User.findByPk(req.params.id);
       const user = userData.get({ plain: true });
-
-      res.render("user", { user, logged_in: req.session.logged_in, });
+      // checks that there is a user with the requested id 
+      if (!userData) {
+        res.status(404).json({ message: "No user found!" });
+        return;
+      }
+      const posts = postData.map((post) => post.get({ plain: true }));
+      // renders their account
+      res.render("user", { user, posts, logged_in: req.session.logged_in});
     } catch (err) {
       res.status(500).json(err);
     }
@@ -105,10 +117,13 @@ router.get("/tags/:id", async (req, res) => {
       const postData = await Post.findAll({
         where: { tag_id: req.params.id },
       });
+      const posts = postData.map((post) => post.get({ plain: true }));
 
-    const posts = postData.map((post) => post.get({ plain: true }));
-    res.json({message: posts})
-    // res.render("tag", { tag, logged_in: req.session.logged_in, });
+      const tagData = await Tag.findByPk(req.params.id);
+      const tag = tagData.get({ plain: true });
+
+
+      res.render("tag", { tag, posts, logged_in: req.session.logged_in, });
     } catch (err) {
       res.status(500).json(err);
     }

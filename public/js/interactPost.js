@@ -61,7 +61,7 @@ const createCommentHandler = async (event) => {
         
           // if response was ok, brings user to login page.
           if (response.ok) {
-            window.location.replace(`/`);
+            location.reload()
           } else {
             alert('Could not update user. Try again!');
           }
