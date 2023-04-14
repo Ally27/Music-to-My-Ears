@@ -31,7 +31,7 @@
 
 <body>
   <div class="flex-column justify-space-around min-h-screen relative">
-    <header class="display-flex align-center p-2">
+    <header class="display-flex align-center p-2 w-auto">
       <span class="logo flex-grow ml-0"><a href="/"><img src="/images/webpageLogo.png"
             class="webpageLogo w-90 h-20 animate__animated animate__backInRight"></a></span>
 
@@ -43,7 +43,7 @@
         <li><a href="/account">Account</a></li>
         {{!-- <li><a href="/community">Community</a></li> --}}
         <div class="search-container mr-20 pl-10">
-          <input id="searchbar" class="rounded" />
+          <input id="searchbar" class="rounded ml-2" placeholder="Search for a post..."/>
           <button class="btn" id="searchbtn"><i class="fa fa-search float-left"></i></button>
         </div>
         {{#unless logged_in}}
@@ -61,8 +61,8 @@
     <div class="main-content">
       {{{ body }}}
     </div>
-    <footer class="bottom-0 w-full text-black text-xl text-center py-4">
-      <button class="contact-us"><a href="/contact">Contact Us</a></button>
+    <footer class="bottom-0 w-full text-black text-xl text-center py-4 hover:text-pink-600">
+      <button class="contact-us"><i class="fa fa-solid fa-envelope animate-bounce mr-4"></i><a href="/contact">Contact Us</a></button>
     </footer>
     {{!-- If the user is logged in, load the JS script for when they logout --}}
     {{#if logged_in}}

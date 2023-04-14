@@ -2,14 +2,14 @@
 
 <div class="grid grid-cols-12 gap-4 w-11/12 mx-auto flex-row">
   <div class="col-span-6">
-    <div class="box-container main-border border-black border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
+    <div class="box-container main-border border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
       <h4 class="text-3xl font-bold mb-4">{{post.title}}</h4>
       <h3 class="font-bold">{{post.content}}</h3>
       <small>{{post.user.name}}</small>
     </div>
 
     <!-- move the comment form box here -->
-    <div id="interact_box" class="box-container main-border border-black border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
+    <div id="interact_box" class="box-container main-border border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
       <h4 class="text-xl font-bold mb-2">Leave a Comment:</h4>
       <form class="commentbox">
         <textarea class="commentbox w-full h-24 border-2 rounded-lg resize-none" placeholder="Type your comment here"></textarea>
@@ -18,7 +18,7 @@
     </div>
 
     <!-- move the comments section here -->
-    <div id="comments-section" class="box-container main-border border-black border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
+    <div id="comments-section" class="box-container main-border border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
       <h4 class="text-xl font-bold mb-2">Comments:</h4>
       {{#each comments as | comment | }}
       <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
@@ -32,16 +32,16 @@
   </div>
 
   <div class="col-span-6">
-    <div class="mt-2 p-4 main-border border-black border-pink-500">
+    <div class="mt-2 p-4 main-border border-pink-500">
       <h4 class="text-xl font-bold mb-2">Tracks:</h4>
       {{#each tracks as |track| }}
       <a href="{{track.exLink}}" target="_blank">
         <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
-          <div class="cd-case pr-6">
-            <div class="album-art">
+          <div class="trackCd-case pr-6">
+            <div class="trackAlbum-art">
               <img src="{{track.img}}"/>
             </div>
-            <div class="spine"></div>
+            <div class="trackSpine"></div>
           </div>
           <div class="mt-2">
             <h3 class="text-lg font-bold">{{track.title}}</h3>
