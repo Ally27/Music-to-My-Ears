@@ -1,32 +1,70 @@
 [
   {
-    "name": "HipHop"
-  },
-  {
+    "id": 1,
     "name": "Pop"
   },
   {
-    "name": "Country"
+    "id": 2,
+    "name": "Dance Pop"
   },
   {
+    "id": 3,
+    "name": "Rap"
+  },
+  {
+    "id": 4,
     "name": "Rock"
   },
   {
-    "name": "Chill"
+    "id": 5,
+    "name": "Latin"
   },
   {
-    "name": "Jazz"
+    "id": 6,
+    "name": "Hip Hop"
   },
   {
-    "name": "Lofi"
+    "id": 7,
+    "name": "Trap"
   },
   {
+    "id": 8,
     "name": "R&B"
   },
   {
+    "id": 9,
     "name": "Blues"
   },
   {
+    "id": 10,
     "name": "Indie"
+  },
+  {
+    "id": 11,
+    "name": "EDM"
+  },
+  {
+    "id": 12,
+    "name": "Chill"
+  },
+  {
+    "id": 13,
+    "name": "Electropop"
+  },
+  {
+    "id": 14,
+    "name": "HyperPop"
+  },
+  {
+    "id": 15,
+    "name": "Alternative"
+  },
+  {
+    "id": 16,
+    "name": "Metal"
+  },
+  {
+    "id": 17,
+    "name": "Country"
   }
 ]

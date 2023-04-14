@@ -1,26 +1,6 @@
 [
   {
-    "name": "Allyson",
-    "email": "allyson@gmail.com",
-    "password": "bootcamp"
-  },
-  {
-    "name": "Marley",
-    "email": "marley@gmail.com",
-    "password": "bootcamp"
-  },
-  {
-    "name": "Terri",
-    "email": "terri@gmail.com",
-    "password": "bootcamp"
-  },
-  {
-    "name": "Tyler",
-    "email": "tyler@gmail.com",
-    "password": "bootcamp"
-  },
-  {
-    "name": "Test",
+    "name": "TestUser",
     "email": "test@gmail.com",
     "password": "bootcamp", 
     "bio": "I am a test user. beep boop boop",
