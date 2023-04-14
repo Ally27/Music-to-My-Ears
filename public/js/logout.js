@@ -1,4 +1,4 @@
-const userId = sessionStorage.getItem('user_id')
+var userId = sessionStorage.getItem('user_id')
 const string = "blank"
 
 const logout = async () => {

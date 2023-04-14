@@ -3,7 +3,7 @@
 <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row mt-4 px-4">
   <div class="col-span-7">
     <h4 class="text-xl font-bold mb-2">Trending playlists</h4>
-    <div class="main-border mt-2">
+    <div class="main-border mt-2 " id="trending_playlists">
       {{#each posts as |post| }}
       
       <div class="primary-container flex gap-4 mt-2 ml-2 mr-2 mb-2">
@@ -19,7 +19,6 @@
 
         <div class="postText-container mt-6">
           <h3 class="text-lg font-bold">{{post.title}}</h3>
-          </a>
           <span>{{post.content}}</span>
           <br />
           <small>Post created on {{formatDate post.createdAt}}</small>
@@ -30,14 +29,16 @@
           <button class="heart-btn bg-pink-500 text-white py-1 px-2 rounded-lg text-xs">
           <i class="fa fa-heart"></i>
           <span class="icon">Love</span>
-          </button>
+          </button> 
+          <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mt-2 text-xs" type="submit" data="{{post.id}}">Go to Post</button>
+
           {{!-- heart button end --}}
 
           <div class="box-container mt-2 border border-black">
             <div class="box p-4">
-              <form>
-                <textarea class="w-full h-24 border-2 rounded-lg resize-none" placeholder="Type your comment here"></textarea>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" type="submit">Post Comment</button>
+              <form class="commentbox">
+                <textarea class="commentbox w-full h-24 border-2 rounded-lg resize-none" placeholder="Type your comment here"></textarea>
+                <button class="commentbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" type="submit" data="{{post.id}}">Post Comment</button>
               </form>
             </div>
           </div>
@@ -64,3 +65,4 @@
 
 
   <script src="/js/animation.js"></script>
+    <script src="/js/addcomment.js"></script>
