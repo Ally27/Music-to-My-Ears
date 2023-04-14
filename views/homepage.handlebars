@@ -20,8 +20,7 @@
 
           <div class="postText-container mt-6">
             <h3 class="text-lg font-bold">{{post.title}}</h3>
-            </a>
-            <span>{{post.content}}</span>
+              <span>{{post.content}}</span>
             <br />
             <small>Post created on {{formatDate post.createdAt}}</small>
             <small><i>{{post.post_type}}</i></small>
@@ -32,18 +31,20 @@
             <button class="heart-btn bg-pink-500 hover:bg-pink-600 text-white py-1 px-2 rounded-lg text-xs">
               <i class="fa fa-heart"></i>
               <span class="icon">Love</span>
-            </button>
-            {{!-- heart button end --}}
+            </button> 
+            <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mt-2 text-xs" type="submit" data="{{post.id}}">Go to Post</button>
+
+          {{!-- heart button end --}}
           </div>
         </div>
 
         <div class="box-container border border-pink-600 mt-2 bg-pink-100 rounded-lg p-4">
           <div class="box p-4">
-            <form>
-              <textarea class="w-full h-24 border-2 rounded-lg resize-none"
+            <form class="commentbox">
+              <textarea class="commentbox w-full h-24 border-2 rounded-lg resize-none"
                 placeholder="Type your comment here"></textarea>
-              <button class="post-btn bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                type="submit">Post Comment</button>
+              <button class="post-btn commentbtn bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                type="submit" data="{{post.id}}">Post Comment</button>
             </form>
           </div>
         </div>
@@ -71,3 +72,4 @@
 
 
   <script src="/js/animation.js"></script>
+    <script src="/js/addcomment.js"></script>

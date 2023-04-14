@@ -6,20 +6,19 @@ const axios = require("axios");
 // base route. shows all posts.
 //////// WANT TO CHANGE it to top 10 playlists wiith most upvotes.
 router.get('/', async (req, res) => {
+  
   try {
     const postData = await Post.findAll();
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    // render homepage.handlebars
-    res.render('homepage', {
-      posts,
-      // Pass the logged in flag to the template
-      logged_in: req.session.logged_in,
-    });
+
+    // Render homepage.handlebars with the logged_in flag
+    res.render('homepage', { posts, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 // route for login page 
 router.get("/login", (req, res) => {

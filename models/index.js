@@ -14,6 +14,17 @@ Post.belongsTo(User, {
     foreignKey: 'user_id',
   });
 
+User.hasMany(Comment, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+  });
+  
+// A post belongs to a single user
+Comment.belongsTo(User, {
+    foreignKey: 'user_id',
+  });
+
+
 // A tag can have many post
 Tag.hasMany(Post, {
     foreignKey: 'tag_id'

@@ -18,7 +18,16 @@
     "name": "Tyler",
     "email": "tyler@gmail.com",
     "password": "bootcamp"
+  },
+  {
+    "name": "Test",
+    "email": "test@gmail.com",
+    "password": "bootcamp", 
+    "bio": "I am a test user. beep boop boop",
+    "location": "In the computer",
+    "facebook": "facebook.com",
+    "twitter": "twitter.com",
+    "instagram": "instagram.com"
   }
-
 
 ]
