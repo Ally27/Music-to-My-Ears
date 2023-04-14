@@ -36,7 +36,7 @@
             class="webpageLogo w-90 h-20 animate__animated animate__backInRight"></a></span>
 
     </header>
-    <div class="navbar text-center mx-auto">
+    <div class="navbar text-center mx-auto sticky">
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/create">Create</a></li>
@@ -48,12 +48,12 @@
         </div>
         {{#unless logged_in}}
         <button>
-          <a href="/login" class="loginbtn mr-28 text-xl">Login</a>
+         <a href="/login" class="loginbtn mr-28 text-xl">Login</a>
         </button>
 
         {{/unless}}
         {{#if logged_in}}
-        <button class="btn" id="logout">Logout</button>
+         <li><a><button class="btn " id="logout">Logout</button></a></li>
         {{/if}}
       </ul>
 

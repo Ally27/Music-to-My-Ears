@@ -266,6 +266,13 @@ h2 {
     background: url("/images/instagramLogo.svg") center / contain no-repeat;
 }
 
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
 .tag {
     background: white;
     border-radius: 3px 0 0 3px;
