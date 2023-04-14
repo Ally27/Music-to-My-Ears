@@ -4,6 +4,20 @@ const {Post, Comment, User } = require("../models");
 // const queryString = require("node:querystring");
 const axios = require("axios");
 
+router.get("/", async (req, res) => {
+  
+  try { 
+    const postData = await Post.findAll();
+    const posts = postData.map((post) => post.get({ plain: true }));
+    
+
+    // Render homepage.handlebars with the logged_in flag
+    res.render('posts', { posts, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 // handles all data management/api calls dealing with displaying a post's data 
 router.get("/:id", async (req, res) => {
   try {
