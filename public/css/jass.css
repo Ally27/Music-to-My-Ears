@@ -218,7 +218,6 @@ h2 {
     background: url("/images/twitterLogo.svg") center / contain no-repeat;
 }
 
-
 .instagram-link {
     position: relative;
 }
@@ -231,4 +230,38 @@ h2 {
     bottom: 0;
     width: 20px;
     background: url("/images/instagramLogo.svg") center / contain no-repeat;
+}
+
+.tag {
+    background: white;
+    border-radius: 3px 0 0 3px;
+    color: #999;
+    display: inline-block;
+    height: auto;
+    line-height: 26px;
+    padding: 0 20px 0 10px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+}
+
+.tag::after {
+    background: #fff;
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid #eee;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tag:hover {
+    background-color: rgb(231, 56, 85);
+    color: white;
+}
+
+.tag:hover::after {
+    border-left-color: rgb(231, 56, 85);
 }
