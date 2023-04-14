@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {Post } = require("../models");
+const {Post, Comment, User } = require("../models");
 
 // const queryString = require("node:querystring");
 const axios = require("axios");
@@ -7,9 +7,20 @@ const axios = require("axios");
 // handles all data management/api calls dealing with displaying a post's data 
 router.get("/:id", async (req, res) => {
   try {
-    // gets all data for a post with specifed id 
-    const postData = await Post.findByPk(req.params.id);
+    // gets all comments for a post with specifed id 
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{ model: User, attributes: ['name'] }]
+    });
     const post = postData.get({ plain: true });
+
+    const commentData = await Comment.findAll({
+      where: { post_id: req.params.id},
+      include: [{ model: User, attributes: ['name'] }]
+    });
+
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+    
     // gets spotify key from post data and access token from session storage 
     const spotifyKey = post.spotify_id
     const access_token = req.session.access_token
@@ -40,7 +51,9 @@ router.get("/:id", async (req, res) => {
     }
 
   // tracks array used to render on post.handlebars with specific information we want 
-  res.render("post", { post, tracks, logged_in: req.session.logged_in, });
+  res.render("post", { post, tracks, comments, logged_in: req.session.logged_in, });
+
+  // res.json({message: post})
     
   } catch (err) {
     res.status(500).json(err);

@@ -1,22 +1,17 @@
 [
   {
-    "content": "New Comment",
-    "post_id": 1
+    "content": "I also love beyonce! I can't wait to go see her in concert this september",
+    "post_id": 2,
+    "user_id": 4
   },
   {
-    "content": "New Comment",
-    "post_id": 2
+    "content": "Before I let go is an underrated banger",
+    "post_id": 2,
+    "user_id": 2
   },
   {
-    "content": "New Comment",
-    "post_id": 1
-  },
-  {
-    "content": "New Comment",
-    "post_id": 1
-  },
-  {
-    "content": "New Comment",
-    "post_id": 1
+    "content": "You and your bestie have great taste!",
+    "post_id": 1,
+    "user_id": 2
   }
 ]
