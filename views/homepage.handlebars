@@ -26,14 +26,13 @@
             <small><i>{{post.post_type}}</i></small>
             <br>
 
-            {{!-- heart button. Like and unlike --}}
-            <button class="heart-btn bg-pink-500 hover:bg-pink-600 text-white py-1 px-2 rounded-lg text-xs">
-              <i class="fa fa-heart"></i>
-              <span class="icon">Love</span>
-            </button> 
-            <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs" type="submit" data="{{post.id}}">Go to Post</button>
-
-          {{!-- heart button end --}}
+{{!-- heart button. Like and unlike --}}
+          <button id={{post.id}} class="heart-btn bg-pink-500 text-white py-1 px-2 rounded-lg text-xs">
+            <i class="fa fa-heart"></i>
+            <span data="{{post.id}}" class="counter-display"> {{post.upvotes}} </span><span class="icon"> Love </span>
+          </button>
+        {{!-- heart button end --}}            
+        <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs" type="submit" data="{{post.id}}">Go to Post</button>
           </div>
         </div>
 
