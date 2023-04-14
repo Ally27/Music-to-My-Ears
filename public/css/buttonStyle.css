@@ -120,3 +120,18 @@ button:focus::after {
 }
 
 #dropdown {}
+
+/* search button */
+#searchbar {
+    border-radius: 30px;
+    padding: 10px;
+    margin-bottom: auto;
+    margin-top: 30px;
+    margin-right: 100px;
+    height: 40px;
+}
+
+.fa-search {
+    font-size: 20px;
+    margin-right: 50px;
+}
