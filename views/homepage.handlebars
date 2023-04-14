@@ -58,11 +58,19 @@
     <h2 class="text-xl font-bold mb-6">Post Tags</h2>
     <div class="border border-pink-600 mt-2 h-64 bg-pink-100 rounded-lg p-4">
       <h4 class="text-lg font-bold mb-2 text-pink-800">Click on these Tags to View Posts Related to Topics:</h4>
-      <p class="text-pink-600">#Rap, #Rock, #Indie, #Alternative</p>
+      <p class="text-pink-600 text-xl">
+        {{#each tags as |tag|}}
+        <a href="/tags/{{tag.id}}"><class="">#</class>{{tag.name}}</a>
+        {{/each}}
+      </p>
     </div>
     <h4 class="text-lg font-bold mb-6 mt-4">Recent Activity</h4>
     <div class="border border-pink-600 mt-2 h-64 bg-pink-100 rounded-lg p-4">
-      <p class="text-pink-600">Content</p>
+      {{#each newposts as |newpost|}}
+      <a href="/posts/{{newpost.id}}"><p class="text-pink-600">{{newpost.title}}</p>
+      <small>{{newpost.user}}</small>
+      {{/each}}
+      </a>
     </div>
   </div>
 
