@@ -104,12 +104,19 @@ button:focus::after {
     min-height: 60px;
 }
 
+/* sign up */
 .signup-btnText:hover {
     color: var(--statement-color);
 }
 
+/* forgot */
 .forgot-btn:hover {
     color: var(--statement-color);
+}
+
+/* post */
+.post-btn {
+    justify-content: center;
 }
 
 #dropdown {}
