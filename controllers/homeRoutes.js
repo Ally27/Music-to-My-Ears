@@ -6,6 +6,13 @@ const axios = require("axios");
 // base route. shows all posts.
 //////// WANT TO CHANGE it to top 10 playlists wiith most upvotes.
 router.get('/', async (req, res) => {
+  const access_token = req.session.access_token
+  if (!access_token){
+    req.session.destroy(() => {
+      res.status(204).json({ message: "You are now logged out" });
+    });
+  } 
+
   if (req.session.logged_in) {
 
     try {
@@ -24,7 +31,6 @@ router.get('/', async (req, res) => {
       const posts = postsArr.slice(0,10)
       const tags = tagData.map((tag) => tag.get({ plain: true }));
       const access_token = req.session.access_token
-      let spotify_id = [];
 
       for (let i = 0; i < posts.length; i++) {
         const current_id = posts[i].spotify_id;
@@ -74,7 +80,7 @@ router.get("/users", async (req, res) => {
     try {
       const userData = await User.findAll();
       const users = userData.map((user) => user.get({ plain: true }));
-
+      
       res.render("users", { users, logged_in: req.session.logged_in, });
     } catch (err) {
       res.status(500).json(err);
@@ -106,6 +112,14 @@ router.get("/create", async (req, res) => {
 
 // find a specific user 
 router.get("/users/:id", async (req, res) => {
+
+  const access_token = req.session.access_token
+  if (!access_token){
+    req.session.destroy(() => {
+      res.status(204).json({ message: "You are now logged out" });
+    });
+  } 
+
   if (req.session.logged_in) {
 
     try {
@@ -115,12 +129,30 @@ router.get("/users/:id", async (req, res) => {
         },
       });
       const userData = await User.findByPk(req.params.id);
-      const user = userData.get({ plain: true });
+    
       // checks that there is a user with the requested id 
       if ( req.session.user_id === req.params.id ){
         res.render("account", { user, posts, logged_in: req.session.logged_in});
       }
+
       const posts = postData.map((post) => post.get({ plain: true }));
+      const user = userData.get({ plain: true });
+
+      for (let i = 0; i < posts.length; i++) {
+        const current_id = posts[i].spotify_id;
+        const rawData = await axios.get(
+          `https://api.spotify.com/v1/playlists/${current_id}`,
+    
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`
+            },
+          });
+          const cover_img = rawData.data.images[0].url
+        posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+      }
+
+      
       // renders their account
       res.render("user", { user, posts, logged_in: req.session.logged_in});
     } catch (err) {
@@ -133,6 +165,13 @@ router.get("/users/:id", async (req, res) => {
 
 //get all posts associated with a tag 
 router.get("/tags/:id", async (req, res) => {
+  const access_token = req.session.access_token
+  if (!access_token){
+    req.session.destroy(() => {
+      res.status(204).json({ message: "You are now logged out" });
+    });
+  } 
+
   if (req.session.logged_in) {
     try {
       const postData = await Post.findAll({
@@ -141,6 +180,21 @@ router.get("/tags/:id", async (req, res) => {
       const posts = postData.map((post) => post.get({ plain: true }));
       const tagData = await Tag.findByPk(req.params.id);
       const tag = tagData.get({ plain: true });
+
+      for (let i = 0; i < posts.length; i++) {
+        const current_id = posts[i].spotify_id;
+        const rawData = await axios.get(
+          `https://api.spotify.com/v1/playlists/${current_id}`,
+    
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`
+            },
+          });
+          const cover_img = rawData.data.images[0].url
+        posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+      }
+
 
       res.render("tag", { tag, posts, logged_in: req.session.logged_in, });
     } catch (err) {
@@ -153,23 +207,47 @@ router.get("/tags/:id", async (req, res) => {
 
 // gets user_id from session storage and displays user's profile. has information about user and a list of all of their posts 
 router.get('/account', async (req, res) => {
+  const access_token = req.session.access_token
+  if (!access_token){
+    req.session.destroy(() => {
+      res.status(204).json({ message: "You are now logged out" });
+    });
+  } 
+
+
   // if user is logged in, redirect to their profile
   if (req.session.logged_in) {
-
     try {
-      const postData = await Post.findAll({
-        where: {
-          user_id: req.session.user_id,
-        },
-      });
       const userData = await User.findByPk(req.session.user_id);
-      const user = userData.get({ plain: true });
+
       // checks that there is a user with the requested id 
       if (!userData) {
         res.status(404).json({ message: "You don't have an account!" });
         return;
       }
+      
+      const postData = await Post.findAll({
+        where: {
+          user_id: req.session.user_id,
+        },
+      });
+
+      const user = userData.get({ plain: true });
       const posts = postData.map((post) => post.get({ plain: true }));
+      
+      for (let i = 0; i < posts.length; i++) {
+        const current_id = posts[i].spotify_id;
+        const rawData = await axios.get(
+          `https://api.spotify.com/v1/playlists/${current_id}`,
+    
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`
+            },
+          });
+          const cover_img = rawData.data.images[0].url
+        posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+      }
       // renders their account
       res.render("account", { user, posts, logged_in: req.session.logged_in});
     } catch (err) {
