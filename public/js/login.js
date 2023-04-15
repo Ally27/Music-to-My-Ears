@@ -24,7 +24,7 @@ const loginFormHandler = async (event) => {
       const uri_heroku = "https%3A%2F%2Fmusic-to-my-ears1.herokuapp.com%2Fauth"
      
 
-      window.location.href = `https://accounts.spotify.com/authorize?client_id=44dd607d18f74af59288c28ecbb77a63&response_type=code&redirect_uri=${uri_heroku}&scope=user-top-read`;
+      window.location.href = `https://accounts.spotify.com/authorize?client_id=44dd607d18f74af59288c28ecbb77a63&response_type=code&redirect_uri=${uri_local}&scope=user-top-read`;
     } else {
       alert('Failed to log in');
     }
