@@ -1,7 +1,7 @@
 {{!< layout}} <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row mt-4 px-4">
   {{!-- left side --}}
   <div class="col-span-7">
-    <h4 class="trending-title text-xl font-bold mb-6"><i class="fa fa-brands fa-spotif"></i>Trending playlists</h4>
+    <h4 class="text-center text-3xl font-extrabold text-pink-800 mb-6"></i>Trending playlists</h4>
     <div class="main-border mt-2 " id="interact_box">
       {{#each posts as |post| }}
 
@@ -18,10 +18,10 @@
           {{!-- cd end --}}
 
           <div class="postText-container mt-1 ml-10 w-auto h-auto">
-            <h3 class="text-lg font-bold underline">{{post.title}}</h3>
-            <span>{{post.content}}</span>
+            <h3 class="text-xl font-bold underline">{{post.title}}</h3>
+            <span class="text-sm">{{post.content}}</span>
             <br />
-            <small>Post created on {{formatDate post.createdAt}}</small>
+            <small class="text-pink-800 text-xs font-bold">Post created on {{formatDate post.createdAt}}</small>
             <small><i>{{post.post_type}}</i></small>
             <br>
 
@@ -42,7 +42,7 @@
         <div class="box-container border border-pink-600 mt-2 bg-pink-100 rounded-lg p-2">
           <div class="box p-2">
             <form class="commentbox">
-              <textarea class="commentbox w-full h-10 border-2 rounded-lg resize-none" style="text-indent: 20px"
+              <textarea class="commentbox w-full h-10 border-2 rounded-lg resize-none" style="text-indent: 10px"
                 placeholder="Type your comment here"></textarea>
               <button
                 class="post-btn commentbtn bg-pink-500 hover:bg-pink-600 text-white text-xs font-medium py-2 px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
@@ -58,7 +58,7 @@
   </div>
   {{!-- right side --}}
   <div class="col-span-5 ml-4">
-    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Post Tags</h2>
+    <h2 class="text-center text-2xl font-bold text-pink-800 mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Post Tags</h2>
     <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
       <h4 class="text-lg font-bold text-pink-800 mb-6">Click on these Tags to View Posts Related to Topics:</h4>
       <p class="text-pink-600 text-xl">
@@ -69,7 +69,7 @@
         {{/each}}
       </p>
     </div>
-    <h4 class="text-lg font-bold mb-6 mt-4"><i class=" fa fa-solid fa-book-open mr-2"></i>Recent Activity</h4>
+    <h4 class="text-center text-2xl font-bold text-pink-800 mb-6 mt-6"><i class=" fa fa-solid fa-book-open mr-2"></i>Recent Activity</h4>
     <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
       {{#each newposts as |newpost|}}
       <a href="/posts/{{newpost.id}}">
