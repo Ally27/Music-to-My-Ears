@@ -14,11 +14,12 @@ router.get("/", async (req, res) => {
         include: [{ model: User, attributes: ['name'] }]
       });
       const newpostsArr = newpostData.map((newpost) => newpost.get({ plain: true }));
-      const newposts = newpostsArr.slice(0,8)
+      const newposts = newpostsArr.slice(0,5)
 
     const commentData = await Comment.findAll({
       order: [['id', 'DESC']],
-      include: [{ model: User, attributes: ['name'] }]
+      include: [{ model: User, attributes: ['name'] },
+      { model: Post, attributes: ['id'] }]
     });
     const commentsArr = commentData.map((comment) => comment.get({ plain: true }));
     const comments = commentsArr.slice(0,8);
