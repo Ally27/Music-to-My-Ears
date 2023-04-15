@@ -1,7 +1,7 @@
 {{!< layout}} <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto">
   <div id="interact_box"class="col-span-7">
     <br />
-    <h4 class="text-xl font-bold mb-2">{{user.name}}'s Posts:</h4>
+    <h4 class="text-xl font-bold mb-4">{{user.name}}'s Posts:</h4>
     <div class="main-border mt-2">
       {{#each posts as |post| }}
       <div class="primary-container flex gap-4 mt-2 ml-2 mr-2 mb-2">
@@ -14,16 +14,16 @@
         </div>
         {{!-- cd end --}}
         <div class="postText-container mt-2">
-          <h3 class="text-lg font-bold">{{post.title}}</h3>
+          <h3 class="text-lg font-bold underline">{{post.title}}</h3>
           <span>{{post.content}}</span>
           <br />
           <small>Post created on {{formatDate post.createdAt}}</small>
           <br />
-          <span><button class="likebtn heart-btn bg-pink-500 text-white py-1 px-2 rounded-lg text-xs" type="submit" data="{{post.id}}" data-count="{{post.upvotes}}" >
+          <span><button class="likebtn heart-btn bg-pink-500 text-white py-1 px-2 rounded-lg text-xs mb-2" type="submit" data="{{post.id}}" data-count="{{post.upvotes}}" >
             <i class="fa fa-heart"></i>
             {{post.upvotes}} upvotes 
           </button></span>
-           <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs" type="submit" data="{{post.id}}">
+           <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs mb-2" type="submit" data="{{post.id}}">
             Go to Post
           </button>
         </div>
