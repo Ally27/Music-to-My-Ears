@@ -22,22 +22,13 @@ html {
 
 header {
     background: linear-gradient(#B388EB, #FF85D4);
-    color: black;
     border: 2px solid var(--accent-color);
     border-radius: 10px;
 }
 
-header .logo {
-    font-size: 30px;
-}
-
-header a {
-    text-decoration: none;
-}
-
-header .right {
-    float: right;
-    margin-top: 12px;
+.webpageLogo {
+    margin-left: 75px;
+    height: 150px;
 }
 
 .navbar {
@@ -107,13 +98,6 @@ footer .contact-us {
     margin-right: 40px;
 }
 
-/* header */
-.webpageLogo {
-    margin-left: 100px;
-    padding: 0;
-    height: 150px;
-}
-
 /* border styling */
 /* outer border */
 .main-border {
@@ -125,14 +109,6 @@ footer .contact-us {
 .primary-container {
     border: 2px solid var(--dark-color);
     border-radius: 10px;
-}
-
-h4 {
-    text-align: center;
-}
-
-h2 {
-    text-align: center;
 }
 
 /* cd case decor */
@@ -305,3 +281,4 @@ h2 {
 .tag:hover::after {
     border-left-color: rgb(231, 56, 85);
 }
+
