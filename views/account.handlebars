@@ -14,7 +14,7 @@
         </div>
         {{!-- cd end --}}
         <div class="postText-container mt-2">
-          <h3 class="text-lg font-bold">{{post.title}}</h3>
+          <h3 class="text-lg font-bold underline">{{post.title}}</h3>
           <span>{{post.content}}</span>
           <br />
           <small>Post created on {{formatDate post.createdAt}}</small>
@@ -23,7 +23,7 @@
             <i class="fa fa-heart"></i>
             {{post.upvotes}} upvotes 
           </button></span>
-           <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs" type="submit" data="{{post.id}}">
+           <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 mb-2 rounded text-xs" type="submit" data="{{post.id}}">
             Go to Post
           </button>
         </div>
