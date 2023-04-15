@@ -96,9 +96,8 @@ router.get("/users/:id", async (req, res) => {
       const userData = await User.findByPk(req.params.id);
       const user = userData.get({ plain: true });
       // checks that there is a user with the requested id 
-      if (!userData) {
-        res.status(404).json({ message: "No user found!" });
-        return;
+      if ( req.session.user_id === req.params.id ){
+        res.render("account", { user, posts, logged_in: req.session.logged_in});
       }
       const posts = postData.map((post) => post.get({ plain: true }));
       // renders their account
@@ -119,10 +118,8 @@ router.get("/tags/:id", async (req, res) => {
         where: { tag_id: req.params.id },
       });
       const posts = postData.map((post) => post.get({ plain: true }));
-
       const tagData = await Tag.findByPk(req.params.id);
       const tag = tagData.get({ plain: true });
-
 
       res.render("tag", { tag, posts, logged_in: req.session.logged_in, });
     } catch (err) {
@@ -200,11 +197,6 @@ router.get('/contact', async (req, res) => {
   res.render('contact');
 });
 
-// Route to display community bio page
-router.get('/community', async (req, res) => {
-  res.render('community');
-});
-
 // spotify authentificiation route to get access_token 
 router.get('/auth', async (req, res) => {
   // uses .env variables to make api post to spotify and get access_token back
@@ -253,10 +245,5 @@ router.get('/auth', async (req, res) => {
   }
 
 });
-
-router.get('/community', async (req, res) => {
-  res.render('community');
-});
-
 
 module.exports = router;

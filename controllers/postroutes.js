@@ -27,6 +27,8 @@ router.get("/:id", async (req, res) => {
     });
     const post = postData.get({ plain: true });
 
+    // json.res({message: post})
+
     const commentData = await Comment.findAll({
       where: { post_id: req.params.id},
       include: [{ model: User, attributes: ['name'] }]
@@ -63,6 +65,8 @@ router.get("/:id", async (req, res) => {
       const img = data.items[i].track.album.images[0].url
       tracks.push({ artist,title,exLink,img})
     }
+
+    console.log(tracks.length)
 
   // tracks array used to render on post.handlebars with specific information we want 
   res.render("post", { post, tracks, comments, logged_in: req.session.logged_in, });

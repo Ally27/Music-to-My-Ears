@@ -281,7 +281,7 @@ h2 {
     height: auto;
     line-height: 26px;
     padding: 0 20px 0 10px;
-    position: relative;
+    /* position: relative; */
     margin: 0 10px 10px 0;
     text-decoration: none;
     -webkit-transition: color 0.2s;
