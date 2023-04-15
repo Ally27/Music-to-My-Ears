@@ -13,17 +13,17 @@
           <div class="spine"></div>
         </div>
         {{!-- cd end --}}
-        <div class="postText-container mt-2">
-          <h3 class="text-lg font-bold">{{post.title}}</h3>
-          <span>{{post.content}}</span>
+        <div class="postText-container border-pink-500 rounded-lg pr-4 pl-4 bg-pink-100">
+          <h3 class="text-xl font-bold underline">{{post.title}}</h3>
+          <span class="text-sm">{{post.content}}</span>
           <br />
-          <small>Post created on {{formatDate post.createdAt}}</small>
+          <small class="text-pink-800 text-xs font-bold">Post created on {{formatDate post.createdAt}}</small>
           <br />
           <span><button class="likebtn heart-btn bg-pink-500 text-white py-1 px-2 rounded-lg text-xs" type="submit" data="{{post.id}}" data-count="{{post.upvotes}}" >
             <i class="fa fa-heart"></i>
             {{post.upvotes}} upvotes 
           </button></span>
-           <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs" type="submit" data="{{post.id}}">
+           <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 mb-2 rounded text-xs" type="submit" data="{{post.id}}">
             Go to Post
           </button>
         </div>
@@ -44,7 +44,7 @@
           <h1 class="text-gray-800 font-semibold text-xl mt-5">{{user.name}}</h1>
           <h1 class="text-gray-500 text-sm">{{user.location}}</h1>
           <h1 class="text-gray-500 text-sm p-4 text-center">{{user.bio}}</h1>
-          <a href="/account/edit" class="bg-pink-600 p-2 text-white text-xl rounded w-24 h-12"
+          <a href="/account/edit" class="bg-pink-600 hover:bg-pink-700 p-2 text-white text-xl rounded w-24 h-12"
             style="text-align:center;">Edit Bio</a>
         </div>
         <div class="flex justify-between p-4">
@@ -53,7 +53,7 @@
             <h1 class="text-sm text-yellow-500">Tags: include tags here somehow</h1>
           </div>
           <div>
-            <button class="text-xl text-pink-300 border-2 px-2 border-black"><a href="/create">Upload More</a></button>
+            <button class="text-xl text-pink-300 hover:text-pink-700"><a href="/create">Upload More</a></button>
           </div>
         </div>
         <div class="flex items-center justify-center mt-3 mb-6 flex-col">

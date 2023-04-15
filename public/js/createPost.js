@@ -30,16 +30,6 @@ const createPostHandler = async (event) => {
       const pathSplit = path.split('/')
       spotifyId = pathSplit[1];
 
-      // does a spotify api call to get the first cover album image from playlist
-      const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${spotifyId}/tracks?limit=25`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${access_token}`
-        }
-      })
-      const data = await playlistResponse.json();
-      const cover_img = data.items[0].track.album.images[0].url;
-
       // creates new post using all parameters from page + cover_img from api call 
       const response = await fetch('/api/posts', {
         method: 'POST',
@@ -48,8 +38,7 @@ const createPostHandler = async (event) => {
           content: content,
           spotify_id: spotifyId,
           user_id: userId,
-          tag_id: tagId,
-          cover_img: cover_img,
+          tag_id: tagId
         }),
         headers: {
           'Content-Type': 'application/json',

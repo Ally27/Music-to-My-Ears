@@ -2,26 +2,30 @@
 
 <div class="grid grid-cols-12 gap-4 w-11/12 mx-auto flex-row">
   <div class="col-span-6">
-    <div class="box-container main-border border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
-      <h4 class="text-3xl font-bold mb-4">{{post.title}}</h4>
-      <h3 class="font-bold">{{post.content}}</h3>
-      <small>{{post.user.name}}</small>
+    <div class="box-container main-border border-pink-500 mt-2 rounded-xl p-2">
+      <h4 class="text-3xl font-bold mb-4 underline">{{post.title}}</h4>
+      <div class="sub-container bg-pink-100 border border-pink-600 rounded-lg p-2">
+        <h3 class="font-bold">{{post.content}}</h3>
+        <small>-{{post.user.name}}</small>
+      </div>
     </div>
 
     <!-- move the comment form box here -->
-    <div id="interact_box" class="box-container main-border border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
+    <div id="interact_box" class="box-container main-border border-pink-500 mt-2 rounded-lg p-2">
       <h4 class="text-xl font-bold mb-2">Leave a Comment:</h4>
-      <form class="commentbox">
-        <textarea class="commentbox w-full h-24 border-2 rounded-lg resize-none" placeholder="Type your comment here"></textarea>
+      <div class="sub-container  bg-pink-100 border border-pink-600 rounded-lg p-2">
+        <form class="commentbox">
+        <textarea class="commentbox w-full h-24 border-2 rounded-lg resize-none" style="text-indent: 20px" placeholder="Type your comment here"></textarea>
         <button class="commentbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" type="submit" data="{{post.id}}">Post Comment</button>
-      </form>
+        </form>
+      </div>
     </div>
 
     <!-- move the comments section here -->
-    <div id="comments-section" class="box-container main-border border-pink-500 mt-2 bg-pink-100 rounded-lg p-2">
+    <div id="comments-section" class="box-container main-border border-pink-500 mt-2 rounded-lg p-2">
       <h4 class="text-xl font-bold mb-2">Comments:</h4>
       {{#each comments as | comment | }}
-      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+      <div class="flex gap-4 border border-black m-2 p-2  bg-pink-100">
         <div class="mt-2">
           <p>{{comment.content}}</p>
           <small>{{comment.user.name}}</small>
@@ -33,23 +37,25 @@
 
   <div class="col-span-6">
     <div class="mt-2 p-4 main-border border-pink-500">
+      <div class="sub-container border border-pink-600 rounded-xl">
       <h4 class="text-xl font-bold mb-2">Tracks:</h4>
       {{#each tracks as |track| }}
       <a href="{{track.exLink}}" target="_blank">
-        <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
-          <div class="trackCd-case pr-6">
-            <div class="trackAlbum-art">
-              <img src="{{track.img}}"/>
+          <div class="flex gap-4 border border-black m-2 p-1 rounded-lg">
+            <div class="trackCd-case pr-6">
+              <div class="trackAlbum-art">
+               <img src="{{track.img}}"/>
+              </div>
+             <div class="trackSpine"></div>
             </div>
-            <div class="trackSpine"></div>
+            <div class="border-pink-500 rounded-lg pr-4 pl-4 bg-pink-100">
+              <h3 class="text-lg font-bold underline">{{track.title}}</h3>
+              <small>{{track.artist}}</small>
+            </div>
           </div>
-          <div class="mt-2">
-            <h3 class="text-lg font-bold">{{track.title}}</h3>
-            <small>{{track.artist}}</small>
-          </div>
-        </div>
-      </a>
-      {{/each}}
+        </a>
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>
