@@ -9,24 +9,45 @@ router.get('/', async (req, res) => {
   if (req.session.logged_in) {
 
     try {
-      const postData = await Post.findAll({
-        order: [['upvotes', 'DESC']]
-      });
-      const posts = postData.map((post) => post.get({ plain: true }));
+
       const newpostData = await Post.findAll({
         order: [['id', 'DESC']],
         include: [{ model: User, attributes: ['name'] }]
       });
-      const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
+      const postData = await Post.findAll({
+        order: [['upvotes', 'DESC']]
+      });
       const tagData = await Tag.findAll();
+
+      const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
+      const postsArr = postData.map((post) => post.get({ plain: true }));
+      const posts = postsArr.slice(0,10)
       const tags = tagData.map((tag) => tag.get({ plain: true }));
+      const access_token = req.session.access_token
+      let spotify_id = [];
 
+      for (let i = 0; i < posts.length; i++) {
+        const current_id = posts[i].spotify_id;
+        const rawData = await axios.get(
+          `https://api.spotify.com/v1/playlists/${current_id}`,
+    
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`
+            },
+          });
+          const cover_img = rawData.data.images[0].url
+        posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+      }
 
+  
       // Render homepage.handlebars with the logged_in flag
       res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
     } catch (err) {
+      console.error(err); // log the error message to the console
       res.status(500).json(err);
     }
+    
 
     } else {
       res.redirect('/login');
@@ -96,9 +117,8 @@ router.get("/users/:id", async (req, res) => {
       const userData = await User.findByPk(req.params.id);
       const user = userData.get({ plain: true });
       // checks that there is a user with the requested id 
-      if (!userData) {
-        res.status(404).json({ message: "No user found!" });
-        return;
+      if ( req.session.user_id === req.params.id ){
+        res.render("account", { user, posts, logged_in: req.session.logged_in});
       }
       const posts = postData.map((post) => post.get({ plain: true }));
       // renders their account
@@ -119,10 +139,8 @@ router.get("/tags/:id", async (req, res) => {
         where: { tag_id: req.params.id },
       });
       const posts = postData.map((post) => post.get({ plain: true }));
-
       const tagData = await Tag.findByPk(req.params.id);
       const tag = tagData.get({ plain: true });
-
 
       res.render("tag", { tag, posts, logged_in: req.session.logged_in, });
     } catch (err) {
@@ -200,11 +218,6 @@ router.get('/contact', async (req, res) => {
   res.render('contact');
 });
 
-// Route to display community bio page
-router.get('/community', async (req, res) => {
-  res.render('community');
-});
-
 // spotify authentificiation route to get access_token 
 router.get('/auth', async (req, res) => {
   // uses .env variables to make api post to spotify and get access_token back
@@ -253,10 +266,5 @@ router.get('/auth', async (req, res) => {
   }
 
 });
-
-router.get('/community', async (req, res) => {
-  res.render('community');
-});
-
 
 module.exports = router;

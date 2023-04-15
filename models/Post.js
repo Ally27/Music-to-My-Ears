@@ -47,10 +47,6 @@ Post.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
-    },
-    cover_img: {
-      type: DataTypes.STRING,
-      allowNull: true,
     }
   },
   {
