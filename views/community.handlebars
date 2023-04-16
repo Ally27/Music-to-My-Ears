@@ -1,30 +1,83 @@
 {{!< layout}} <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row mt-4 px-4">
   {{!-- left side --}}
   <div class="col-span-7">
-    <h4 class="trending-title text-xl font-bold mb-6"><i class="fa fa-brands fa-spotif"></i>New Album Releases</h4>
-    <div class="main-border mt-2 " id="interact_box">
-      {{!-- cd --}}
-      {{#each albums as |album|}}
 
-        <div>
+    <h4 class="trending-title text-xl font-bold mb-6"><i class="fa fa-brands fa-spotif"></i>New Album Releases</h4>
+    <article class="box-container main-border border-pink-500 mt-2 rounded-xl p-2 h-auto">
+      <div class="mt-2 grid grid-cols-3" id="interact_box">
+        {{!-- cd --}}
+        {{#each albums as |album|}}
+        <div class="primary-container mt-2 ml-2 mr-2 mb-2 p-2">
           <div class="cd-case pr-6">
             <div class="album-art">
               <img src="{{album.img}}" />
             </div>
             <div class="spine"></div>
           </div>
-          <h3>{{album.title}}</h3>
-          <small>{{album.artist}} <br />
-          Released on {{formatDate album.relDate}}</small>
-          <button>Go to spotify button whooo</button>
-        </div>
           {{!-- cd end --}}
+          <article class="border border-pink-600 mt-2 bg-pink-100 rounded-lg p-2">
+            <h3>{{album.title}}</h3>
+            <small>{{album.artist}} <br />
+              Released on {{formatDate album.relDate}}</small>
+            <button class="spotify-btn">Go to spotify button whooo</button>
+          </article>
+        </div>
+        {{/each}}
+    </article>
+  </div>
 
-      {{/each}}
-      {{#each newposts as |post| }}
+  {{!-- right side --}}
+  <div class="col-span-5 ml-4">
 
-      <div class="primary-container mt-2 ml-2 mr-2 mb-2 p-2">
+    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>New Users</h2>
+    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
+      {{#each newusers as |user|}}
+      <a href="/users/{{user.id}}">
+        <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{user.name}} just joined! Say Hello~~</p>
+        {{/each}}
+      </a>
+    </div>
+
+    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Recent Comments</h2>
+    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
+      {{#each comments as |comment|}}
+      <a href="/posts/{{comment.post.id}}">
+        <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{comment.content}}</p>
+        <small>{{comment.user.name}}</small>
+        {{/each}}
+      </a>
+    </div>
+    {{!-- Top tags --}}
+{{!-- 
+    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Your Top Tags</h2>
+    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
+      <h4 class="text-lg font-bold text-pink-800 mb-6">Click on these Tags to View Posts Related to Topics:</h4>
+      <p class="text-pink-600 text-xl">
+        <a href="#" class="tag">
+          <class="">#</class>Test Tag
+        </a>
+        <a href="#" class="tag">
+          <class="">#</class>Test Tag
+        </a>
+        <a href="#" class="tag">
+          <class="">#</class>Test Tag
+        </a>
+        <a href="#" class="tag">
+          <class="">#</class>Test Tag
+        </a>
+        <a href="#" class="tag">
+          <class="">#</class>Test Tag
+        </a>
+        <a href="#" class="tag">
+          <class="">#</class>Test Tag
+        </a>
+      </p>
+    </div> --}}
+
     <h4 class="trending-title text-xl font-bold mb-6"><i class="fa fa-brands fa-spotif"></i>Recent Posts</h4>
+    <article class="box-container main-border border-pink-500 mt-2 rounded-xl p-2 h-auto">
+      {{#each newposts as |post| }}
+      <div class="primary-container mt-2 ml-2 mr-2 mb-2 p-2">
         <div class="top-half inline-flex h-auto w-auto">
 
           {{!-- cd --}}
@@ -51,10 +104,11 @@
                 <i class="fa fa-heart"></i>
                 {{post.upvotes}} upvotes
               </button></span>
-
             {{!-- heart button end --}}
+
             <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
               type="submit" data="{{post.id}}">Go to Post</button>
+
           </div>
         </div>
 
@@ -71,63 +125,12 @@
         </div>
 
       </div>
-
       {{/each}}
-    </div>
+    </article>
+
   </div>
-
-
-  {{!-- right side --}}
-  <div class="col-span-5 ml-4">
-    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Your Top Tags</h2>
-    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
-      <h4 class="text-lg font-bold text-pink-800 mb-6">Click on these Tags to View Posts Related to Topics:</h4>
-      <p class="text-pink-600 text-xl">
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        
-      </p>
-    </div>
-
-    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
-    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>New Users</h2>
-      {{#each newusers as |user|}}
-      <a href="/users/{{user.id}}">
-        <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{user.name}} just joined! Say Hello~~</p>
-        {{/each}}
-      </a>
-    </div>
-
-    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
-    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Recent Comments</h2>
-      {{#each comments as |comment|}}
-      <a href="/posts/{{comment.post.id}}">
-        <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{comment.content}}</p>
-        <small>{{comment.user.name}}</small>
-        {{/each}}
-      </a>
-    </div>
-    
   </div>
-</div>
-
-
+  </div>
 
   <script src="/js/animation.js"></script>
   <script src="/js/interactPost.js"></script>
