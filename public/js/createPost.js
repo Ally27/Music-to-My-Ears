@@ -1,6 +1,20 @@
 const createbtn = document.querySelector('#createbtn')
 const userId = sessionStorage.getItem('user_id')
 
+if (!userId) {
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    // if the response comes back ok, then the user is logged out and redirected to the login page. 
+    document.location.replace('/login');
+  } else {
+    alert('Failed to log out');
+  }
+}
+
 // event handler function for creating a post 
 const createPostHandler = async (event) => {
   event.preventDefault();
@@ -37,10 +51,12 @@ const createPostHandler = async (event) => {
     
       // returns user to home if POST is created. If not an alert is shown to prompt them to try again.
       if (response.ok) {
-        window.location.replace(`/`);
+        window.location.replace(`/posts/`);
       } else {
         alert ("Unable to create post, try again!")
       }
+    } else {
+      alert("You must link to a spotify playlist!")
     }
     // catches an error in connecting to spotify api 
   } catch (error) {

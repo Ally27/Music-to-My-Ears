@@ -48,8 +48,12 @@
         <div class="flex justify-between p-4">
           <div>
             <h1 class="text-sm font-semibold uppercase text-black-500">{{posts.length}} Playlists Uploaded</h1>
-            <h1 class="text-sm text-yellow-500">Tags: include tags here somehow</h1>
-          </div>
+            <h1 class="text-sm text-yellow-500">Tags:</h1>
+            {{#each tags as |tag|}}
+            <a href="/tags/{{tag.id}}" class="tag">
+            <class="">#</class>{{tag.name}}
+            </a>
+            {{/each}}          </div>
     
         </div>
         <div class="flex items-center justify-center mt-3 mb-6 flex-col">

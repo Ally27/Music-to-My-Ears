@@ -4,7 +4,7 @@
 
     <h4 class="text-2xl text-center text-purple-800  font-extrabold"><i class="fa fa-solid fa-compact-disc mr-2"></i>NEW Album Releases</h4>
     <article class="mt-2 rounded-xl p-2 h-auto">
-      <div class="mt-2 grid grid-cols-3" id="interact_box">
+      <div class="mt-2 grid grid-cols-3">
         {{!-- cd --}}
         {{#each albums as |album|}}
         <div class="border-2 border-purple-900 rounded-xl m-2 p-2 h-auto bg-gradient-to-t from-indigo-300 via-purple-300 to-pink-100 ...">
@@ -31,49 +31,46 @@
       {{#each newusers as |user|}}
       <a href="/users/{{user.id}}">
         <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{user.name}} just joined! Say Hello~~</p>
+        </a>
         {{/each}}
-      </a>
+      
     </div>
 
     <h2 class="text-2xl text-center font-extrabold text-pink-800 mt-6 mb-6"><i class="fa fa-regular fa-comment-dots mr-2"></i>Recent Comments</h2>
-    <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
+    
       {{#each comments as |comment|}}
+      <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
+      <p class="text-pink-500 mb-4"> {{comment.content}}</p>
+      <small>{{comment.user.name}} on <b>"{{comment.post.title}}"</b> </small> 
       <a href="/posts/{{comment.post.id}}">
-        <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{comment.content}}</p>
-        <small>{{comment.user.name}}</small>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="submit">Go to Post</button></a>
+      </div>
         {{/each}}
-      </a>
-    </div>
+  
+    
     {{!-- Top tags --}}
-{{!-- 
-    <h2 class="text-xl font-bold mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Your Top Tags</h2>
+  
+    <h2 class="text-2xl text-center font-extrabold text-pink-800 mt-6 mb-6"><i class="fa fa-solid fa-tag mr-2"></i>Your Top Tags</h2>
+
     <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
       <h4 class="text-lg font-bold text-pink-800 mb-6">Click on these Tags to View Posts Related to Topics:</h4>
       <p class="text-pink-600 text-xl">
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
-        <a href="#" class="tag">
-          <class="">#</class>Test Tag
-        </a>
+        {{#each tags as |tag|}}
+            <a href="/tags/{{tag.id}}" class="tag">
+            <class="">#</class>{{tag.name}}
+            </a>
+        {{/each}}  
       </p>
-    </div> --}}
+    </div> 
 
-    <h4 class="text-2xl text-center font-extrabold text-pink-800 mt-6 mb-6"><i class="fa fa-regular fa-clipboard mr-2"></i>Recent Posts</h4>
-    <article class="border-4 border-pink-500 mt-2 rounded-xl p-2 h-auto">
+    <h2 class="text-2xl text-center font-extrabold text-pink-800 mt-6 mb-6"><i class="fa fa-brands fa-spotif"></i>Recent Posts</h2>
+
+    <article class="box-container main-border border-pink-500 mt-2 rounded-xl p-2 h-auto">
+
+      <div id="interact_box">
       {{#each newposts as |post| }}
+
       <div class="border-2 border-pink-900 rounded-lg m-2 p-2">
         <div class="top-half inline-flex h-auto w-auto">
 
@@ -86,9 +83,9 @@
           </div>
           {{!-- cd end --}}
 
-          <div class="postText-container mt-1 ml-10 w-auto h-auto">
-            <h3 class="text-lg font-bold underline">{{post.title}}</h3>
-            <span>{{post.content}}</span>
+          <div class="ml-10 w-auto h-auto">
+            <h3 class="text-xl font-bold underline">{{post.title}}</h3>
+            <span class="text-sm">{{post.content}}</span>
             <br />
             <small class="text-xs text-pink-900"><i class="fa fa-solid fa-pen-to-square mr-2 mb-2"></i>Post created on {{formatDate post.createdAt}}</small>
             <small><i>{{post.post_type}}</i></small>
@@ -101,18 +98,17 @@
                 <i class="fa fa-heart"></i>
                 {{post.upvotes}} upvotes
               </button></span>
-            {{!-- heart button end --}}
 
+            {{!-- heart button end --}}
             <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
               type="submit" data="{{post.id}}">Go to Post</button>
-
           </div>
         </div>
 
         <div class="box-container border border-pink-600 mt-2 bg-pink-100 rounded-lg p-2">
           <div class="box p-2">
             <form class="commentbox">
-              <textarea class="commentbox w-full h-10 border-2 rounded-lg resize-none" style="text-indent: 10px"
+              <textarea class="commentbox w-full h-10 border-2 rounded-lg resize-none focus:outline-purple-500" style="text-indent: 10px"
                 placeholder="Type your comment here"></textarea>
               <button
                 class="post-btn commentbtn bg-pink-500 hover:bg-pink-600 text-white text-xs font-medium py-2 px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
@@ -122,8 +118,12 @@
         </div>
 
       </div>
+
       {{/each}}
+    </div>
+      
     </article>
+    </div>
 
   </div>
   </div>
