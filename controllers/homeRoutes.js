@@ -2,35 +2,53 @@ const router = require("express").Router();
 const { User, Post, Tag } = require("../models");
 const queryString = require("node:querystring");
 const axios = require("axios");
+const withAuth = require('../utils/auth');
+
 
 // base route. shows all posts.
 //////// WANT TO CHANGE it to top 10 playlists wiith most upvotes.
-router.get('/', async (req, res) => {
-  if (req.session.logged_in) {
+router.get('/', withAuth, async (req, res) => {
+  try {
 
-    try {
-      const postData = await Post.findAll({
-        order: [['upvotes', 'DESC']]
-      });
-      const posts = postData.map((post) => post.get({ plain: true }));
-      const newpostData = await Post.findAll({
-        order: [['id', 'DESC']],
-        include: [{ model: User, attributes: ['name'] }]
-      });
-      const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
-      const tagData = await Tag.findAll();
-      const tags = tagData.map((tag) => tag.get({ plain: true }));
+    const newpostData = await Post.findAll({
+      order: [['id', 'DESC']],
+      include: [{ model: User, attributes: ['name'] }]
+    });
+    const postData = await Post.findAll({
+      order: [['upvotes', 'DESC']]
+    });
+    const tagData = await Tag.findAll();
 
+    const newpostsArr = newpostData.map((newpost) => newpost.get({ plain: true }));
+    const postsArr = postData.map((post) => post.get({ plain: true }));
+    const newposts = newpostsArr.slice(0,8)
+    const posts = postsArr.slice(0,4)
+    const tags = tagData.map((tag) => tag.get({ plain: true }));
+    const access_token = req.session.access_token
 
-      // Render homepage.handlebars with the logged_in flag
-      res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
-    } catch (err) {
-      res.status(500).json(err);
+    for (let i = 0; i < posts.length; i++) {
+      const current_id = posts[i].spotify_id;
+      const rawData = await axios.get(
+        `https://api.spotify.com/v1/playlists/${current_id}`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`
+          },
+        });
+        const cover_img = rawData.data.images[0].url
+      posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
     }
 
-    } else {
-      res.redirect('/login');
-    }
+
+    // Render homepage.handlebars with the logged_in flag
+    res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
+  } catch (err) {
+    console.error(err); // log the error message to the console
+    res.status(500).json(err);
+  }
+
+
 });
 
 
@@ -265,44 +283,44 @@ module.exports = router;
 
 //   if (req.session.logged_in) {
 
-//     try {
+    // try {
 
-//       const newpostData = await Post.findAll({
-//         order: [['id', 'DESC']],
-//         include: [{ model: User, attributes: ['name'] }]
-//       });
-//       const postData = await Post.findAll({
-//         order: [['upvotes', 'DESC']]
-//       });
-//       const tagData = await Tag.findAll();
+    //   const newpostData = await Post.findAll({
+    //     order: [['id', 'DESC']],
+    //     include: [{ model: User, attributes: ['name'] }]
+    //   });
+    //   const postData = await Post.findAll({
+    //     order: [['upvotes', 'DESC']]
+    //   });
+    //   const tagData = await Tag.findAll();
 
-//       const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
-//       const postsArr = postData.map((post) => post.get({ plain: true }));
-//       const posts = postsArr.slice(0,10)
-//       const tags = tagData.map((tag) => tag.get({ plain: true }));
-//       const access_token = req.session.access_token
+    //   const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
+    //   const postsArr = postData.map((post) => post.get({ plain: true }));
+    //   const posts = postsArr.slice(0,10)
+    //   const tags = tagData.map((tag) => tag.get({ plain: true }));
+    //   const access_token = req.session.access_token
 
-//       for (let i = 0; i < posts.length; i++) {
-//         const current_id = posts[i].spotify_id;
-//         const rawData = await axios.get(
-//           `https://api.spotify.com/v1/playlists/${current_id}`,
+    //   for (let i = 0; i < posts.length; i++) {
+    //     const current_id = posts[i].spotify_id;
+    //     const rawData = await axios.get(
+    //       `https://api.spotify.com/v1/playlists/${current_id}`,
     
-//           {
-//             headers: {
-//               Authorization: `Bearer ${access_token}`
-//             },
-//           });
-//           const cover_img = rawData.data.images[0].url
-//         posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
-//       }
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${access_token}`
+    //         },
+    //       });
+    //       const cover_img = rawData.data.images[0].url
+    //     posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+    //   }
 
   
-//       // Render homepage.handlebars with the logged_in flag
-//       res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
-//     } catch (err) {
-//       console.error(err); // log the error message to the console
-//       res.status(500).json(err);
-//     }
+    //   // Render homepage.handlebars with the logged_in flag
+    //   res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
+    // } catch (err) {
+    //   console.error(err); // log the error message to the console
+    //   res.status(500).json(err);
+    // }
     
 
 //     } else {

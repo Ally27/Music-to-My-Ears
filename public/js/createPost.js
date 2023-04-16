@@ -1,16 +1,6 @@
 const createbtn = document.querySelector('#createbtn')
 const userId = sessionStorage.getItem('user_id')
 
-// gets access token stored in user data for the current session
-const get_access_token = await fetch(`/api/users/${userId}`, {
-  method: 'GET'
-})
-
-// turn access token into a form we can work with it in
-const data = await get_access_token.json();
-const access_token = data.access_token;
-const access_token_stringified = JSON.stringify(access_token);
-
 // event handler function for creating a post 
 const createPostHandler = async (event) => {
   event.preventDefault();
