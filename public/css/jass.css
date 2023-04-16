@@ -98,19 +98,6 @@ footer .contact-us {
     margin-right: 40px;
 }
 
-/* border styling */
-/* outer border */
-.main-border {
-    border: 5px solid rgb(219 39 119);
-    border-radius: 20px;
-}
-
-/* inner border */
-.primary-container {
-    border: 2px solid var(--dark-color);
-    border-radius: 10px;
-}
-
 /* cd case decor */
 .cd-case {
     height: 103px;
