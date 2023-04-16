@@ -26,9 +26,9 @@ router.get("/", withAuth, async (req, res) => {
       });
     
     const newpostsArr = newpostData.map((newpost) => newpost.get({ plain: true }));
-    const newposts = newpostsArr.slice(0,3)
+    const newposts = newpostsArr.slice(0,5)
     const commentsArr = commentData.map((comment) => comment.get({ plain: true }));
-    const comments = commentsArr.slice(0,5);
+    const comments = commentsArr.slice(0,3);
     const newuserArr = newuserData.map((newuser) => newuser.get({ plain: true }));
     const newusers = newuserArr.slice(0,5)
 
