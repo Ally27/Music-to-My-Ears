@@ -10,6 +10,20 @@ router.get("/", withAuth, async (req, res) => {
 
   try {
     // gets all comments for a post with specifed id 
+
+    const tagData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+    });
+    
+    const tagsArr = [...new Set(tagData.map((tag) => tag.tag_id))];
+    let tags = [];
+
+    for (let i = 0; i< tagsArr.length; i++) {
+      const tagData = await Tag.findByPk(tagsArr[i]);
+      const tag = tagData.get({ plain: true });
+      tags.push(tag)
+    }
+
     const newpostData = await Post.findAll({
         order: [['id', 'DESC']],
         include: [{ model: User, attributes: ['name'] }]
@@ -18,7 +32,7 @@ router.get("/", withAuth, async (req, res) => {
     const commentData = await Comment.findAll({
       order: [['id', 'DESC']],
       include: [{ model: User, attributes: ['name'] },
-      { model: Post, attributes: ['id'] }]
+      { model: Post, attributes: ['id','title'] }]
     });
 
     const newuserData = await User.findAll({
@@ -26,7 +40,7 @@ router.get("/", withAuth, async (req, res) => {
       });
     
     const newpostsArr = newpostData.map((newpost) => newpost.get({ plain: true }));
-    const newposts = newpostsArr.slice(0,5)
+    const newposts = newpostsArr.slice(0,3)
     const commentsArr = commentData.map((comment) => comment.get({ plain: true }));
     const comments = commentsArr.slice(0,3);
     const newuserArr = newuserData.map((newuser) => newuser.get({ plain: true }));
@@ -52,7 +66,7 @@ router.get("/", withAuth, async (req, res) => {
 
     // makes spotify api call to get the first 25 tracks from specified playlist 
     const rawData = await axios.get(
-        `https://api.spotify.com/v1/browse/new-releases?country=US&limit=15`,
+        `https://api.spotify.com/v1/browse/new-releases?country=US&limit=21`,
         // "https://api.spotify.com/v1/playlists/03HusFeEsbdRBAVU88VF26",
 
       {
@@ -70,7 +84,8 @@ router.get("/", withAuth, async (req, res) => {
     for (var i=0; i<nalbums; i++) {
         const album = data.items[i]
         const artist = album.artists[0].name
-        const title = album.name
+        const titleraw = album.name
+        const title = titleraw.split(" (")[0]
         const exLink = album.external_urls.spotify
         const img = album.images[0].url
         const relDate = album.release_date
@@ -78,9 +93,10 @@ router.get("/", withAuth, async (req, res) => {
 
     }
     // res.status(200),json({message: data})
+    // res.json({message: comments})
 
 //     // tracks array used to render on post.handlebars with specific information we want 
-      res.render("community", { newposts, comments, newusers, albums, logged_in: req.session.logged_in, });
+      res.render("community", { newposts, comments, newusers, albums, tags, logged_in: req.session.logged_in, });
     } catch (err) {
         res.status(500).json(err);
     }

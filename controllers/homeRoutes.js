@@ -100,15 +100,37 @@ router.get("/users/:id", withAuth, async (req, res) => {
     const userData = await User.findByPk(req.params.id);
     const user = userData.get({ plain: true });
 
-    // checks that there is a user with the requested id 
-    if ( req.session.user_id === req.params.id ){
-      res.render("account", { user, posts, logged_in: req.session.logged_in});
-    }
+    const tagData = await Post.findAll({
+      where: { user_id: req.params.id },
+    });
     
     const posts = postData.map((post) => post.get({ plain: true }));
+    const tagsArr = [...new Set(tagData.map((tag) => tag.tag_id))];
+    let tags = [];
+
+    for (let i = 0; i< tagsArr.length; i++) {
+      const tagData = await Tag.findByPk(tagsArr[i]);
+      const tag = tagData.get({ plain: true });
+      tags.push(tag)
+    }
+    const access_token = req.session.access_token
+
+    for (let i = 0; i < posts.length; i++) {
+      const current_id = posts[i].spotify_id;
+      const rawData = await axios.get(
+        `https://api.spotify.com/v1/playlists/${current_id}`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`
+          },
+        });
+        const cover_img = rawData.data.images[0].url
+      posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+    }
     // renders their account
-    
-    res.render("user", { user, posts, logged_in: req.session.logged_in});
+
+    res.render("user", { user, posts, tags, logged_in: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -167,11 +189,40 @@ router.get('/account', async (req, res) => {
       res.status(404).json({ message: "You don't have an account!" });
       return;
     }
+
+    const tagData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+    });
     
     const posts = postData.map((post) => post.get({ plain: true }));
+    const tagsArr = [...new Set(tagData.map((tag) => tag.tag_id))];
+    let tags = [];
+
+    for (let i = 0; i< tagsArr.length; i++) {
+      const tagData = await Tag.findByPk(tagsArr[i]);
+      const tag = tagData.get({ plain: true });
+      tags.push(tag)
+    }
+
+    const access_token = req.session.access_token
+
+    for (let i = 0; i < posts.length; i++) {
+      const current_id = posts[i].spotify_id;
+      const rawData = await axios.get(
+        `https://api.spotify.com/v1/playlists/${current_id}`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`
+          },
+        });
+        const cover_img = rawData.data.images[0].url
+      posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+    }
     
     // renders their account
-    res.render("account", { user, posts, logged_in: req.session.logged_in});
+    // res.json({message: tags})
+    res.render("account", { user, posts, tags, logged_in: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
   }

@@ -50,7 +50,12 @@
         <div class="flex justify-between p-4">
           <div>
             <h1 class="text-sm font-semibold uppercase text-black-500">{{posts.length}} Playlists Uploaded</h1>
-            <h1 class="text-sm text-yellow-500">Tags: include tags here somehow</h1>
+            <h1 class="text-sm text-yellow-500">Tags:</h1>
+            {{#each tags as |tag|}}
+            <a href="/tags/{{tag.id}}" class="tag">
+            <class="">#</class>{{tag.name}}
+            </a>
+            {{/each}}
           </div>
           <div>
             <button class="text-xl text-pink-300 hover:text-pink-700"><a href="/create">Upload More</a></button>

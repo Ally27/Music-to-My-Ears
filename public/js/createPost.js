@@ -1,6 +1,20 @@
 const createbtn = document.querySelector('#createbtn')
 const userId = sessionStorage.getItem('user_id')
 
+if (!userId) {
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    // if the response comes back ok, then the user is logged out and redirected to the login page. 
+    document.location.replace('/login');
+  } else {
+    alert('Failed to log out');
+  }
+}
+
 // event handler function for creating a post 
 const createPostHandler = async (event) => {
   event.preventDefault();
