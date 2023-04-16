@@ -119,8 +119,6 @@ button:focus::after {
     justify-content: center;
 }
 
-#dropdown {}
-
 /* search button */
 .search-container {
     background: transparent;
@@ -129,3 +127,4 @@ button:focus::after {
     cursor: pointer;
     outline: 0;
 }
+
