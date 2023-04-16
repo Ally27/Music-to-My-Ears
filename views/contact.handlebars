@@ -15,8 +15,8 @@
     }
 </style>
 
-    <div class="h-screen w-full grid place-items-center bg-slate-100 flex flex-row">
-        <section class="bg-white rounded-md shadow-md flex flex-row grid grid-cols-2 gap-4">
+    <div class="h-screen w-full grid place-items-center bg-slate-100 flex-row">
+        <section class="bg-white rounded-md shadow-md flex-row grid grid-cols-2 gap-4">
             
             {{!-- Contact Info Form for Individual Person--}}
             <aside class="bg-pink-800 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_info">
@@ -24,7 +24,7 @@
 
                     {{!-- Title --}}
                     <h2 class="text-white text-xl">Contact Information</h2>
-                   <h2 class="text-white text-xs flex flex-row md:hidden block cursor-pointer" id="switch_to_contact_us">Contact Us
+                   <h2 class="text-white text-xs flex flex-row md:hidden cursor-pointer" id="switch_to_contact_us">Contact Us
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 m1-1">
                         <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
                         </svg>
@@ -97,10 +97,10 @@
             </aside>
 
             <!-- Form for Contact Us -->
-            <aside class="bg-pink-400 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_us">
+            <aside class="bg-pink-300 p-8 md:hover:scale-y-110 rounded-md transition md:block" id="contact_us">
                 <!-- Title -->
                 <h2 class="text-pink-800">Reach Out</h2>
-                <h2 class="text-red-800 text-xs flex flex-row md:hidden block cursor-pointer" id="switch_to_contact_info">
+                <h2 class="text-red-800 text-xs flex flex-row md:hidden cursor-pointer" id="switch_to_contact_info">
                     Contact Us
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 m1-1">
                         <path fill-rule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clip-rule="evenodd" />
@@ -112,7 +112,7 @@
                     <input type="text" placeholder="Email Here" name="email" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
                     <input type="text" placeholder="Subject" name="subject" class="w-full text-xs px-3 h-8 my-2 outline-none rounded-md border focus:shadow-sm"><br>
                     <textarea placeholder="Type Your Message Here" name="message" class="w-full text-xs px-3 py-2 h-20 my-2 outline-none rounded-md border focus:shadow-sm resize:none"></textarea><br>
-                    <input type="submit" value="Create Email to Send" class="bg-pink-800 px-4 py-2 rounded-md text-white text-xs cursor-pointer hover:shadow-md">
+                    <input type="submit" value="Create Email to Send" class="bg-pink-800 px-4 py-2 rounded-md text-white text-xs cursor-pointer hover:bg-pink-600 hover:shadow-md">
                 </form>
             </aside>
 
