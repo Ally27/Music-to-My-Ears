@@ -19,7 +19,7 @@
             <h3>{{album.title}}</h3>
             <small>{{album.artist}} <br />
               Released on {{formatDate album.relDate}}</small>
-            <button class="spotify-btn">Go to spotify button whooo</button>
+            <button class="spotify-btn" data="{{album.exLink}}">Go to spotify</button>
           </article>
         </div>
         {{/each}}

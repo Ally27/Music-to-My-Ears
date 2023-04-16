@@ -2,35 +2,53 @@ const router = require("express").Router();
 const { User, Post, Tag } = require("../models");
 const queryString = require("node:querystring");
 const axios = require("axios");
+const withAuth = require('../utils/auth');
+
 
 // base route. shows all posts.
 //////// WANT TO CHANGE it to top 10 playlists wiith most upvotes.
-router.get('/', async (req, res) => {
-  if (req.session.logged_in) {
+router.get('/', withAuth, async (req, res) => {
+  try {
 
-    try {
-      const postData = await Post.findAll({
-        order: [['upvotes', 'DESC']]
-      });
-      const posts = postData.map((post) => post.get({ plain: true }));
-      const newpostData = await Post.findAll({
-        order: [['id', 'DESC']],
-        include: [{ model: User, attributes: ['name'] }]
-      });
-      const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
-      const tagData = await Tag.findAll();
-      const tags = tagData.map((tag) => tag.get({ plain: true }));
+    const newpostData = await Post.findAll({
+      order: [['id', 'DESC']],
+      include: [{ model: User, attributes: ['name'] }]
+    });
+    const postData = await Post.findAll({
+      order: [['upvotes', 'DESC']]
+    });
+    const tagData = await Tag.findAll();
 
+    const newpostsArr = newpostData.map((newpost) => newpost.get({ plain: true }));
+    const postsArr = postData.map((post) => post.get({ plain: true }));
+    const newposts = newpostsArr.slice(0,8)
+    const posts = postsArr.slice(0,3)
+    const tags = tagData.map((tag) => tag.get({ plain: true }));
+    const access_token = req.session.access_token
 
-      // Render homepage.handlebars with the logged_in flag
-      res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
-    } catch (err) {
-      res.status(500).json(err);
+    for (let i = 0; i < posts.length; i++) {
+      const current_id = posts[i].spotify_id;
+      const rawData = await axios.get(
+        `https://api.spotify.com/v1/playlists/${current_id}`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`
+          },
+        });
+        const cover_img = rawData.data.images[0].url
+      posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
     }
 
-    } else {
-      res.redirect('/login');
-    }
+
+    // Render homepage.handlebars with the logged_in flag
+    res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
+  } catch (err) {
+    console.error(err); // log the error message to the console
+    res.status(500).json(err);
+  }
+
+
 });
 
 
@@ -47,136 +65,132 @@ router.get("/login", (req, res) => {
 
 
 //get all users
-router.get("/users", async (req, res) => {
+router.get("/users", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findAll();
+    const users = userData.map((user) => user.get({ plain: true }));
 
-  if (req.session.logged_in) {
-    try {
-      const userData = await User.findAll();
-      const users = userData.map((user) => user.get({ plain: true }));
-
-      res.render("users", { users, logged_in: req.session.logged_in, });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  } else {
-    res.redirect('/login');
+    res.render("users", { users, logged_in: req.session.logged_in, });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
 
 // route to create new post.
-router.get("/create", async (req, res) => {
-  if (req.session.logged_in) {
+router.get("/create", withAuth, async (req, res) => {
+  try {
+    // calls all tags from DB to dynamically render as options for their playlist
+    const tagData = await Tag.findAll();
+    const tags = tagData.map((tag) => tag.get({ plain: true }));
 
-    try {
-      // calls all tags from DB to dynamically render as options for their playlist
-      const tagData = await Tag.findAll();
-      const tags = tagData.map((tag) => tag.get({ plain: true }));
-
-      res.render("create", { tags, logged_in: req.session.logged_in});
-    } catch (err) {
-      res.status(500).json(err);
-    }
-
-  } else {
-    res.redirect('/login');
+    res.render("create", { tags, logged_in: req.session.logged_in});
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
 // find a specific user 
-router.get("/users/:id", async (req, res) => {
-  if (req.session.logged_in) {
+router.get("/users/:id", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: {user_id: req.params.id,},
+    });
 
-    try {
-      const postData = await Post.findAll({
-        where: {
-          user_id: req.params.id,
-        },
-      });
-      const userData = await User.findByPk(req.params.id);
-      const user = userData.get({ plain: true });
-      // checks that there is a user with the requested id 
-      if ( req.session.user_id === req.params.id ){
-        res.render("account", { user, posts, logged_in: req.session.logged_in});
-      }
-      const posts = postData.map((post) => post.get({ plain: true }));
-      // renders their account
-      res.render("user", { user, posts, logged_in: req.session.logged_in});
-    } catch (err) {
-      res.status(500).json(err);
+    const userData = await User.findByPk(req.params.id);
+    const user = userData.get({ plain: true });
+
+    // checks that there is a user with the requested id 
+    if ( req.session.user_id === req.params.id ){
+      res.render("account", { user, posts, logged_in: req.session.logged_in});
     }
-  } else {
-    res.redirect('/login');
+    
+    const posts = postData.map((post) => post.get({ plain: true }));
+    // renders their account
+    
+    res.render("user", { user, posts, logged_in: req.session.logged_in});
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
 //get all posts associated with a tag 
-router.get("/tags/:id", async (req, res) => {
-  if (req.session.logged_in) {
-    try {
-      const postData = await Post.findAll({
-        where: { tag_id: req.params.id },
-      });
-      const posts = postData.map((post) => post.get({ plain: true }));
-      const tagData = await Tag.findByPk(req.params.id);
-      const tag = tagData.get({ plain: true });
+router.get("/tags/:id", withAuth, async (req, res) => {
+  try { 
 
-      res.render("tag", { tag, posts, logged_in: req.session.logged_in, });
-    } catch (err) {
-      res.status(500).json(err);
+    const tagData = await Tag.findByPk(req.params.id);
+    const tag = tagData.get({ plain: true });
+
+    const postData = await Post.findAll({
+      where: {tag_id: req.params.id},
+      include: [{ model: User, attributes: ['name'] }]
+    });
+ 
+    const newpostsArr = postData.map((post) => post.get({ plain: true }));
+    const posts = newpostsArr.slice(0,8)
+
+    const access_token = req.session.access_token
+
+    for (let i = 0; i < posts.length; i++) {
+      const current_id = posts[i].spotify_id;
+      const rawData = await axios.get(
+        `https://api.spotify.com/v1/playlists/${current_id}`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`
+          },
+        });
+        const cover_img = rawData.data.images[0].url
+      posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
     }
-  } else {
-    res.redirect('/login');
+
+
+    // Render homepage.handlebars with the logged_in flag
+    res.render('tag', { posts, tag, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
 // gets user_id from session storage and displays user's profile. has information about user and a list of all of their posts 
 router.get('/account', async (req, res) => {
-  // if user is logged in, redirect to their profile
-  if (req.session.logged_in) {
-
-    try {
-      const postData = await Post.findAll({
-        where: {
-          user_id: req.session.user_id,
-        },
-      });
-      const userData = await User.findByPk(req.session.user_id);
-      const user = userData.get({ plain: true });
-      // checks that there is a user with the requested id 
-      if (!userData) {
-        res.status(404).json({ message: "You don't have an account!" });
-        return;
-      }
-      const posts = postData.map((post) => post.get({ plain: true }));
-      // renders their account
-      res.render("account", { user, posts, logged_in: req.session.logged_in});
-    } catch (err) {
-      res.status(500).json(err);
+  try {
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+    });
+    const userData = await User.findByPk(req.session.user_id);
+    const user = userData.get({ plain: true });
+    
+    // checks that there is a user with the requested id 
+    if (!userData) {
+      res.status(404).json({ message: "You don't have an account!" });
+      return;
     }
-  } else {
-    res.redirect('/login');
+    
+    const posts = postData.map((post) => post.get({ plain: true }));
+    
+    // renders their account
+    res.render("account", { user, posts, logged_in: req.session.logged_in});
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
 // Route to render page for editing user data 
-router.get('/account/edit', async (req, res) => {
-  if (req.session.logged_in) {
+router.get('/account/edit', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id);
+    const user = userData.get({ plain: true });
 
-    try {
-      const userData = await User.findByPk(req.session.user_id);
-      const user = userData.get({ plain: true });
-      // checks that there is a user with the requested id 
-      if (!userData) {
-        res.status(404).json({ message: "You don't have an account!" });
-        return;
-      }
-      res.render('updateuser', {user, logged_in: req.session.logged_in}  );
-    } catch {
-      res.status(500).json(err);
+    // checks that there is a user with the requested id 
+    if (!userData) {
+      res.status(404).json({ message: "You don't have an account!" });
+      return;
     }
-  } else {
-    res.redirect('/login');
+    res.render('updateuser', {user, logged_in: req.session.logged_in}  );
+  } catch {
+    res.status(500).json(err);
   }
 });
 
@@ -193,12 +207,12 @@ router.get('/signup', async (req, res) => {
 
 
 // Route to display contact bio page
-router.get('/contact', async (req, res) => {
+router.get('/contact', withAuth, async (req, res) => {
   res.render('contact');
 });
 
 // spotify authentificiation route to get access_token 
-router.get('/auth', async (req, res) => {
+router.get('/auth', withAuth, async (req, res) => {
   // uses .env variables to make api post to spotify and get access_token back
   const spotifyResponse = await axios.post(
     "https://accounts.spotify.com/api/token",
@@ -265,44 +279,44 @@ module.exports = router;
 
 //   if (req.session.logged_in) {
 
-//     try {
+    // try {
 
-//       const newpostData = await Post.findAll({
-//         order: [['id', 'DESC']],
-//         include: [{ model: User, attributes: ['name'] }]
-//       });
-//       const postData = await Post.findAll({
-//         order: [['upvotes', 'DESC']]
-//       });
-//       const tagData = await Tag.findAll();
+    //   const newpostData = await Post.findAll({
+    //     order: [['id', 'DESC']],
+    //     include: [{ model: User, attributes: ['name'] }]
+    //   });
+    //   const postData = await Post.findAll({
+    //     order: [['upvotes', 'DESC']]
+    //   });
+    //   const tagData = await Tag.findAll();
 
-//       const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
-//       const postsArr = postData.map((post) => post.get({ plain: true }));
-//       const posts = postsArr.slice(0,10)
-//       const tags = tagData.map((tag) => tag.get({ plain: true }));
-//       const access_token = req.session.access_token
+    //   const newposts = newpostData.map((newpost) => newpost.get({ plain: true }));
+    //   const postsArr = postData.map((post) => post.get({ plain: true }));
+    //   const posts = postsArr.slice(0,10)
+    //   const tags = tagData.map((tag) => tag.get({ plain: true }));
+    //   const access_token = req.session.access_token
 
-//       for (let i = 0; i < posts.length; i++) {
-//         const current_id = posts[i].spotify_id;
-//         const rawData = await axios.get(
-//           `https://api.spotify.com/v1/playlists/${current_id}`,
+    //   for (let i = 0; i < posts.length; i++) {
+    //     const current_id = posts[i].spotify_id;
+    //     const rawData = await axios.get(
+    //       `https://api.spotify.com/v1/playlists/${current_id}`,
     
-//           {
-//             headers: {
-//               Authorization: `Bearer ${access_token}`
-//             },
-//           });
-//           const cover_img = rawData.data.images[0].url
-//         posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
-//       }
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${access_token}`
+    //         },
+    //       });
+    //       const cover_img = rawData.data.images[0].url
+    //     posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+    //   }
 
   
-//       // Render homepage.handlebars with the logged_in flag
-//       res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
-//     } catch (err) {
-//       console.error(err); // log the error message to the console
-//       res.status(500).json(err);
-//     }
+    //   // Render homepage.handlebars with the logged_in flag
+    //   res.render('homepage', { posts, newposts, tags, logged_in: req.session.logged_in });
+    // } catch (err) {
+    //   console.error(err); // log the error message to the console
+    //   res.status(500).json(err);
+    // }
     
 
 //     } else {
@@ -423,33 +437,33 @@ module.exports = router;
 //   } 
 
 //   if (req.session.logged_in) {
-//     try {
-//       const postData = await Post.findAll({
-//         where: { tag_id: req.params.id },
-//       });
-//       const posts = postData.map((post) => post.get({ plain: true }));
-//       const tagData = await Tag.findByPk(req.params.id);
-//       const tag = tagData.get({ plain: true });
+    // try {
+    //   const postData = await Post.findAll({
+    //     where: { tag_id: req.params.id },
+    //   });
+    //   const posts = postData.map((post) => post.get({ plain: true }));
+    //   const tagData = await Tag.findByPk(req.params.id);
+    //   const tag = tagData.get({ plain: true });
 
-//       for (let i = 0; i < posts.length; i++) {
-//         const current_id = posts[i].spotify_id;
-//         const rawData = await axios.get(
-//           `https://api.spotify.com/v1/playlists/${current_id}`,
+    //   for (let i = 0; i < posts.length; i++) {
+    //     const current_id = posts[i].spotify_id;
+    //     const rawData = await axios.get(
+    //       `https://api.spotify.com/v1/playlists/${current_id}`,
     
-//           {
-//             headers: {
-//               Authorization: `Bearer ${access_token}`
-//             },
-//           });
-//           const cover_img = rawData.data.images[0].url
-//         posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
-//       }
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${access_token}`
+    //         },
+    //       });
+    //       const cover_img = rawData.data.images[0].url
+    //     posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+    //   }
 
 
-//       res.render("tag", { tag, posts, logged_in: req.session.logged_in, });
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
+    //   res.render("tag", { tag, posts, logged_in: req.session.logged_in, });
+    // } catch (err) {
+    //   res.status(500).json(err);
+    // }
 //   } else {
 //     res.redirect('/login');
 //   }

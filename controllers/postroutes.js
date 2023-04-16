@@ -1,15 +1,36 @@
 const router = require("express").Router();
 const {Post, Comment, User } = require("../models");
 
-// const queryString = require("node:querystring");
 const axios = require("axios");
+const withAuth = require('../utils/auth');
 
-router.get("/", async (req, res) => {
+
+router.get("/", withAuth, async (req, res) => {
   
   try { 
-    const postData = await Post.findAll();
-    const posts = postData.map((post) => post.get({ plain: true }));
-    
+    const newpostData = await Post.findAll({
+      order: [['id', 'DESC']],
+      include: [{ model: User, attributes: ['name'] }]
+    });
+ 
+    const newpostsArr = newpostData.map((newpost) => newpost.get({ plain: true }));
+    const posts = newpostsArr.slice(0,8)
+    const access_token = req.session.access_token
+
+    for (let i = 0; i < posts.length; i++) {
+      const current_id = posts[i].spotify_id;
+      const rawData = await axios.get(
+        `https://api.spotify.com/v1/playlists/${current_id}`,
+  
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`
+          },
+        });
+        const cover_img = rawData.data.images[0].url
+      posts[i].cover_img = cover_img; // modify the spotify_id value at the current index
+    }
+
 
     // Render homepage.handlebars with the logged_in flag
     res.render('posts', { posts, logged_in: req.session.logged_in });
