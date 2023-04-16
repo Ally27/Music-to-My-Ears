@@ -2,14 +2,14 @@
 
 <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row">
   <div class="col-span-12">
-    <h4 class="text-xl font-bold mb-2">Search Results for "{{searchId}}"</h4>
+    <h4 class="text-xl font-bold text-purple-800 mb-2"><i class="fa fa-solid fa-magnifying-glass mr-2"></i>Search Results for "{{searchId}}"</h4>
     <div class="main-border border-black mt-2">
     {{#each posts as |post| }}
       <a href="/posts/{{post.id}}">
-      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+      <div class="flex gap-4 border-2 border-purple-800 m-2 mb-2 p-2 rounded-lg bg-purple-200 hover:bg-purple-300">
 
         <div class="mt-2">
-          <h3 class="text-lg font-bold">{{post.title}}</h3>
+          <h3 class="text-lg font-bold underline">{{post.title}}</h3>
           <small>{{post.content}}</small>
 
         </div>

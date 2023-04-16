@@ -2,7 +2,7 @@
   {{!-- left side --}}
   <div class="col-span-7">
 
-    <h4 class="text-2xl text-center font-extrabold"><i class="fa fa-solid fa-compact-disc mr-2"></i>NEW Album Releases</h4>
+    <h4 class="text-2xl text-center text-purple-800  font-extrabold"><i class="fa fa-solid fa-compact-disc mr-2"></i>NEW Album Releases</h4>
     <article class="mt-2 rounded-xl p-2 h-auto">
       <div class="mt-2 grid grid-cols-3" id="interact_box">
         {{!-- cd --}}
@@ -90,7 +90,7 @@
             <h3 class="text-lg font-bold underline">{{post.title}}</h3>
             <span>{{post.content}}</span>
             <br />
-            <small>Post created on {{formatDate post.createdAt}}</small>
+            <small class="text-xs text-pink-900"><i class="fa fa-solid fa-pen-to-square mr-2 mb-2"></i>Post created on {{formatDate post.createdAt}}</small>
             <small><i>{{post.post_type}}</i></small>
             <br>
 
