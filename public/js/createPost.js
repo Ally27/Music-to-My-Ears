@@ -51,10 +51,12 @@ const createPostHandler = async (event) => {
     
       // returns user to home if POST is created. If not an alert is shown to prompt them to try again.
       if (response.ok) {
-        window.location.replace(`/`);
+        window.location.replace(`/posts/`);
       } else {
         alert ("Unable to create post, try again!")
       }
+    } else {
+      alert("You must link to a spotify playlist!")
     }
     // catches an error in connecting to spotify api 
   } catch (error) {
