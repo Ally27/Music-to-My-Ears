@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
+
 
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
@@ -14,7 +16,7 @@ router.use('/posts', postRoutes);
 router.use('/search', searchRoutes);
 router.use('/community', communityRoutes)
 
-router.get('*', function(req, res){
+router.get('*', withAuth, function(req, res){
     res.status(404).render('404', {logged_in: req.session.logged_in});
   });
 
