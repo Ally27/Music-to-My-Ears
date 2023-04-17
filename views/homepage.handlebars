@@ -24,7 +24,6 @@
             <span class="text-sm">{{post.content}}</span>
             <br />
             <small class="text-xs text-pink-900"><i class="fa fa-solid fa-pen-to-square mr-2 mb-2"></i>Post created on {{formatDate post.createdAt}}</small>
-            <small><i>{{post.post_type}}</i></small>
             <br>
 
             {{!-- heart button. Like and unlike --}}
@@ -39,7 +38,7 @@
             <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
               type="submit" data="{{post.id}}">Go to Post</button>
             <button class="spotifybtn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs"
-              type="button"><label class="spotify-link" > </label>Follow on Spotify</button></a>
+              type="button" data="{{post.spotify_id}}">View on Spotify</button>
           </div>
         </div>
 
@@ -59,7 +58,7 @@
 
       {{/each}}
     </div>
-    <h4 class="text-center text-3xl font-extrabold text-purple-800 mt-6 hover:text-purple-600"><i><a href="/posts">See more posts!</a></i></h4>
+    <h4 class="text-center text-3xl font-extrabold text-purple-800 mt-6 hover:text-purple-600"><a href="/posts">See all posts!</a></h4>
 
   </div>
   {{!-- right side --}}
@@ -79,7 +78,7 @@
     <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
       {{#each newposts as |newpost|}}
       <a href="/posts/{{newpost.id}}">
-        <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{newpost.user.name}} just posted {{newpost.title}}!</p>
+        <p class="text-pink-500 mb-4 hover:text-pink-700"><u><i>{{newpost.user.name}}</i></u> just posted <b>{{newpost.title}}</b></p>
         {{/each}}
       </a>
     </div>
