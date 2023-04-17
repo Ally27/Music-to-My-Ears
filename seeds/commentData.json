@@ -22,5 +22,23 @@
     "content": "I'm an egg",
     "post_id": 7,
     "user_id": 2
-  }
+  },
+  {
+		"id": 6,
+		"content": "wow! - adele (it's adele by the way)",
+		"post_id": 2,
+		"user_id": 6
+	},
+	{
+		"id": 7,
+		"content": "love them - adele",
+		"post_id": 1,
+		"user_id": 6
+	},
+	{
+		"id": 8,
+		"content": "not a fan - adele",
+		"post_id": 7,
+		"user_id": 6
+	}
 ]
