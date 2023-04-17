@@ -1,1 +1,52 @@
-<p>Coming soon!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coming Soon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com" />
+    <style>
+      @keyframes sparkle {
+        0% {
+          color: white;
+        }
+        50% {
+          color: #FFC107;
+          transform: scale(1.2);
+        }
+        100% {
+          color: white;
+        }
+      }
+      .sparkle-text {
+        animation: sparkle 1s ease-in-out infinite;
+        display: inline-block;
+        text-shadow: 0 0 5px #FFC107, 0 0 10px #FFC107, 0 0 15px #FFC107, 0 0 20px #FFC107, 0 0 30px #FFC107, 0 0 40px #FFC107, 0 0 55px #FFC107;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-200">
+    <div class="flex justify-center items-center h-screen">
+      <div class="bg-purple-400 text-white p-16 rounded-lg shadow-lg flex flex-col items-center justify-center">
+        <div class="flex items-center justify-center mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" class="mr-4">
+            <path fill="currentColor" d="M17 15l1 4h3v3H3v-3h3l1-4h10m-2-7l1 4H8l1-4h6m-2-7l1 4h-4l1-4h2Z"/>
+          </svg>
+          <h1 class="text-4xl font-bold">Page Coming Soon</h1>
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" class="ml-4">
+            <path fill="currentColor" d="M17 15l1 4h3v3H3v-3h3l1-4h10m-2-7l1 4H8l1-4h6m-2-7l1 4h-4l1-4h2Z"/>
+          </svg>
+        </div>
+        <p class="text-xl text-center">We're working hard to bring you something great.</p>
+        <p class="text-xl text-center"><span class="mt-8 sparkle-text text-yellow-500 text-4xl font-bold">Stay tuned!</span></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
