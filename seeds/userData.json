@@ -57,6 +57,17 @@
     "facebook": "facebook.com",
     "twitter": "twitter.com",
     "instagram": "instagram.com"
+  },
+  {
+		"id": 6,
+		"name": "theREALadele",
+		"location": "my house, london",
+    "password": "bootcamp", 
+		"email": "adele@gmail.com",
+		"bio": "stream my album 30 on spotify x (i'm famouse singer adele btw)",
+		"instagram": "instagram.com",
+		"twitter": "twitter.com/adele",
+		"facebook": "facebook.com"
   }
 
 ]

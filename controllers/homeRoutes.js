@@ -258,8 +258,8 @@ router.get('/signup', async (req, res) => {
 
 
 // Route to display contact bio page
-router.get('/contact', withAuth, async (req, res) => {
-  res.render('contact');
+router.get('/contact', async (req, res) => {
+  res.render('contact', {logged_in: req.session.logged_in});
 });
 
 // spotify authentificiation route to get access_token 
@@ -283,31 +283,8 @@ router.get('/auth', withAuth, async (req, res) => {
   // stores new access token in session storage 
   const new_access_token = spotifyResponse.data.access_token;
   req.session.access_token = new_access_token;
-  //  gets user_id from session storage 
-  const user_id = req.session.user_id
  
-  // updates user model for logged in user with their access token to get it in the front end 
-  try {
-    //  
-    const userData = await User.update(
-      { access_token: new_access_token },
-      { where: { id: user_id } }
-    );
-
-    // returns a error if  no user exists 
-    if (!userData) {
-      res
-        .status(404)
-        .json({ message: "No user found with that id!" });
-      return;
-    } 
-    //takes user home 
-    res.redirect('/')
-  
-  // returns error if not able to put anything for access token
-  } catch (err) {
-    res.status(400).json(err);
-  }
+  res.redirect('/')
 
 });
 
