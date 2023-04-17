@@ -68,7 +68,10 @@ const createCommentHandler = async (event) => {
     } catch (error) {
         alert('Could not upvote post. Try again!');
       }
-  }
+  } else if (element.matches(".spotifybtn")) {
+    const spotifylink = element.getAttribute("data");
+    window.open(`https://open.spotify.com/playlist/${spotifylink}`)
+  } 
 
     
 }

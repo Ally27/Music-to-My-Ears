@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "planetjanet123",
     "email": "test@gmail.com",
     "password": "bootcamp", 
@@ -11,11 +12,48 @@
   },
 
   {
-    "name": "eggmuncher",
+    "id": 2,
+    "name": "egg",
     "email": "egg@gmail.com",
     "password": "bootcamp", 
-    "bio": "Hey, I'm egg! I'm a junior at the University of Washington studying business. I love to listen to rap music on a rainy day. Whether it be walking to the quad, or stopping at U-Village for coffee, I always has Drake blasting in my ears.",
+    "bio": "Hey, I'm egg! I'm a very nutritious breakfast. Serve me up hard, scrambled or over-easy and I promise to never disappoint ;)",
+    "location": "Miami, FL",
+    "facebook": "facebook.com",
+    "twitter": "twitter.com",
+    "instagram": "instagram.com"
+  },
+
+  {
+    "id": 3,
+    "name": "kittycat",
+    "email": "cat@gmail.com",
+    "password": "bootcamp", 
+    "bio": "I am a cat and I am very evil. Mreooooow",
+    "location": "Arlington, WA",
+    "facebook": "facebook.com",
+    "twitter": "twitter.com",
+    "instagram": "instagram.com"
+  },
+
+  {
+    "id": 4,
+    "name": "tpjk_",
+    "email": "tyler@gmail.com",
+    "password": "bootcamp", 
+    "bio": "I'm tyler! I'm one of the developers here at Music to my Ears! I hope you're enjoying all we have to offer you all :)",
     "location": "Seattle, WA",
+    "facebook": "facebook.com",
+    "twitter": "twitter.com",
+    "instagram": "instagram.com"
+  },
+
+  {
+    "id": 5,
+    "name": "big_dog_inTown",
+    "email": "dog@gmail.com",
+    "password": "bootcamp", 
+    "bio": "I'm a FIERCE german shepard and I run this town.'",
+    "location": "Portland, OR",
     "facebook": "facebook.com",
     "twitter": "twitter.com",
     "instagram": "instagram.com"

@@ -64,7 +64,7 @@ router.get("/:id", async (req, res) => {
 
     // makes spotify api call to get the first 25 tracks from specified playlist 
     const rawData = await axios.get(
-      `https://api.spotify.com/v1/playlists/${spotifyKey}/tracks?limit=25`,
+      `https://api.spotify.com/v1/playlists/${spotifyKey}/tracks?limit=10`,
       // "https://api.spotify.com/v1/playlists/03HusFeEsbdRBAVU88VF26",
 
       {

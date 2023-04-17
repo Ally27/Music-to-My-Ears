@@ -15,9 +15,10 @@
           <article class="border border-pink-600 mt-2 bg-pink-100 rounded-lg p-2">
             <h3 class="text-center text-purple-900 font-bold underline">{{album.title}}</h3>
             <small class="font-bold text-xs">By: {{album.artist}} <br />
-              Released on {{formatDate album.relDate}}</small>
-            <button class="spotify-btn" data="{{album.exLink}}">Go to spotify</button>
-          </article>
+              Released on {{formatDate album.relDate}}</small> <br />
+            <a href="{{album.exLink}}">
+            <button class="spotifybtn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="button">View on Spotify</button></a>          </article>
         </div>
         {{/each}}
     </article>
@@ -29,9 +30,9 @@
     <h2 class="text-2xl text-center font-extrabold text-pink-800 mb-6"><i class="fa fa-solid fa-user-plus mr-2"></i>New Users</h2>
     <div class="border border-pink-600 mt-2 h-auto bg-pink-100 rounded-lg p-4">
       {{#each newusers as |user|}}
-      <a href="/users/{{user.id}}">
-        <p class="text-pink-500 mb-4 hover:text-pink-700 font-bold">{{user.name}} just joined! Say Hello~~</p>
-        </a>
+      
+        <a href="/users/{{user.id}}"><p class="text-pink-500 mb-4 hover:text-pink-700"><b>{{user.name}}</b> just joined, say hi!</p>
+        
         {{/each}}
       
     </div>
@@ -102,6 +103,8 @@
             {{!-- heart button end --}}
             <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
               type="submit" data="{{post.id}}">Go to Post</button>
+            <button class="spotifybtn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="button" data="{{post.spotify_id}}">View on Spotify</button>
           </div>
         </div>
 

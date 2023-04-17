@@ -42,9 +42,8 @@ router.get("/:search", async (req, res) => {
       });
       
     const commentData = await Comment.findAll({
-        include: [{ 
-            model: Post,
-            attributes: ['id', 'title'],
+        include: [{ model: User, attributes: ['name'] },
+        { model: Post, attributes: ['id', 'title'],
          }],
         where: {
           content: {

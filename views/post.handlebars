@@ -1,18 +1,21 @@
 {{!< layout}} 
 <div class="grid grid-cols-12 gap-4 w-11/12 mx-auto flex-row">
   <div class="col-span-6">
+    <br />
+    <br />
     <article class="border-4 border-purple-800 mt-2 rounded-xl p-2">
-      <h4 class="text-3xl font-extrabold text-purple-800 mb-4 underline text-center">{{post.title}}
+      <h4 class="text-3xl font-extrabold text-purple-800 mb-4 text-center"><i>{{post.title}}</i>
+        <br />
 
         {{!-- Marley the spotify button is here --}}
-        <div class="spotifyLink">
-        <button class="spotify-btn" data="{{album.exLink}}">Go to spotify</button>
-        </div>
+        <a href="https://open.spotify.com/playlist/{{post.spotify_id}}" target="_blank"><button class="spotifybtn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="button" >View on Spotify</button></a>
         {{!-- Spotify button link end --}}
       </h4>
       <div class="sub-container bg-indigo-100 border border-pink-600 rounded-lg p-2">
         <h3 class="font-bold">{{post.content}}</h3>
-        <small>-{{post.user.name}}</small>
+        <small class="text-xs text-pink-900"><i class="fa fa-solid fa-pen-to-square mr-2 mb-2"></i>Post created on {{formatDate post.createdAt}} by {{post.user.name}}</small>
+
       </div>
     </article>
 
@@ -35,20 +38,19 @@
       <div class="bg-gradient-to-t from-indigo-200 via-purple-200 to-pink-100 border-2 border-purple-600 rounded-lg p-2 m-2">
         <div class="mt-2">
           <p class="font-bold">{{comment.content}}</p>
-          <small class="text-indigo-700">-{{comment.user.name}}</small>
+          <small class="text-indigo-700">Posted by {{comment.user.name}}</small>
         </div>
       </div>
       {{/each}}
     </div>
   </div>
 
-  <div class="col-span-6">
+  <div class="col-span-6 ">
     <div class="mt-2 p-4 border-pink-500">
 
       <h4 class="text-2xl font-bold text-pink-800 mb-2 text-center"><i class="fa fa-solid fa-shuffle mr-2"></i>Tracks:
       </h4>
       {{#each tracks as |track| }}
-      <a href="{{track.exLink}}" target="_blank">
         <div class="flex gap-4 border-2 border-pink-600 m-2 p-1 rounded-lg">
           <div class="trackCd-case pr-6">
             <div class="trackAlbum-art">
@@ -58,12 +60,13 @@
           </div>
           <div class="border border-pink-500 rounded-lg pr-4 pl-4 bg-pink-100 w-full">
             <h3 class="text-lg font-bold underline">{{track.title}}<i class="fa fa-brands fa-spotify ml-2"></i></h3>
-            <small class="text-xs">{{track.artist}}</small>
+            <small class="text-xs"><b>Artist:</b> {{track.artist}}</small> <br />
+              <a href="{{track.exLink}}" target="_blank"><button class="spotifybtn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="button" >View on Spotify</button></a>
+
           </div>
         </div>
-      </a>
       {{/each}}
-
     </div>
   </div>
   </div>
