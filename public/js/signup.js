@@ -1,8 +1,7 @@
 const createbtn = document.querySelector('#createbtn')
 const canvas = document.querySelector('#confetti')
 
-
-
+// event handler for when users sign up 
 const signUpHandler = async (event) => {
   event.preventDefault();
  
@@ -46,6 +45,7 @@ const signUpHandler = async (event) => {
         
           // if response was ok, brings user to login page.
           if (response.ok) {
+            // Shows confetti animations if response is ok
             const jsConfetti = new JSConfetti({createbtn})
             jsConfetti.addConfetti({
               confettiColors: [

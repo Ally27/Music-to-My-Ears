@@ -12,11 +12,12 @@ router.get("/", withAuth, async (req, res) => {
       order: [['id', 'DESC']],
       include: [{ model: User, attributes: ['name'] }]
     });
- 
+    // gets all newest posts and makes an array that only returns a specified amount 
     const newpostsArr = newpostData.map((newpost) => newpost.get({ plain: true }));
     const posts = newpostsArr.slice(0,8)
     const access_token = req.session.access_token
 
+    // makes api call for each iteration in the posts array and adds a cover_img property to each
     for (let i = 0; i < posts.length; i++) {
       const current_id = posts[i].spotify_id;
       const rawData = await axios.get(
@@ -32,7 +33,7 @@ router.get("/", withAuth, async (req, res) => {
     }
 
 
-    // Render homepage.handlebars with the logged_in flag
+    // Render posts.handlebars with the logged_in flag
     res.render('posts', { posts, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);

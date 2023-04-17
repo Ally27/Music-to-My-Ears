@@ -31,6 +31,15 @@ This project runs using node and SQL. Follow the necessary installation for thes
 - After that, run the code "node seeds/index.js" into node to seed the music_db.
 - Finally run the code "npm start" to begin the application and view it at "localhost:3001/" in your default browser. 
 
+Note: you will need to create an .env file to store environment files to run the sequelize funtionalities
+```
+DB_NAME='music_db'
+DB_USER='root'
+DB_PASSWORD='YOURPASSWORD'
+REDIRECT_URI_DECODED="http://localhost:3001/auth"
+BASE64_AUTHORIZATION="NDRkZDYwN2QxOGY3NGFmNTkyODhjMjhlY2JiNzdhNjM6MjhmZDAxNWY1MDQ1NDcwMDhmMmNkNDgxNTEwYmI4YWU="
+```
+
 *** If you are viewing the webpage at the deployed Heroku link, then no installation is necessary! 
 
 ---
