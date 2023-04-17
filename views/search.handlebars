@@ -2,46 +2,66 @@
 
 <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto flex-row">
   <div class="col-span-12">
-    <h4 class="text-xl font-bold mb-2">Search Results for "{{searchId}}"</h4>
-    <div class="main-border border-black mt-2">
+    <h4 class="text-xl font-bold text-purple-800 mb-2"><i class="fa fa-solid fa-magnifying-glass mr-2"></i>Search Results for "{{searchId}}"</h4>
+    <div class="main-border border-black mt-2" id="interact_box">
     {{#each posts as |post| }}
-      <a href="/posts/{{post.id}}">
-      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+      <div class="flex gap-4 border-2 border-purple-800 m-2 mb-2 p-2 rounded-lg bg-purple-200 hover:bg-purple-300">
 
-        <div class="mt-2">
-          <h3 class="text-lg font-bold">{{post.title}}</h3>
-          <small>{{post.content}}</small>
+        <div class="ml-10 w-auto h-auto">
+            <h3 class="text-xl font-bold underline">{{post.title}}</h3>
+            <span class="text-sm">{{post.content}}</span>
+            <br />
+            <small class="text-xs text-pink-900"><i class="fa fa-solid fa-pen-to-square mr-2 mb-2"></i>Post created on {{formatDate post.createdAt}}</small>
+            <small><i>{{post.post_type}}</i></small>
+            <br>
 
+            {{!-- heart button. Like and unlike --}}
+            <span><button
+                class="likebtn heart-btn bg-pink-500 hover:bg-pink-600 text-white py-1 px-2 rounded-lg text-xs w-auto h-auto"
+                type="submit" data="{{post.id}}" data-count="{{post.upvotes}}">
+                <i class="fa fa-heart"></i>
+                {{post.upvotes}} upvotes
+              </button></span>
+
+            {{!-- heart button end --}}
+            <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="submit" data="{{post.id}}">Go to Post</button>
+            <button class="spotifybtn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="button" data="{{post.spotify_id}}">View on Spotify</button>
         </div>
       </div>
-      </a>
     {{/each}}
+    </div>
     {{#each users as |user| }}
-      <a href="/users/{{user.id}}">
-      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+      <div class="flex gap-4 border-2 border-purple-800 m-2 mb-2 p-2 rounded-lg bg-purple-200 hover:bg-purple-300">
 
-        <div class="mt-2">
+        <div class="ml-10 w-auto h-auto">
           <h3 class="text-lg font-bold">{{user.name}}</h3>
-          <small>{{user.bio}}</small>
+          <small>{{user.bio}}</small> <br />
+          <a href="/users/{{user.id}}"><button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+            type="submit">Go to User</button></a>
+
 
         </div>
       </div>
-      </a>
+      
     {{/each}}
-     {{#each comments as |comment| }}
-      <a href="/posts/{{comment.post.id}}">
-      <div class="flex gap-4 border border-black mt-2 ml-2 mr-2 mb-2">
+     {{#each comments as |comment|}}
+      <div class="flex gap-4 border-2 border-purple-800 m-2 mb-2 p-2 rounded-lg bg-purple-200 hover:bg-purple-300">
+        <div class="ml-10 w-auto h-auto">
 
-        <div class="mt-2">
-          <h3 class="text-lg font-bold">{{comment.content}}</h3>
-          <small>{{comment.post.title}}</small>
-
+          <span class="text-sm">{{comment.content}}</span> <br / >
+          <small>{{comment.user.name}} on <b>"{{comment.post.title}}"</b> </small> 
+          <a href="/posts/{{comment.post.id}}">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+                  type="submit">Go to Post</button></a>
         </div>
       </div>
-      </a>
-    {{/each}}
+        {{/each}}
     </div>
   </div>
   
 
   <script src="/js/animation.js"></script>
+  
+  <script src="/js/interactPost.js"></script>

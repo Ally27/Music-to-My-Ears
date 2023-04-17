@@ -1,14 +1,5 @@
-var userId = sessionStorage.getItem('user_id')
-const string = "blank"
-
+// even handler for whenever use hits the logout button
 const logout = async () => {
-
-  // removes access_token from user data model
-  const clear_access_token = await fetch(`/api/users/${userId}`, {
-    method: 'PUT',
-    body: JSON.stringify({ access_token: string }),
-    headers: { 'Content-Type': 'application/json' },
-  });
 
     // post requeset to users/logout 
   const response = await fetch('/api/users/logout', {

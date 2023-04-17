@@ -1,10 +1,10 @@
 {{!< layout}} <div class="grid grid-cols-12 gap-4 w-11/12 ml-auto mr-auto">
   <div id="interact_box"class="col-span-7">
     <br />
-    <h4 class="text-center text-3xl font-extrabold text-pink-600 mb-6">Your Posts:</h4>
-    <div class="main-border mt-2">
+    <h4 class="text-center text-3xl text-purple-800 font-extrabold mb-6"><i class="fa fa-regular fa-clipboard mr-2"></i>Your Posts:</h4>
+    <div class="border-4 border-purple-800 rounded-xl mt-2">
       {{#each posts as |post| }}
-      <div class="primary-container flex gap-4 mt-2 ml-2 mr-2 mb-2">
+      <div class="border-2 border-pink-900 rounded-lg flex gap-4 m-2">
         {{!-- cd --}}
         <div class="cd-case pr-6">
           <div class="album-art">
@@ -13,11 +13,11 @@
           <div class="spine"></div>
         </div>
         {{!-- cd end --}}
-        <div class="postText-container w-full border-pink-500 rounded-lg pr-4 pl-4 bg-pink-100">
+        <div class="postText-container w-full border-pink-500 rounded-lg pr-4 pl-4 bg-gradient-to-t from-indigo-200 via-purple-200 to-pink-100 ...">
           <h3 class="text-xl font-bold underline">{{post.title}}</h3>
           <span class="text-sm">{{post.content}}</span>
           <br />
-          <small class="text-pink-800 text-xs font-bold">Post created on {{formatDate post.createdAt}}</small>
+         <small class="text-xs text-pink-900"><i class="fa fa-solid fa-pen-to-square mr-2 mb-2"></i>Post created on {{formatDate post.createdAt}}</small>
           <br />
           <span><button class="likebtn heart-btn bg-pink-500 text-white py-1 px-2 rounded-lg text-xs" type="submit" data="{{post.id}}" data-count="{{post.upvotes}}" >
             <i class="fa fa-heart"></i>
@@ -26,6 +26,8 @@
            <button class="linkbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 mb-2 rounded text-xs" type="submit" data="{{post.id}}">
             Go to Post
           </button>
+          <button class="spotifybtn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs"
+              type="button" data="{{post.spotify_id}}">View on Spotify</button>
         </div>
       </div>
       {{/each}}
@@ -50,7 +52,12 @@
         <div class="flex justify-between p-4">
           <div>
             <h1 class="text-sm font-semibold uppercase text-black-500">{{posts.length}} Playlists Uploaded</h1>
-            <h1 class="text-sm text-yellow-500">Tags: include tags here somehow</h1>
+            <h1 class="text-sm text-yellow-500">Tags:</h1>
+            {{#each tags as |tag|}}
+            <a href="/tags/{{tag.id}}" class="tag">
+            <class="">#</class>{{tag.name}}
+            </a>
+            {{/each}}
           </div>
           <div>
             <button class="text-xl text-pink-300 hover:text-pink-700"><a href="/create">Upload More</a></button>

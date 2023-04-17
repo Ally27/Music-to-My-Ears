@@ -1,8 +1,10 @@
 const createbtn = document.querySelector('#createbtn')
+const canvas = document.querySelector('#confetti')
 
+// event handler for when users sign up 
 const signUpHandler = async (event) => {
   event.preventDefault();
-
+ 
   // get html form elements from page's values 
     const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#password').value.trim();
@@ -43,14 +45,26 @@ const signUpHandler = async (event) => {
         
           // if response was ok, brings user to login page.
           if (response.ok) {
-            window.location.replace(`/login`);
+            // Shows confetti animations if response is ok
+            const jsConfetti = new JSConfetti({createbtn})
+            jsConfetti.addConfetti({
+              confettiColors: [
+                '#ff0a54', '#ffe842', '#ff7096', '#ff85a1', '#1d13c4', '#1f6808',
+              ],
+            })
+            setInterval(timeout, 2000);
+            function timeout(){
+              window.location.replace(`/login`)
+            }
           } else {
             alert('Could not create new user. Try again!');
           }
     } catch (error) {
         alert('Could not create new user. Try again!');
       }
-      
+  console.log("sign-up line 55")    
 };
 
-createbtn.addEventListener('click', signUpHandler);
+createbtn.addEventListener('click', signUpHandler, ()=>{
+
+})

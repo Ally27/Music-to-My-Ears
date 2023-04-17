@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap';
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 @import 'animate.css';
 
 @tailwind base;
@@ -96,19 +97,6 @@ footer {
 footer .contact-us {
     align-self: flex-end;
     margin-right: 40px;
-}
-
-/* border styling */
-/* outer border */
-.main-border {
-    border: 5px solid rgb(219 39 119);
-    border-radius: 20px;
-}
-
-/* inner border */
-.primary-container {
-    border: 2px solid var(--dark-color);
-    border-radius: 10px;
 }
 
 /* cd case decor */

@@ -1,15 +1,21 @@
 const createbtn = document.querySelector('#createbtn')
 const userId = sessionStorage.getItem('user_id')
 
-// gets access token stored in user data for the current session
-const get_access_token = await fetch(`/api/users/${userId}`, {
-  method: 'GET'
-})
+// checks if theres a session storage id for "user_id" (session ends after 1 hour to prevent spotify api misfires)
+// if theres no user_id in session storage, logs user out to have them sign in again
+if (!userId) {
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
 
-// turn access token into a form we can work with it in
-const data = await get_access_token.json();
-const access_token = data.access_token;
-const access_token_stringified = JSON.stringify(access_token);
+  if (response.ok) {
+    // if the response comes back ok, then the user is logged out and redirected to the login page. 
+    document.location.replace('/login');
+  } else {
+    alert('Failed to log out');
+  }
+}
 
 // event handler function for creating a post 
 const createPostHandler = async (event) => {
@@ -45,12 +51,15 @@ const createPostHandler = async (event) => {
         },
       });
     
-      // returns user to home if POST is created. If not an alert is shown to prompt them to try again.
+      // takes user to all recent posts page if POST is created. If not an alert is shown to prompt them to try again.
       if (response.ok) {
-        window.location.replace(`/`);
+        window.location.replace(`/posts/`);
       } else {
         alert ("Unable to create post, try again!")
       }
+    } else {
+      // checks that the user is uploading a spotify playlist
+      alert("You must link to a spotify playlist!")
     }
     // catches an error in connecting to spotify api 
   } catch (error) {

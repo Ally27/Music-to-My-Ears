@@ -1,0 +1,49 @@
+[   {
+    "id": 8,
+    "content": "Delete this. I would delete it for you if I could. I HATE HATE HATE Drake",
+    "post_id": 7,
+    "user_id": 3
+  },
+  {
+    "id": 1,
+    "content": "I love barking to this playlist late into the night. woof",
+    "post_id": 6,
+    "user_id": 5
+  },
+  {
+    "id": 7,
+    "content": "Kylie Minogue invented disco in 2020 with her hit album 'Disco!' My favorite song is Fine Wine off the deluxe edition",
+    "post_id": 5,
+    "user_id": 4
+  },
+  {
+    "id": 5,
+    "content": "Mimi is a queen. She should be on every playlist",
+    "post_id": 1,
+    "user_id": 4
+  },
+  {
+    "id": 2,
+    "content": "I'm an egg",
+    "post_id": 7,
+    "user_id": 2
+  },
+  {
+		"id": 4,
+		"content": "wow! - adele (it's adele by the way)",
+		"post_id": 2,
+		"user_id": 6
+	},
+	{
+		"id": 3,
+		"content": "love them - adele",
+		"post_id": 1,
+		"user_id": 6
+	},
+	{
+		"id": 6,
+		"content": "not a fan - adele",
+		"post_id": 7,
+		"user_id": 6
+	}
+]

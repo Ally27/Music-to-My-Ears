@@ -23,12 +23,19 @@ const loginFormHandler = async (event) => {
       const uri_local = "http%3A%2F%2Flocalhost%3A3001%2Fauth"
       const uri_heroku = "https%3A%2F%2Fmusic-to-my-ears1.herokuapp.com%2Fauth"
      
-
+      // spotify authentification
       window.location.href = `https://accounts.spotify.com/authorize?client_id=44dd607d18f74af59288c28ecbb77a63&response_type=code&redirect_uri=${uri_heroku}&scope=user-top-read`;
     } else {
       alert('Failed to log in');
     }
   }
 };
+
+document.querySelector('.forgot-btn').addEventListener('click', function(event){
+  event.preventDefault
+  window.location.replace(`/updatepassword`);
+
+
+})
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
