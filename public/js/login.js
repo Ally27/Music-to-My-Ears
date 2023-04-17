@@ -31,4 +31,11 @@ const loginFormHandler = async (event) => {
   }
 };
 
+document.querySelector('.forgot-btn').addEventListener('click', function(event){
+  event.preventDefault
+  window.location.replace(`/updatepassword`);
+
+
+})
+
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
