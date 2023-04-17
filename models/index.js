@@ -35,10 +35,12 @@ Post.hasOne(Tag, {
     foreignKey: 'tag_id'
 })
 
+// A comment belongs to a single post
 Comment.belongsTo(Post, {
     foreignKey: 'post_id'
 })
 
+// A post can have many comments
 Post.hasMany(Comment, {
   foreignKey: 'post_id',
   onDelete: 'CASCADE'

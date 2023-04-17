@@ -1,6 +1,8 @@
 const createbtn = document.querySelector('#createbtn')
 const userId = sessionStorage.getItem('user_id')
 
+// checks if theres a session storage id for "user_id" (session ends after 1 hour to prevent spotify api misfires)
+// if theres no user_id in session storage, logs user out to have them sign in again
 if (!userId) {
   const response = await fetch('/api/users/logout', {
     method: 'POST',
@@ -49,13 +51,14 @@ const createPostHandler = async (event) => {
         },
       });
     
-      // returns user to home if POST is created. If not an alert is shown to prompt them to try again.
+      // takes user to all recent posts page if POST is created. If not an alert is shown to prompt them to try again.
       if (response.ok) {
         window.location.replace(`/posts/`);
       } else {
         alert ("Unable to create post, try again!")
       }
     } else {
+      // checks that the user is uploading a spotify playlist
       alert("You must link to a spotify playlist!")
     }
     // catches an error in connecting to spotify api 

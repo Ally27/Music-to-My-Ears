@@ -1,7 +1,8 @@
 const updatebtn = document.querySelector('#updatebtn')
+// gets user id from session storage to update the correct user's profile
 const userId = sessionStorage.getItem('user_id')
 
-
+// event handler for whenever use clicks on update button 
 const signUpHandler = async (event) => {
   event.preventDefault();
 
@@ -13,7 +14,7 @@ const signUpHandler = async (event) => {
     const twitter = document.querySelector('#twitter').value.trim();
     const instagram = document.querySelector('#instagram').value.trim();
 
-    // makes a post fetch to api/users with info in the form to update user 
+    // makes a put fetch to api/users with info in the form to update user 
     try {
         const response = await fetch(`/api/users/${userId}`, {
             method: 'PUT',
@@ -30,11 +31,11 @@ const signUpHandler = async (event) => {
             },
           });
         
-          // if response was ok, brings user to login page.
+          // if response was ok, brings user to account page.
           if (response.ok) {
             window.location.replace(`/account`);
           } else {
-            alert('Could not ipdate user. Try again!');
+            alert('Could not update user. Try again!');
           }
     } catch (error) {
         alert('Could not update user. Try again!');

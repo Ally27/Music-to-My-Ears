@@ -1,5 +1,4 @@
-var userId = sessionStorage.getItem('user_id')
-
+// even handler for whenever use hits the logout button
 const logout = async () => {
 
     // post requeset to users/logout 
