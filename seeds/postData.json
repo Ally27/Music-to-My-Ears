@@ -15,7 +15,7 @@
 		"content": "The most popular songs right now! I love listening to the top hits and jamming out to great music",
 		"user_id": 2,
 		"tag_id": 1,
-		"upvotes": 10
+		"upvotes": 1
 		},
 	{
 		"id": 3,
@@ -24,7 +24,7 @@
 		"content": "Just a relaxing playlist for when you want to take the vibes down a bit. I usually listen to this playlist when I'm getting ready for bed, or when I'm coding late into the night.",
 		"user_id": 2,
 		"tag_id": 12,
-		"upvotes": 2
+		"upvotes": 0
 		},
 	{
 		"id": 4,
@@ -33,7 +33,7 @@
 		"content": "Beep beep boop ba boop I am a robot and I like electronic music because that is what my thoughts sOUND like o_O",
 		"user_id":5,
 		"tag_id": 11,
-		"upvotes": 0
+		"upvotes": 2
 		},
 	{
 		"id": 5,
@@ -42,7 +42,7 @@
 		"content": "Disco will never die!!! They tried to burn it down, but it rose again like a phoenix and Disco burns brighter today than it ever did before!",
 		"user_id": 1,
 		"tag_id": 2,
-		"upvotes": 10
+		"upvotes": 5
 		},
 	{
 		"id": 6,
@@ -51,7 +51,7 @@
 		"content": "For when you're riding a horse or workin the fields! That's what I love about music, it really can manifest in so many different genres and each iteration has its own appeal.",
 		"user_id": 1,
 		"tag_id": 17,
-		"upvotes": 2
+		"upvotes": 1
 		},
 	{
 		"id": 7,
@@ -68,7 +68,7 @@
 		"spotify_id": "37i9dQZF1DWZUozJiHy44Y",
 		"content": "all of my best songs luv x -adele (famous singer)",
 		"user_id": 6,
-		"tag_id": 25,
-		"upvotes": 4
+		"tag_id": 1,
+		"upvotes": 2
 	}
 ]

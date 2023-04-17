@@ -1,56 +1,82 @@
-# Music-to-My-Ears
-<img src="public\images\Logo.PNG" width="280">
+# <img src="public\images\Logo.PNG" width="280">
 
-## Description
-
-Music to My Ears is a full stack web application that allows users to share their Spotify playlists to a user friendly interactive site where you can post your own playlists, like, and comment on other people's playlists, create your own account and profile, and see what the community is posting and interacting with relating to Spotify content. Music to My Ears uses the Spotify API to retrieve information about the playlists, such as the track list and album artwork. 
 
 ## Table of Contents
 
+- [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
 - [Contributors](#contributors)
 - [Questions](#questions)
+- [Screenshots](#screenshots)
 - [License](#license)
 
+---
+
+## Description
+
+Music to My Ears is a full stack web application that allows users to share their Spotify playlists to a user-friendly, interactive site. You can create your own account, post your own playlists, like or comment on other people's playlists, and more! You can see what the community is posting or interacting with, making it easy to engage with other users. When you view a post on the site, it gets information about the playlist to display its tracks right on the page. With Music to My Ears, finding music has never been easier!
+
+External links 
+- [GitHub Repository](https://github.com/Ally27/Music-to-My-Ears)
+- [Webpage DEMO](https://www.loom.com/share/693a3100ec2043d99570dace81546b34)
+- [Heroku Launched Link](https://music-to-my-ears1.herokuapp.com/)
+
+---
+
 ## Installation
-- [node.js](https://nodejs.org/en)<br>
-- [mysql2](https://www.npmjs.com/package/mysql2)<br>
-- [sequelize](https://sequelize.org/docs/v6/getting-started/)<br>
-To install dependencies run the following in your command line:<br>
-npm install<br>
-To run the application:<br>
-npm start.
+This project runs using node and SQL. Follow the necessary installation for these programs to download them to your local device. 
+- After entering the mySQL terminal enter the code "SOURCE db/schema.sql" to create the music_db. Enter "quit" to return to the node.js command line.
+- Then, in the CLI run the code "npm i" to install the necessary packages.
+- After that, run the code "node seeds/index.js" into node to seed the music_db.
+- Finally run the code "npm start" to begin the application and view it at "localhost:3001/" in your default browser. 
 
+*** If you are viewing the webpage at the deployed Heroku link, then no installation is necessary! 
 
+---
 
 ## Usage
-To use the application, follow these steps:
+Whether you're running this on a local host, or using the Heroku site usage is the same:
+- Create an account or log in to an existing account.
+- You're automatically navigated to the <b>"<u>Home</u>"</b> tab where you're able to view the top trending playlists on Music to My Ears! These posts are displayed with an easily interactable interface that allows comments, upvotes or viewing the playlist itself on our website or Spotify. The right side of the page shows all the tags, and allows users to click on them to view all the posts with that tag! The most recent playlists are also shown on the right side and the usercan click on them to view the post. 
+- If you want to make a post, simply click on <b>"<u>Create</u>"</b> on the navbar. Add a title, tag and then a brief description. You also have to post your link to the spotify playlist. Click "Create Post" and we'll do the rest. 
+- You can navigate to <b>"<u>Account</u>"</b> on the navbar to view all of your posts and your bio. You are shown your tags, how many playlists you've posted and a button to create more posts. You also can click on the "Edit Bio" to update the information on your profile! 
+- Finally head over to the <b>"<u>Community</u>"</b> tab on the navbar. On the left side of the page you're shown the newest release albums from spotify, with the artist, release date and the option to view the album on spotify. The right side of the page is a major interaction-hub for the website! You see the newest users to signup and can click on them to view their profile. Additonally you see the most recent comments and navigate to the post they were on to join the discussion! Your top tags are shown to allow you to quickly navigate to all posts with a specific tag of interest to you. Finally, the newest posts are displayed with an easily interactable interface that allows comments, upvotes or viewing the playlist itself on Music to our Ears or Spotify. 
 
-* Open a web browser and navigate to the application URL.
-* Create an account or log in to an existing account.
-* Upload your Spotify playlist or browse other users' playlists.
-* Like, save, or share playlists with other users.
-* Explore and discover new music
-
-## Screenshots
-<img src="public\images\login.PNG" width="280"><br>
-<img src="public\images\account.PNG" width="250">
-
+---
 
 ## Contributors
 
-- [Tyler](https://github.com/tykervella)
-- [Marley](https://github.com/marleyschneiderr)
-- [Terri](https://github.com/terrinmack)
-- [Allyson](https://github.com/Ally27)
+- [Tyler Kervella](https://github.com/tykervella)
+- [Marley Schneider](https://github.com/marleyschneiderr)
+- [Terri Mack](https://github.com/terrinmack)
+- [Allyson Gonzalez](https://github.com/Ally27)
+
+---
 
 ## Questions
 
-Feel free to contact us at Tyler: [Contact](mailto:), Marley: [Contact](mailto:), Terri: [Contact](mailto:), Allyson: [Contact](mailto:allysonmg21@gmail.com) with any questions.
+Feel free to contact with any questions.
+- Tyler Kervella - tylerkervella@gmail.com
+- Marley Schneider - marleysue@gmail.com
+- Terri Mack - terrimack15@gmail.com
+- Allyson Gonzalez - allysonmg21@gmail.com
+
+---
+
+## Screenshots
+![Sign Up](./public/images/signup.png)
+![Login](./public/images/login.png)
+![Homepage](./public/images/homepage.png)
+![Create](./public/images/createpost.png)
+![Account](./public/images/account.PNG)
+![Community](./public/images/community.png)
+
+---
 
 ## License
+
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 MIT LicContact
 Copyright (c) 2023 Allyson Gonzales
