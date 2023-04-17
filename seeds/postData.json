@@ -61,5 +61,14 @@
 		"user_id": 5,
 		"tag_id": 6,
 		"upvotes": 0
+	},
+	{
+		"id": 8,
+		"title": "my best songs",
+		"spotify_id": "37i9dQZF1DWZUozJiHy44Y",
+		"content": "all of my best songs luv x -adele (famous singer)",
+		"user_id": 6,
+		"tag_id": 25,
+		"upvotes": 4
 	}
 ]
