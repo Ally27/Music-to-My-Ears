@@ -1,5 +1,4 @@
-# <img src="public\images\Logo.PNG" width="280">
-
+# ![Music To My Ears](./public/images/Logo.PNG)
 
 ## Table of Contents
 
@@ -19,7 +18,7 @@ Music to My Ears is a full stack web application that allows users to share thei
 
 External links 
 - [GitHub Repository](https://github.com/Ally27/Music-to-My-Ears)
-- [Webpage DEMO](https://www.loom.com/share/693a3100ec2043d99570dace81546b34)
+- [Webpage DEMO](https://www.loom.com/share/6b3d35c37cbd447aa096acdbe9bef764)
 - [Heroku Launched Link](https://music-to-my-ears1.herokuapp.com/)
 
 ---
