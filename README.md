@@ -74,7 +74,7 @@ Feel free to contact with any questions.
 
 ## Screenshots
 ![Sign Up](./public/images/signup.png)
-![Login](./public/images/login.png)
+![Login](./public/images/login.PNG)
 ![Homepage](./public/images/homepage.png)
 ![Create](./public/images/createpost.png)
 ![Account](./public/images/account.PNG)
